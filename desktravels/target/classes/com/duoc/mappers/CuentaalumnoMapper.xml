@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.CuentaalumnoMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Cuentaalumno">
+    <id column="IDCUENTAALUMNOS" jdbcType="DECIMAL" property="idcuentaalumnos" />
+    <result column="IDTIPOCUENTA" jdbcType="DECIMAL" property="idtipocuenta" />
+    <result column="IDALUMNO" jdbcType="DECIMAL" property="idalumno" />
+    <result column="CUPOTOTAL" jdbcType="DECIMAL" property="cupototal" />
+    <result column="CUPOUTILIZADO" jdbcType="DECIMAL" property="cupoutilizado" />
+    <result column="APORTE" jdbcType="DECIMAL" property="aporte" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    IDCUENTAALUMNOS, IDTIPOCUENTA, IDALUMNO, CUPOTOTAL, CUPOUTILIZADO, APORTE
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.CuentaalumnoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CUENTAALUMNO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.CuentaalumnoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CUENTAALUMNO
+    where IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.CuentaalumnoKey">
+    delete from CUENTAALUMNO
+    where IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.CuentaalumnoCriteria">
+    delete from CUENTAALUMNO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Cuentaalumno">
+    insert into CUENTAALUMNO (IDCUENTAALUMNOS, IDTIPOCUENTA, IDALUMNO, 
+      CUPOTOTAL, CUPOUTILIZADO, APORTE
+      )
+    values (#{idcuentaalumnos,jdbcType=DECIMAL}, #{idtipocuenta,jdbcType=DECIMAL}, #{idalumno,jdbcType=DECIMAL}, 
+      #{cupototal,jdbcType=DECIMAL}, #{cupoutilizado,jdbcType=DECIMAL}, #{aporte,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Cuentaalumno">
+    insert into CUENTAALUMNO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idcuentaalumnos != null">
+        IDCUENTAALUMNOS,
+      </if>
+      <if test="idtipocuenta != null">
+        IDTIPOCUENTA,
+      </if>
+      <if test="idalumno != null">
+        IDALUMNO,
+      </if>
+      <if test="cupototal != null">
+        CUPOTOTAL,
+      </if>
+      <if test="cupoutilizado != null">
+        CUPOUTILIZADO,
+      </if>
+      <if test="aporte != null">
+        APORTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idcuentaalumnos != null">
+        #{idcuentaalumnos,jdbcType=DECIMAL},
+      </if>
+      <if test="idtipocuenta != null">
+        #{idtipocuenta,jdbcType=DECIMAL},
+      </if>
+      <if test="idalumno != null">
+        #{idalumno,jdbcType=DECIMAL},
+      </if>
+      <if test="cupototal != null">
+        #{cupototal,jdbcType=DECIMAL},
+      </if>
+      <if test="cupoutilizado != null">
+        #{cupoutilizado,jdbcType=DECIMAL},
+      </if>
+      <if test="aporte != null">
+        #{aporte,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.CuentaalumnoCriteria" resultType="java.lang.Long">
+    select count(*) from CUENTAALUMNO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update CUENTAALUMNO
+    <set>
+      <if test="record.idcuentaalumnos != null">
+        IDCUENTAALUMNOS = #{record.idcuentaalumnos,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idtipocuenta != null">
+        IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idalumno != null">
+        IDALUMNO = #{record.idalumno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cupototal != null">
+        CUPOTOTAL = #{record.cupototal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cupoutilizado != null">
+        CUPOUTILIZADO = #{record.cupoutilizado,jdbcType=DECIMAL},
+      </if>
+      <if test="record.aporte != null">
+        APORTE = #{record.aporte,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update CUENTAALUMNO
+    set IDCUENTAALUMNOS = #{record.idcuentaalumnos,jdbcType=DECIMAL},
+      IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
+      IDALUMNO = #{record.idalumno,jdbcType=DECIMAL},
+      CUPOTOTAL = #{record.cupototal,jdbcType=DECIMAL},
+      CUPOUTILIZADO = #{record.cupoutilizado,jdbcType=DECIMAL},
+      APORTE = #{record.aporte,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Cuentaalumno">
+    update CUENTAALUMNO
+    <set>
+      <if test="idtipocuenta != null">
+        IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL},
+      </if>
+      <if test="idalumno != null">
+        IDALUMNO = #{idalumno,jdbcType=DECIMAL},
+      </if>
+      <if test="cupototal != null">
+        CUPOTOTAL = #{cupototal,jdbcType=DECIMAL},
+      </if>
+      <if test="cupoutilizado != null">
+        CUPOUTILIZADO = #{cupoutilizado,jdbcType=DECIMAL},
+      </if>
+      <if test="aporte != null">
+        APORTE = #{aporte,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Cuentaalumno">
+    update CUENTAALUMNO
+    set IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL},
+      IDALUMNO = #{idalumno,jdbcType=DECIMAL},
+      CUPOTOTAL = #{cupototal,jdbcType=DECIMAL},
+      CUPOUTILIZADO = #{cupoutilizado,jdbcType=DECIMAL},
+      APORTE = #{aporte,jdbcType=DECIMAL}
+    where IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+  </update>
+</mapper>

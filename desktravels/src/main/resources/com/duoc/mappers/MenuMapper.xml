@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Menu">
+    <id column="IDMENU" jdbcType="DECIMAL" property="idmenu" />
+    <result column="IDPERFIL" jdbcType="DECIMAL" property="idperfil" />
+    <result column="NOMBREMENU" jdbcType="VARCHAR" property="nombremenu" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    IDMENU, IDPERFIL, NOMBREMENU
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.MenuCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.MenuKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MENU
+    where IDMENU = #{idmenu,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.MenuKey">
+    delete from MENU
+    where IDMENU = #{idmenu,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.MenuCriteria">
+    delete from MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Menu">
+    insert into MENU (IDMENU, IDPERFIL, NOMBREMENU
+      )
+    values (#{idmenu,jdbcType=DECIMAL}, #{idperfil,jdbcType=DECIMAL}, #{nombremenu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Menu">
+    insert into MENU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idmenu != null">
+        IDMENU,
+      </if>
+      <if test="idperfil != null">
+        IDPERFIL,
+      </if>
+      <if test="nombremenu != null">
+        NOMBREMENU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idmenu != null">
+        #{idmenu,jdbcType=DECIMAL},
+      </if>
+      <if test="idperfil != null">
+        #{idperfil,jdbcType=DECIMAL},
+      </if>
+      <if test="nombremenu != null">
+        #{nombremenu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.MenuCriteria" resultType="java.lang.Long">
+    select count(*) from MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update MENU
+    <set>
+      <if test="record.idmenu != null">
+        IDMENU = #{record.idmenu,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idperfil != null">
+        IDPERFIL = #{record.idperfil,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nombremenu != null">
+        NOMBREMENU = #{record.nombremenu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update MENU
+    set IDMENU = #{record.idmenu,jdbcType=DECIMAL},
+      IDPERFIL = #{record.idperfil,jdbcType=DECIMAL},
+      NOMBREMENU = #{record.nombremenu,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Menu">
+    update MENU
+    <set>
+      <if test="idperfil != null">
+        IDPERFIL = #{idperfil,jdbcType=DECIMAL},
+      </if>
+      <if test="nombremenu != null">
+        NOMBREMENU = #{nombremenu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where IDMENU = #{idmenu,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Menu">
+    update MENU
+    set IDPERFIL = #{idperfil,jdbcType=DECIMAL},
+      NOMBREMENU = #{nombremenu,jdbcType=VARCHAR}
+    where IDMENU = #{idmenu,jdbcType=DECIMAL}
+  </update>
+</mapper>

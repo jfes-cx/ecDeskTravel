@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- Note that you have to specify the driver location here. The tool does 
+		not appear to use the Eclipse classpath or the project classpath -->
+	<classPathEntry
+		location="C:\Users\Integer\Documents\GitHub\ecDeskTravel\utils\ojdbc7.jar" />
+	<context id="context1" targetRuntime="MyBatis3" defaultModelType="hierarchical"> 
+	
+	<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+		<property name="searchString" value="Example$"/>
+		<property name="replaceString" value="Criteria"/>
+	</plugin>
+	<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+	<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+	
+	<commentGenerator>
+		<property name="suppressAllComments" value="true"/>
+	</commentGenerator>
+
+		<!-- Where to pull the data from -->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@18.221.245.107:1521:ontourdev" userId="c##pablo"
+			password="pablo1234" />
+
+		<!-- Note that the targetProject refers to the name of the project in your 
+			Eclipse IDE (not the name of the Maven project). If run outside of the IDE 
+			you can specify a path instead, but there doesn't seem to be a nice way to 
+			specify a single path for both usage scenarios. -->
+
+		<!-- Generates the model (the objects that hold the data) -->
+		<javaModelGenerator targetPackage="com.duoc.domain"
+			targetProject="desktravels/src/main/java" />
+			
+		<sqlMapGenerator targetPackage="com.duoc.mappers"
+			targetProject="desktravels/src/main/resources" />
+		
+		<!-- Generates the interfaces used to retrieve data -->
+		<javaClientGenerator targetPackage="com.duoc.mappers"
+			targetProject="desktravels/src/main/java" type="XMLMAPPER" />
+
+		<!-- List of tables to inspect -->
+		<table tableName="ACTIVIDAD" />
+		<table  tableName="ACTIVIDADAPORTES" />
+		<table  tableName="ACTIVIDADVIAJE"/>
+		<table tableName="ALUMNO" />
+		<table  tableName="ANEXOS" />
+		<table  tableName="APODERADO"/>
+		<table tableName="ASEGURADORA" />
+		<table  tableName="COLABORADOR" />
+		<table  tableName="COLEGIO"/>
+		<table tableName="COMUNA" />
+		<table  tableName="CONTRATO" />
+		<table  tableName="CUENTAALUMNO"/>
+		<table tableName="CUENTACURSO" />
+		<table  tableName="CUENTAUSUARIO" />
+		<table  tableName="CURSO"/>
+		<table tableName="DESTINO" />
+		<table  tableName="ESTADOCUENTA" />
+		<table  tableName="ITINERARIO"/>
+		<table tableName="MENU" />
+		<table  tableName="ORIGEN" />
+		<table  tableName="PAGO"/>
+		<table tableName="PAIS" />
+		<table  tableName="PERFIL" />
+		<table  tableName="PERMISO"/>
+		<table tableName="POLIZASEGURO" />
+		<table schema="C##PABLO" tableName="REGION" />
+		<table  tableName="SERVICIO"/>
+		<table tableName="TIPOACTIVIDAD" />
+		<table  tableName="TIPOACTIVIDADVIAJE" />
+		<table  tableName="TIPOCOLABORADOR"/>
+		<table tableName="TIPOCONTRATO" />
+		<table  tableName="TIPOCUENTA" />
+		<table  tableName="TIPOPAGO"/>
+		<table  tableName="TIPOSEGURO"/>
+		<table tableName="TIPOSERVICIO" />
+		
+		
+		
+	</context>
+</generatorConfiguration>

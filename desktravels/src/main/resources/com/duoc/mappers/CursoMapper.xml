@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.CursoMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Curso">
+    <id column="IDCURSO" jdbcType="DECIMAL" property="idcurso" />
+    <result column="IDCOLEGIO" jdbcType="DECIMAL" property="idcolegio" />
+    <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+    <result column="PROFESORJEFE" jdbcType="VARCHAR" property="profesorjefe" />
+    <result column="CANTIDADALUMNOS" jdbcType="DECIMAL" property="cantidadalumnos" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    IDCURSO, IDCOLEGIO, NOMBRE, PROFESORJEFE, CANTIDADALUMNOS
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.CursoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CURSO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.CursoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CURSO
+    where IDCURSO = #{idcurso,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.CursoKey">
+    delete from CURSO
+    where IDCURSO = #{idcurso,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.CursoCriteria">
+    delete from CURSO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Curso">
+    insert into CURSO (IDCURSO, IDCOLEGIO, NOMBRE, 
+      PROFESORJEFE, CANTIDADALUMNOS)
+    values (#{idcurso,jdbcType=DECIMAL}, #{idcolegio,jdbcType=DECIMAL}, #{nombre,jdbcType=VARCHAR}, 
+      #{profesorjefe,jdbcType=VARCHAR}, #{cantidadalumnos,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Curso">
+    insert into CURSO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idcurso != null">
+        IDCURSO,
+      </if>
+      <if test="idcolegio != null">
+        IDCOLEGIO,
+      </if>
+      <if test="nombre != null">
+        NOMBRE,
+      </if>
+      <if test="profesorjefe != null">
+        PROFESORJEFE,
+      </if>
+      <if test="cantidadalumnos != null">
+        CANTIDADALUMNOS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idcurso != null">
+        #{idcurso,jdbcType=DECIMAL},
+      </if>
+      <if test="idcolegio != null">
+        #{idcolegio,jdbcType=DECIMAL},
+      </if>
+      <if test="nombre != null">
+        #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="profesorjefe != null">
+        #{profesorjefe,jdbcType=VARCHAR},
+      </if>
+      <if test="cantidadalumnos != null">
+        #{cantidadalumnos,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.CursoCriteria" resultType="java.lang.Long">
+    select count(*) from CURSO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update CURSO
+    <set>
+      <if test="record.idcurso != null">
+        IDCURSO = #{record.idcurso,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idcolegio != null">
+        IDCOLEGIO = #{record.idcolegio,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nombre != null">
+        NOMBRE = #{record.nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="record.profesorjefe != null">
+        PROFESORJEFE = #{record.profesorjefe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cantidadalumnos != null">
+        CANTIDADALUMNOS = #{record.cantidadalumnos,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update CURSO
+    set IDCURSO = #{record.idcurso,jdbcType=DECIMAL},
+      IDCOLEGIO = #{record.idcolegio,jdbcType=DECIMAL},
+      NOMBRE = #{record.nombre,jdbcType=VARCHAR},
+      PROFESORJEFE = #{record.profesorjefe,jdbcType=VARCHAR},
+      CANTIDADALUMNOS = #{record.cantidadalumnos,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Curso">
+    update CURSO
+    <set>
+      <if test="idcolegio != null">
+        IDCOLEGIO = #{idcolegio,jdbcType=DECIMAL},
+      </if>
+      <if test="nombre != null">
+        NOMBRE = #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="profesorjefe != null">
+        PROFESORJEFE = #{profesorjefe,jdbcType=VARCHAR},
+      </if>
+      <if test="cantidadalumnos != null">
+        CANTIDADALUMNOS = #{cantidadalumnos,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where IDCURSO = #{idcurso,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Curso">
+    update CURSO
+    set IDCOLEGIO = #{idcolegio,jdbcType=DECIMAL},
+      NOMBRE = #{nombre,jdbcType=VARCHAR},
+      PROFESORJEFE = #{profesorjefe,jdbcType=VARCHAR},
+      CANTIDADALUMNOS = #{cantidadalumnos,jdbcType=DECIMAL}
+    where IDCURSO = #{idcurso,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.OrigenMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Origen">
+    <id column="IDORIGEN" jdbcType="DECIMAL" property="idorigen" />
+    <result column="NOMBREORIGEN" jdbcType="VARCHAR" property="nombreorigen" />
+    <result column="IDPAIS" jdbcType="DECIMAL" property="idpais" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    IDORIGEN, NOMBREORIGEN, IDPAIS
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.OrigenCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ORIGEN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.OrigenKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ORIGEN
+    where IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.OrigenKey">
+    delete from ORIGEN
+    where IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.OrigenCriteria">
+    delete from ORIGEN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Origen">
+    insert into ORIGEN (IDORIGEN, NOMBREORIGEN, IDPAIS
+      )
+    values (#{idorigen,jdbcType=DECIMAL}, #{nombreorigen,jdbcType=VARCHAR}, #{idpais,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Origen">
+    insert into ORIGEN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idorigen != null">
+        IDORIGEN,
+      </if>
+      <if test="nombreorigen != null">
+        NOMBREORIGEN,
+      </if>
+      <if test="idpais != null">
+        IDPAIS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idorigen != null">
+        #{idorigen,jdbcType=DECIMAL},
+      </if>
+      <if test="nombreorigen != null">
+        #{nombreorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="idpais != null">
+        #{idpais,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.OrigenCriteria" resultType="java.lang.Long">
+    select count(*) from ORIGEN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ORIGEN
+    <set>
+      <if test="record.idorigen != null">
+        IDORIGEN = #{record.idorigen,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nombreorigen != null">
+        NOMBREORIGEN = #{record.nombreorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idpais != null">
+        IDPAIS = #{record.idpais,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ORIGEN
+    set IDORIGEN = #{record.idorigen,jdbcType=DECIMAL},
+      NOMBREORIGEN = #{record.nombreorigen,jdbcType=VARCHAR},
+      IDPAIS = #{record.idpais,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Origen">
+    update ORIGEN
+    <set>
+      <if test="nombreorigen != null">
+        NOMBREORIGEN = #{nombreorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="idpais != null">
+        IDPAIS = #{idpais,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Origen">
+    update ORIGEN
+    set NOMBREORIGEN = #{nombreorigen,jdbcType=VARCHAR},
+      IDPAIS = #{idpais,jdbcType=DECIMAL}
+    where IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+  </update>
+</mapper>

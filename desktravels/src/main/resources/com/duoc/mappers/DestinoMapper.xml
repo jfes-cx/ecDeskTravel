@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.DestinoMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Destino">
+    <id column="IDDESTINO" jdbcType="DECIMAL" property="iddestino" />
+    <result column="NOMBREDESTINO" jdbcType="VARCHAR" property="nombredestino" />
+    <result column="IDPAIS" jdbcType="DECIMAL" property="idpais" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    IDDESTINO, NOMBREDESTINO, IDPAIS
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.DestinoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DESTINO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.DestinoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DESTINO
+    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.DestinoKey">
+    delete from DESTINO
+    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.DestinoCriteria">
+    delete from DESTINO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Destino">
+    insert into DESTINO (IDDESTINO, NOMBREDESTINO, IDPAIS
+      )
+    values (#{iddestino,jdbcType=DECIMAL}, #{nombredestino,jdbcType=VARCHAR}, #{idpais,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Destino">
+    insert into DESTINO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iddestino != null">
+        IDDESTINO,
+      </if>
+      <if test="nombredestino != null">
+        NOMBREDESTINO,
+      </if>
+      <if test="idpais != null">
+        IDPAIS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iddestino != null">
+        #{iddestino,jdbcType=DECIMAL},
+      </if>
+      <if test="nombredestino != null">
+        #{nombredestino,jdbcType=VARCHAR},
+      </if>
+      <if test="idpais != null">
+        #{idpais,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.DestinoCriteria" resultType="java.lang.Long">
+    select count(*) from DESTINO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update DESTINO
+    <set>
+      <if test="record.iddestino != null">
+        IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nombredestino != null">
+        NOMBREDESTINO = #{record.nombredestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idpais != null">
+        IDPAIS = #{record.idpais,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update DESTINO
+    set IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
+      NOMBREDESTINO = #{record.nombredestino,jdbcType=VARCHAR},
+      IDPAIS = #{record.idpais,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Destino">
+    update DESTINO
+    <set>
+      <if test="nombredestino != null">
+        NOMBREDESTINO = #{nombredestino,jdbcType=VARCHAR},
+      </if>
+      <if test="idpais != null">
+        IDPAIS = #{idpais,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Destino">
+    update DESTINO
+    set NOMBREDESTINO = #{nombredestino,jdbcType=VARCHAR},
+      IDPAIS = #{idpais,jdbcType=DECIMAL}
+    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+  </update>
+</mapper>
