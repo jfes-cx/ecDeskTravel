@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TiposeguroMapper {
+
     long countByExample(TiposeguroCriteria example);
 
     int deleteByExample(TiposeguroCriteria example);

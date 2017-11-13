@@ -1,164 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.TipocuentaMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Tipocuenta">
-    <id column="IDTIPOCUENTA" jdbcType="DECIMAL" property="idtipocuenta" />
-    <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Tipocuenta">
+        <id column="IDTIPOCUENTA" jdbcType="DECIMAL" property="idtipocuenta" />
+        <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDTIPOCUENTA, NOMBRE
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.TipocuentaCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDTIPOCUENTA, NOMBRE
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.TipocuentaCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from TIPOCUENTA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.TipocuentaKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from TIPOCUENTA
-    where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.TipocuentaKey">
-    delete from TIPOCUENTA
-    where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.TipocuentaCriteria">
-    delete from TIPOCUENTA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Tipocuenta">
-    insert into TIPOCUENTA (IDTIPOCUENTA, NOMBRE)
-    values (#{idtipocuenta,jdbcType=DECIMAL}, #{nombre,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Tipocuenta">
-    insert into TIPOCUENTA
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="idtipocuenta != null">
-        IDTIPOCUENTA,
-      </if>
-      <if test="nombre != null">
-        NOMBRE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="idtipocuenta != null">
-        #{idtipocuenta,jdbcType=DECIMAL},
-      </if>
-      <if test="nombre != null">
-        #{nombre,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.TipocuentaCriteria" resultType="java.lang.Long">
-    select count(*) from TIPOCUENTA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update TIPOCUENTA
-    <set>
-      <if test="record.idtipocuenta != null">
-        IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
-      </if>
-      <if test="record.nombre != null">
-        NOMBRE = #{record.nombre,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update TIPOCUENTA
-    set IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
-      NOMBRE = #{record.nombre,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Tipocuenta">
-    update TIPOCUENTA
-    <set>
-      <if test="nombre != null">
-        NOMBRE = #{nombre,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Tipocuenta">
-    update TIPOCUENTA
-    set NOMBRE = #{nombre,jdbcType=VARCHAR}
-    where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
-  </update>
+        <include refid="Base_Column_List" />
+        from TIPOCUENTA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.TipocuentaKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from TIPOCUENTA
+        where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.TipocuentaKey">
+        delete from TIPOCUENTA
+        where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.TipocuentaCriteria">
+        delete from TIPOCUENTA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Tipocuenta">
+        insert into TIPOCUENTA (IDTIPOCUENTA, NOMBRE)
+        values (#{idtipocuenta,jdbcType=DECIMAL}, #{nombre,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Tipocuenta">
+        insert into TIPOCUENTA
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idtipocuenta != null">
+                IDTIPOCUENTA,
+            </if>
+            <if test="nombre != null">
+                NOMBRE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idtipocuenta != null">
+                #{idtipocuenta,jdbcType=DECIMAL},
+            </if>
+            <if test="nombre != null">
+                #{nombre,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.TipocuentaCriteria" resultType="java.lang.Long">
+        select count(*) from TIPOCUENTA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update TIPOCUENTA
+        <set>
+            <if test="record.idtipocuenta != null">
+                IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
+            </if>
+            <if test="record.nombre != null">
+                NOMBRE = #{record.nombre,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update TIPOCUENTA
+        set IDTIPOCUENTA = #{record.idtipocuenta,jdbcType=DECIMAL},
+        NOMBRE = #{record.nombre,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Tipocuenta">
+        update TIPOCUENTA
+        <set>
+            <if test="nombre != null">
+                NOMBRE = #{nombre,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Tipocuenta">
+        update TIPOCUENTA
+        set NOMBRE = #{nombre,jdbcType=VARCHAR}
+        where IDTIPOCUENTA = #{idtipocuenta,jdbcType=DECIMAL}
+    </update>
 </mapper>

@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface DestinoMapper {
+
     long countByExample(DestinoCriteria example);
 
     int deleteByExample(DestinoCriteria example);

@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class PagoKey {
+
     private BigDecimal idpago;
 
     public BigDecimal getIdpago() {

@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class DestinoKey {
+
     private BigDecimal iddestino;
 
     public BigDecimal getIddestino() {

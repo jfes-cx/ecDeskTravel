@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PaisMapper {
+
     long countByExample(PaisCriteria example);
 
     int deleteByExample(PaisCriteria example);

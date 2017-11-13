@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class ComunaKey {
+
     private BigDecimal idcomuna;
 
     public BigDecimal getIdcomuna() {

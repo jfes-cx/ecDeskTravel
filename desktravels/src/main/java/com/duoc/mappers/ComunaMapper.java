@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ComunaMapper {
+
     long countByExample(ComunaCriteria example);
 
     int deleteByExample(ComunaCriteria example);
@@ -28,4 +29,6 @@ public interface ComunaMapper {
     int updateByPrimaryKeySelective(Comuna record);
 
     int updateByPrimaryKey(Comuna record);
+
+    void GET_COMUNAS_BY_REG();
 }

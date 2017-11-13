@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 public interface CuentausuarioMapper {
+
     long countByExample(CuentausuarioCriteria example);
 
     int deleteByExample(CuentausuarioCriteria example);
@@ -30,6 +31,6 @@ public interface CuentausuarioMapper {
     int updateByPrimaryKeySelective(Cuentausuario record);
 
     int updateByPrimaryKey(Cuentausuario record);
-    
-    void autenticarUsuario(Map<String,Object> params);
+
+    void autenticarUsuario(Map<String, Object> params);
 }

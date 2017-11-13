@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface AseguradoraMapper {
+
     long countByExample(AseguradoraCriteria example);
 
     int deleteByExample(AseguradoraCriteria example);

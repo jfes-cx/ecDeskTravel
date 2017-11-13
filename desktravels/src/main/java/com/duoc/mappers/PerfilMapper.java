@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PerfilMapper {
+
     long countByExample(PerfilCriteria example);
 
     int deleteByExample(PerfilCriteria example);

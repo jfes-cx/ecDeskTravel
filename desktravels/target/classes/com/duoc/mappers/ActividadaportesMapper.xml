@@ -1,196 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.ActividadaportesMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Actividadaportes">
-    <id column="IDACTIVIDADAPORTES" jdbcType="DECIMAL" property="idactividadaportes" />
-    <id column="IDCUENTAALUMNOS" jdbcType="DECIMAL" property="idcuentaalumnos" />
-    <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
-    <result column="MONTO" jdbcType="DECIMAL" property="monto" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Actividadaportes">
+        <id column="IDACTIVIDADAPORTES" jdbcType="DECIMAL" property="idactividadaportes" />
+        <id column="IDCUENTAALUMNOS" jdbcType="DECIMAL" property="idcuentaalumnos" />
+        <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
+        <result column="MONTO" jdbcType="DECIMAL" property="monto" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDACTIVIDADAPORTES, IDCUENTAALUMNOS, FECHA, MONTO
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.ActividadaportesCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDACTIVIDADAPORTES, IDCUENTAALUMNOS, FECHA, MONTO
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.ActividadaportesCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from ACTIVIDADAPORTES
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ActividadaportesKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from ACTIVIDADAPORTES
-    where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
-      and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ActividadaportesKey">
-    delete from ACTIVIDADAPORTES
-    where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
-      and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.ActividadaportesCriteria">
-    delete from ACTIVIDADAPORTES
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Actividadaportes">
-    insert into ACTIVIDADAPORTES (IDACTIVIDADAPORTES, IDCUENTAALUMNOS, 
-      FECHA, MONTO)
-    values (#{idactividadaportes,jdbcType=DECIMAL}, #{idcuentaalumnos,jdbcType=DECIMAL}, 
-      #{fecha,jdbcType=TIMESTAMP}, #{monto,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Actividadaportes">
-    insert into ACTIVIDADAPORTES
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="idactividadaportes != null">
-        IDACTIVIDADAPORTES,
-      </if>
-      <if test="idcuentaalumnos != null">
-        IDCUENTAALUMNOS,
-      </if>
-      <if test="fecha != null">
-        FECHA,
-      </if>
-      <if test="monto != null">
-        MONTO,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="idactividadaportes != null">
-        #{idactividadaportes,jdbcType=DECIMAL},
-      </if>
-      <if test="idcuentaalumnos != null">
-        #{idcuentaalumnos,jdbcType=DECIMAL},
-      </if>
-      <if test="fecha != null">
-        #{fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="monto != null">
-        #{monto,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.ActividadaportesCriteria" resultType="java.lang.Long">
-    select count(*) from ACTIVIDADAPORTES
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update ACTIVIDADAPORTES
-    <set>
-      <if test="record.idactividadaportes != null">
-        IDACTIVIDADAPORTES = #{record.idactividadaportes,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idcuentaalumnos != null">
+        <include refid="Base_Column_List" />
+        from ACTIVIDADAPORTES
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ActividadaportesKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from ACTIVIDADAPORTES
+        where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
+        and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ActividadaportesKey">
+        delete from ACTIVIDADAPORTES
+        where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
+        and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.ActividadaportesCriteria">
+        delete from ACTIVIDADAPORTES
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Actividadaportes">
+        insert into ACTIVIDADAPORTES (IDACTIVIDADAPORTES, IDCUENTAALUMNOS, 
+        FECHA, MONTO)
+        values (#{idactividadaportes,jdbcType=DECIMAL}, #{idcuentaalumnos,jdbcType=DECIMAL}, 
+        #{fecha,jdbcType=TIMESTAMP}, #{monto,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Actividadaportes">
+        insert into ACTIVIDADAPORTES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idactividadaportes != null">
+                IDACTIVIDADAPORTES,
+            </if>
+            <if test="idcuentaalumnos != null">
+                IDCUENTAALUMNOS,
+            </if>
+            <if test="fecha != null">
+                FECHA,
+            </if>
+            <if test="monto != null">
+                MONTO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idactividadaportes != null">
+                #{idactividadaportes,jdbcType=DECIMAL},
+            </if>
+            <if test="idcuentaalumnos != null">
+                #{idcuentaalumnos,jdbcType=DECIMAL},
+            </if>
+            <if test="fecha != null">
+                #{fecha,jdbcType=TIMESTAMP},
+            </if>
+            <if test="monto != null">
+                #{monto,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.ActividadaportesCriteria" resultType="java.lang.Long">
+        select count(*) from ACTIVIDADAPORTES
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update ACTIVIDADAPORTES
+        <set>
+            <if test="record.idactividadaportes != null">
+                IDACTIVIDADAPORTES = #{record.idactividadaportes,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idcuentaalumnos != null">
+                IDCUENTAALUMNOS = #{record.idcuentaalumnos,jdbcType=DECIMAL},
+            </if>
+            <if test="record.fecha != null">
+                FECHA = #{record.fecha,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.monto != null">
+                MONTO = #{record.monto,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update ACTIVIDADAPORTES
+        set IDACTIVIDADAPORTES = #{record.idactividadaportes,jdbcType=DECIMAL},
         IDCUENTAALUMNOS = #{record.idcuentaalumnos,jdbcType=DECIMAL},
-      </if>
-      <if test="record.fecha != null">
         FECHA = #{record.fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.monto != null">
-        MONTO = #{record.monto,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update ACTIVIDADAPORTES
-    set IDACTIVIDADAPORTES = #{record.idactividadaportes,jdbcType=DECIMAL},
-      IDCUENTAALUMNOS = #{record.idcuentaalumnos,jdbcType=DECIMAL},
-      FECHA = #{record.fecha,jdbcType=TIMESTAMP},
-      MONTO = #{record.monto,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Actividadaportes">
-    update ACTIVIDADAPORTES
-    <set>
-      <if test="fecha != null">
-        FECHA = #{fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="monto != null">
-        MONTO = #{monto,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
-      and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Actividadaportes">
-    update ACTIVIDADAPORTES
-    set FECHA = #{fecha,jdbcType=TIMESTAMP},
-      MONTO = #{monto,jdbcType=DECIMAL}
-    where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
-      and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
-  </update>
+        MONTO = #{record.monto,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Actividadaportes">
+        update ACTIVIDADAPORTES
+        <set>
+            <if test="fecha != null">
+                FECHA = #{fecha,jdbcType=TIMESTAMP},
+            </if>
+            <if test="monto != null">
+                MONTO = #{monto,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
+        and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Actividadaportes">
+        update ACTIVIDADAPORTES
+        set FECHA = #{fecha,jdbcType=TIMESTAMP},
+        MONTO = #{monto,jdbcType=DECIMAL}
+        where IDACTIVIDADAPORTES = #{idactividadaportes,jdbcType=DECIMAL}
+        and IDCUENTAALUMNOS = #{idcuentaalumnos,jdbcType=DECIMAL}
+    </update>
 </mapper>

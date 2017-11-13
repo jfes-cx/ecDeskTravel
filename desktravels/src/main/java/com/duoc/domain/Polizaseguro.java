@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Polizaseguro extends PolizaseguroKey {
+
     private BigDecimal idalumno;
 
     private BigDecimal idtiposeguro;
@@ -87,13 +88,13 @@ public class Polizaseguro extends PolizaseguroKey {
         }
         Polizaseguro other = (Polizaseguro) that;
         return (this.getIdpolizaseguros() == null ? other.getIdpolizaseguros() == null : this.getIdpolizaseguros().equals(other.getIdpolizaseguros()))
-            && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
-            && (this.getIdtiposeguro() == null ? other.getIdtiposeguro() == null : this.getIdtiposeguro().equals(other.getIdtiposeguro()))
-            && (this.getIdaseguradora() == null ? other.getIdaseguradora() == null : this.getIdaseguradora().equals(other.getIdaseguradora()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
-            && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
-            && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
-            && (this.getMontoasegurado() == null ? other.getMontoasegurado() == null : this.getMontoasegurado().equals(other.getMontoasegurado()));
+                && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
+                && (this.getIdtiposeguro() == null ? other.getIdtiposeguro() == null : this.getIdtiposeguro().equals(other.getIdtiposeguro()))
+                && (this.getIdaseguradora() == null ? other.getIdaseguradora() == null : this.getIdaseguradora().equals(other.getIdaseguradora()))
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
+                && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
+                && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
+                && (this.getMontoasegurado() == null ? other.getMontoasegurado() == null : this.getMontoasegurado().equals(other.getMontoasegurado()));
     }
 
     @Override

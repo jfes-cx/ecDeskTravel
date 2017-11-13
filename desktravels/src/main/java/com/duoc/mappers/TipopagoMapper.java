@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TipopagoMapper {
+
     long countByExample(TipopagoCriteria example);
 
     int deleteByExample(TipopagoCriteria example);

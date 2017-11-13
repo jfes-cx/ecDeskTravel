@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class AlumnoKey {
+
     private BigDecimal idalumno;
 
     public BigDecimal getIdalumno() {

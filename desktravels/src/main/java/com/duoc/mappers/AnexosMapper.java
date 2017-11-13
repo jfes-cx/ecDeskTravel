@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface AnexosMapper {
+
     long countByExample(AnexosCriteria example);
 
     int deleteByExample(AnexosCriteria example);

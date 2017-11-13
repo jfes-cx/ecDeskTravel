@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-import javax.management.RuntimeErrorException;
-
 import org.apache.ibatis.datasource.DataSourceFactory;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -15,56 +13,56 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisSqlSessionFactory {
-	
-	private static SqlSessionFactory sqlSessionFactory;
-	private static final Properties PROPERTIES = new Properties();
-	
-	static {
-		try {
-			InputStream is = DataSourceFactory.class.getResourceAsStream("/application.properties");
-			PROPERTIES.load(is);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static SqlSessionFactory getSqlSessionFactory() {
-		if (sqlSessionFactory==null) {
-			InputStream inputStream = null;
-			try {
-				inputStream  = Resources.getResourceAsStream("mybatis-config.xml");
-				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-			}catch(IOException e){
-				throw new RuntimeException(e.getCause());
-			}finally {
-				if (inputStream != null) {
-					try {
-						inputStream.close();
-					} catch (IOException e) {
-					}
-				}
-			}
-		}
-		return sqlSessionFactory;
-	}
 
-	public static SqlSession getSqlSession() {
-		return getSqlSessionFactory().openSession();
-	}
-	
-	public static Connection getConnection() {
-		String driver  = PROPERTIES.getProperty("jdbc.driverClassName");
-		String url 		 = PROPERTIES.getProperty("jdbc.url");
-		String username = PROPERTIES.getProperty("jdbc.username");
-		String password  = PROPERTIES.getProperty("jdbc.password");
-		Connection connection = null;
-		try {
-			Class.forName(driver);
-			connection = DriverManager.getConnection(url,username,password);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		return getConnection();
-	}
+    private static SqlSessionFactory sqlSessionFactory;
+    private static final Properties PROPERTIES = new Properties();
+
+    static {
+        try {
+            InputStream is = DataSourceFactory.class.getResourceAsStream("/application.properties");
+            PROPERTIES.load(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SqlSessionFactory getSqlSessionFactory() {
+        if (sqlSessionFactory == null) {
+            InputStream inputStream = null;
+            try {
+                inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            } catch (IOException e) {
+                throw new RuntimeException(e.getCause());
+            } finally {
+                if (inputStream != null) {
+                    try {
+                        inputStream.close();
+                    } catch (IOException e) {
+                    }
+                }
+            }
+        }
+        return sqlSessionFactory;
+    }
+
+    public static SqlSession getSqlSession() {
+        return getSqlSessionFactory().openSession();
+    }
+
+    public static Connection getConnection() {
+        String driver = PROPERTIES.getProperty("jdbc.driverClassName");
+        String url = PROPERTIES.getProperty("jdbc.url");
+        String username = PROPERTIES.getProperty("jdbc.username");
+        String password = PROPERTIES.getProperty("jdbc.password");
+        Connection connection = null;
+        try {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return getConnection();
+    }
 
 }

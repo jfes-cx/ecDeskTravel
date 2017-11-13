@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OrigenMapper {
+
     long countByExample(OrigenCriteria example);
 
     int deleteByExample(OrigenCriteria example);

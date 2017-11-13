@@ -1,6 +1,7 @@
 package com.duoc.domain;
 
 public class Tipopago extends TipopagoKey {
+
     private String descripcion;
 
     public String getDescripcion() {
@@ -24,7 +25,7 @@ public class Tipopago extends TipopagoKey {
         }
         Tipopago other = (Tipopago) that;
         return (this.getIdtipopago() == null ? other.getIdtipopago() == null : this.getIdtipopago().equals(other.getIdtipopago()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
     }
 
     @Override

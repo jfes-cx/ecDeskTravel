@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ItinerarioCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,6 +67,7 @@ public class ItinerarioCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -475,6 +477,7 @@ public class ItinerarioCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

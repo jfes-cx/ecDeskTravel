@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Actividad extends ActividadKey {
+
     private BigDecimal idcurso;
 
     private BigDecimal idtipoactividad;
@@ -87,13 +88,13 @@ public class Actividad extends ActividadKey {
         }
         Actividad other = (Actividad) that;
         return (this.getIdactividad() == null ? other.getIdactividad() == null : this.getIdactividad().equals(other.getIdactividad()))
-            && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
-            && (this.getIdtipoactividad() == null ? other.getIdtipoactividad() == null : this.getIdtipoactividad().equals(other.getIdtipoactividad()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
-            && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
-            && (this.getCantidadpersona() == null ? other.getCantidadpersona() == null : this.getCantidadpersona().equals(other.getCantidadpersona()))
-            && (this.getMontorecaudado() == null ? other.getMontorecaudado() == null : this.getMontorecaudado().equals(other.getMontorecaudado()));
+                && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
+                && (this.getIdtipoactividad() == null ? other.getIdtipoactividad() == null : this.getIdtipoactividad().equals(other.getIdtipoactividad()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
+                && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
+                && (this.getCantidadpersona() == null ? other.getCantidadpersona() == null : this.getCantidadpersona().equals(other.getCantidadpersona()))
+                && (this.getMontorecaudado() == null ? other.getMontorecaudado() == null : this.getMontorecaudado().equals(other.getMontorecaudado()));
     }
 
     @Override

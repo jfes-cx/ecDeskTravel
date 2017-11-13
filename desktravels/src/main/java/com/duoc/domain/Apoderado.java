@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Apoderado extends ApoderadoKey {
+
     private String nombre;
 
     private String rut;
@@ -76,12 +77,12 @@ public class Apoderado extends ApoderadoKey {
         }
         Apoderado other = (Apoderado) that;
         return (this.getIdapoderado() == null ? other.getIdapoderado() == null : this.getIdapoderado().equals(other.getIdapoderado()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()))
-            && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getCelular() == null ? other.getCelular() == null : this.getCelular().equals(other.getCelular()))
-            && (this.getApellidos() == null ? other.getApellidos() == null : this.getApellidos().equals(other.getApellidos()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()))
+                && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getCelular() == null ? other.getCelular() == null : this.getCelular().equals(other.getCelular()))
+                && (this.getApellidos() == null ? other.getApellidos() == null : this.getApellidos().equals(other.getApellidos()));
     }
 
     @Override

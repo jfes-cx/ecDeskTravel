@@ -1,9 +1,11 @@
 package com.duoc.domain;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pago extends PagoKey {
+
     private BigDecimal idtipopago;
 
     private BigDecimal idcuentacurso;
@@ -77,12 +79,12 @@ public class Pago extends PagoKey {
         }
         Pago other = (Pago) that;
         return (this.getIdpago() == null ? other.getIdpago() == null : this.getIdpago().equals(other.getIdpago()))
-            && (this.getIdtipopago() == null ? other.getIdtipopago() == null : this.getIdtipopago().equals(other.getIdtipopago()))
-            && (this.getIdcuentacurso() == null ? other.getIdcuentacurso() == null : this.getIdcuentacurso().equals(other.getIdcuentacurso()))
-            && (this.getIdcuentaalumno() == null ? other.getIdcuentaalumno() == null : this.getIdcuentaalumno().equals(other.getIdcuentaalumno()))
-            && (this.getFechapago() == null ? other.getFechapago() == null : this.getFechapago().equals(other.getFechapago()))
-            && (this.getDetalle() == null ? other.getDetalle() == null : this.getDetalle().equals(other.getDetalle()))
-            && (this.getMontocancelado() == null ? other.getMontocancelado() == null : this.getMontocancelado().equals(other.getMontocancelado()));
+                && (this.getIdtipopago() == null ? other.getIdtipopago() == null : this.getIdtipopago().equals(other.getIdtipopago()))
+                && (this.getIdcuentacurso() == null ? other.getIdcuentacurso() == null : this.getIdcuentacurso().equals(other.getIdcuentacurso()))
+                && (this.getIdcuentaalumno() == null ? other.getIdcuentaalumno() == null : this.getIdcuentaalumno().equals(other.getIdcuentaalumno()))
+                && (this.getFechapago() == null ? other.getFechapago() == null : this.getFechapago().equals(other.getFechapago()))
+                && (this.getDetalle() == null ? other.getDetalle() == null : this.getDetalle().equals(other.getDetalle()))
+                && (this.getMontocancelado() == null ? other.getMontocancelado() == null : this.getMontocancelado().equals(other.getMontocancelado()));
     }
 
     @Override
@@ -97,5 +99,12 @@ public class Pago extends PagoKey {
         result = prime * result + ((getDetalle() == null) ? 0 : getDetalle().hashCode());
         result = prime * result + ((getMontocancelado() == null) ? 0 : getMontocancelado().hashCode());
         return result;
+    }
+    
+    @Override
+    public String toString() {
+         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+         String fecha = DATE_FORMAT.format(getFechapago());
+        return "Fecha Pago: "+fecha+" Monto Cancelado: "+getMontocancelado();
     }
 }

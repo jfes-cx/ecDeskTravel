@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Aseguradora extends AseguradoraKey {
+
     private String nombre;
 
     private String direccion;
@@ -76,12 +77,12 @@ public class Aseguradora extends AseguradoraKey {
         }
         Aseguradora other = (Aseguradora) that;
         return (this.getIdaseguradora() == null ? other.getIdaseguradora() == null : this.getIdaseguradora().equals(other.getIdaseguradora()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
-            && (this.getNombrecontacto() == null ? other.getNombrecontacto() == null : this.getNombrecontacto().equals(other.getNombrecontacto()))
-            && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+                && (this.getNombrecontacto() == null ? other.getNombrecontacto() == null : this.getNombrecontacto().equals(other.getNombrecontacto()))
+                && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()));
     }
 
     @Override

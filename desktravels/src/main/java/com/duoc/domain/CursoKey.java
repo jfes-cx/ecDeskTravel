@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class CursoKey {
+
     private BigDecimal idcurso;
 
     public BigDecimal getIdcurso() {

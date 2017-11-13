@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class PermisoKey {
+
     private BigDecimal idpermiso;
 
     public BigDecimal getIdpermiso() {

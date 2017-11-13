@@ -1,181 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.ComunaMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Comuna">
-    <id column="IDCOMUNA" jdbcType="DECIMAL" property="idcomuna" />
-    <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
-    <result column="IDREGION" jdbcType="DECIMAL" property="idregion" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Comuna">
+        <id column="IDCOMUNA" jdbcType="DECIMAL" property="idcomuna" />
+        <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+        <result column="IDREGION" jdbcType="DECIMAL" property="idregion" />
+    </resultMap>
+  
+    <resultMap id="ComunaMap" type="com.duoc.domain.Comuna">
+        <id column="IDCOMUNA" jdbcType="DECIMAL" property="idcomuna" />
+        <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+        <result column="IDREGION" jdbcType="DECIMAL" property="idregion" />
+    </resultMap>
+  
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDCOMUNA, NOMBRE, IDREGION
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.ComunaCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDCOMUNA, NOMBRE, IDREGION
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.ComunaCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from COMUNA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ComunaKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from COMUNA
-    where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ComunaKey">
-    delete from COMUNA
-    where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.ComunaCriteria">
-    delete from COMUNA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Comuna">
-    insert into COMUNA (IDCOMUNA, NOMBRE, IDREGION
-      )
-    values (#{idcomuna,jdbcType=DECIMAL}, #{nombre,jdbcType=VARCHAR}, #{idregion,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Comuna">
-    insert into COMUNA
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="idcomuna != null">
-        IDCOMUNA,
-      </if>
-      <if test="nombre != null">
-        NOMBRE,
-      </if>
-      <if test="idregion != null">
-        IDREGION,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="idcomuna != null">
-        #{idcomuna,jdbcType=DECIMAL},
-      </if>
-      <if test="nombre != null">
-        #{nombre,jdbcType=VARCHAR},
-      </if>
-      <if test="idregion != null">
-        #{idregion,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.ComunaCriteria" resultType="java.lang.Long">
-    select count(*) from COMUNA
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update COMUNA
-    <set>
-      <if test="record.idcomuna != null">
-        IDCOMUNA = #{record.idcomuna,jdbcType=DECIMAL},
-      </if>
-      <if test="record.nombre != null">
+        <include refid="Base_Column_List" />
+        from COMUNA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+  
+    <select 
+        id="GET_COMUNAS_BY_REG" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL GET_COMUNAS_BY_REG(
+        #{comunas_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=ComunaMap},#{idRegion,jdbcType=DECIMAL,mode=IN})}  
+    </select>
+
+
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ComunaKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from COMUNA
+        where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ComunaKey">
+        delete from COMUNA
+        where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.ComunaCriteria">
+        delete from COMUNA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Comuna">
+        insert into COMUNA (IDCOMUNA, NOMBRE, IDREGION
+        )
+        values (#{idcomuna,jdbcType=DECIMAL}, #{nombre,jdbcType=VARCHAR}, #{idregion,jdbcType=DECIMAL}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Comuna">
+        insert into COMUNA
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idcomuna != null">
+                IDCOMUNA,
+            </if>
+            <if test="nombre != null">
+                NOMBRE,
+            </if>
+            <if test="idregion != null">
+                IDREGION,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idcomuna != null">
+                #{idcomuna,jdbcType=DECIMAL},
+            </if>
+            <if test="nombre != null">
+                #{nombre,jdbcType=VARCHAR},
+            </if>
+            <if test="idregion != null">
+                #{idregion,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.ComunaCriteria" resultType="java.lang.Long">
+        select count(*) from COMUNA
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update COMUNA
+        <set>
+            <if test="record.idcomuna != null">
+                IDCOMUNA = #{record.idcomuna,jdbcType=DECIMAL},
+            </if>
+            <if test="record.nombre != null">
+                NOMBRE = #{record.nombre,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idregion != null">
+                IDREGION = #{record.idregion,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update COMUNA
+        set IDCOMUNA = #{record.idcomuna,jdbcType=DECIMAL},
         NOMBRE = #{record.nombre,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idregion != null">
-        IDREGION = #{record.idregion,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update COMUNA
-    set IDCOMUNA = #{record.idcomuna,jdbcType=DECIMAL},
-      NOMBRE = #{record.nombre,jdbcType=VARCHAR},
-      IDREGION = #{record.idregion,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Comuna">
-    update COMUNA
-    <set>
-      <if test="nombre != null">
-        NOMBRE = #{nombre,jdbcType=VARCHAR},
-      </if>
-      <if test="idregion != null">
-        IDREGION = #{idregion,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Comuna">
-    update COMUNA
-    set NOMBRE = #{nombre,jdbcType=VARCHAR},
-      IDREGION = #{idregion,jdbcType=DECIMAL}
-    where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
-  </update>
+        IDREGION = #{record.idregion,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Comuna">
+        update COMUNA
+        <set>
+            <if test="nombre != null">
+                NOMBRE = #{nombre,jdbcType=VARCHAR},
+            </if>
+            <if test="idregion != null">
+                IDREGION = #{idregion,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Comuna">
+        update COMUNA
+        set NOMBRE = #{nombre,jdbcType=VARCHAR},
+        IDREGION = #{idregion,jdbcType=DECIMAL}
+        where IDCOMUNA = #{idcomuna,jdbcType=DECIMAL}
+    </update>
 </mapper>

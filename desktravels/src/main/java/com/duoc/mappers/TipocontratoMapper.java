@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TipocontratoMapper {
+
     long countByExample(TipocontratoCriteria example);
 
     int deleteByExample(TipocontratoCriteria example);

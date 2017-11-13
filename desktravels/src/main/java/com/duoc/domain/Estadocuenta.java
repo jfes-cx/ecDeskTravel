@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Estadocuenta extends EstadocuentaKey {
+
     private BigDecimal idcuentaalumno;
 
     private String detalle;
@@ -47,9 +48,9 @@ public class Estadocuenta extends EstadocuentaKey {
         }
         Estadocuenta other = (Estadocuenta) that;
         return (this.getIdestadocuenta() == null ? other.getIdestadocuenta() == null : this.getIdestadocuenta().equals(other.getIdestadocuenta()))
-            && (this.getIdcuentaalumno() == null ? other.getIdcuentaalumno() == null : this.getIdcuentaalumno().equals(other.getIdcuentaalumno()))
-            && (this.getDetalle() == null ? other.getDetalle() == null : this.getDetalle().equals(other.getDetalle()))
-            && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()));
+                && (this.getIdcuentaalumno() == null ? other.getIdcuentaalumno() == null : this.getIdcuentaalumno().equals(other.getIdcuentaalumno()))
+                && (this.getDetalle() == null ? other.getDetalle() == null : this.getDetalle().equals(other.getDetalle()))
+                && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()));
     }
 
     @Override

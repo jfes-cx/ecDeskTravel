@@ -7,6 +7,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface RegionMapper {
+
+    void GET_REGIONES();
+
     long countByExample(RegionCriteria example);
 
     int deleteByExample(RegionCriteria example);
@@ -28,4 +31,5 @@ public interface RegionMapper {
     int updateByPrimaryKeySelective(Region record);
 
     int updateByPrimaryKey(Region record);
+
 }

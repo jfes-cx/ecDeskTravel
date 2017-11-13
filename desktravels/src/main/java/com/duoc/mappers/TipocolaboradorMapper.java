@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TipocolaboradorMapper {
+
     long countByExample(TipocolaboradorCriteria example);
 
     int deleteByExample(TipocolaboradorCriteria example);

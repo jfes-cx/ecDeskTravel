@@ -5,13 +5,11 @@
  */
 package com.duoc.ui;
 
-import com.duoc.controller.AlumnoService;
 import com.duoc.controller.LoginController;
 import com.duoc.ui.DeskTravelMain;
 
 import java.util.ArrayList;
 
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,8 +24,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(btnEnviar);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +49,8 @@ public class Login extends javax.swing.JFrame {
         lblUsuario.setText("Usuario:");
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            @Override
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
@@ -60,7 +59,8 @@ public class Login extends javax.swing.JFrame {
 
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            @Override
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
             }
         });
@@ -140,13 +140,13 @@ public class Login extends javax.swing.JFrame {
         String password = txtContra.getText();
         ArrayList<String> result = lc.autenticar(user, password);
         if (result.get(0) == "1") {
-        	JOptionPane.showMessageDialog(this,result.get(1));
+            JOptionPane.showMessageDialog(this, result.get(1));
             this.setVisible(false);
-            DeskTravelMain desk = new DeskTravelMain(result.get(2),result.get(3),result.get(4));
+            DeskTravelMain desk = new DeskTravelMain(result.get(2), result.get(3), result.get(4));
             desk.setVisible(true);
-		}else {
-			JOptionPane.showMessageDialog(this, result.get(1));
-		}
+        } else {
+            JOptionPane.showMessageDialog(this, result.get(1));
+        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
@@ -178,6 +178,7 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Login().setVisible(true);
             }

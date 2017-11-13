@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class PaisKey {
+
     private BigDecimal idpais;
 
     public BigDecimal getIdpais() {

@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class TipocuentaKey {
+
     private BigDecimal idtipocuenta;
 
     public BigDecimal getIdtipocuenta() {

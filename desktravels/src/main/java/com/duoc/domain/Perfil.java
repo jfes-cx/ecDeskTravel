@@ -1,6 +1,7 @@
 package com.duoc.domain;
 
 public class Perfil extends PerfilKey {
+
     private String descripcion;
 
     private String estado;
@@ -34,8 +35,8 @@ public class Perfil extends PerfilKey {
         }
         Perfil other = (Perfil) that;
         return (this.getIdperfil() == null ? other.getIdperfil() == null : this.getIdperfil().equals(other.getIdperfil()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
-            && (this.getEstado() == null ? other.getEstado() == null : this.getEstado().equals(other.getEstado()));
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
+                && (this.getEstado() == null ? other.getEstado() == null : this.getEstado().equals(other.getEstado()));
     }
 
     @Override

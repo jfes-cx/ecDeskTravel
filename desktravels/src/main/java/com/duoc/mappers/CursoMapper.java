@@ -4,9 +4,12 @@ import com.duoc.domain.Curso;
 import com.duoc.domain.CursoCriteria;
 import com.duoc.domain.CursoKey;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CursoMapper {
+
     long countByExample(CursoCriteria example);
 
     int deleteByExample(CursoCriteria example);
@@ -28,4 +31,8 @@ public interface CursoMapper {
     int updateByPrimaryKeySelective(Curso record);
 
     int updateByPrimaryKey(Curso record);
+
+    void GET_CURSOS_BY_COL();
+
+    void INSERT_CURSO(Map<String, Object> params);
 }

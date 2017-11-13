@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Comuna extends ComunaKey {
+
     private String nombre;
 
     private BigDecimal idregion;
@@ -36,8 +37,8 @@ public class Comuna extends ComunaKey {
         }
         Comuna other = (Comuna) that;
         return (this.getIdcomuna() == null ? other.getIdcomuna() == null : this.getIdcomuna().equals(other.getIdcomuna()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getIdregion() == null ? other.getIdregion() == null : this.getIdregion().equals(other.getIdregion()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getIdregion() == null ? other.getIdregion() == null : this.getIdregion().equals(other.getIdregion()));
     }
 
     @Override
@@ -48,5 +49,10 @@ public class Comuna extends ComunaKey {
         result = prime * result + ((getNombre() == null) ? 0 : getNombre().hashCode());
         result = prime * result + ((getIdregion() == null) ? 0 : getIdregion().hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }

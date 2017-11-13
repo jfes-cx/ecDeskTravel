@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class ServicioKey {
+
     private BigDecimal idservicio;
 
     public BigDecimal getIdservicio() {

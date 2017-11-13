@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Region extends RegionKey {
+
     private String nombre;
 
     private BigDecimal idpais;
@@ -36,8 +37,8 @@ public class Region extends RegionKey {
         }
         Region other = (Region) that;
         return (this.getIdregion() == null ? other.getIdregion() == null : this.getIdregion().equals(other.getIdregion()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getIdpais() == null ? other.getIdpais() == null : this.getIdpais().equals(other.getIdpais()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getIdpais() == null ? other.getIdpais() == null : this.getIdpais().equals(other.getIdpais()));
     }
 
     @Override
@@ -48,5 +49,11 @@ public class Region extends RegionKey {
         result = prime * result + ((getNombre() == null) ? 0 : getNombre().hashCode());
         result = prime * result + ((getIdpais() == null) ? 0 : getIdpais().hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
+
     }
 }

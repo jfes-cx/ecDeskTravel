@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Anexos extends AnexosKey {
+
     private BigDecimal idcontrato;
 
     private String archivo;
@@ -57,10 +58,10 @@ public class Anexos extends AnexosKey {
         }
         Anexos other = (Anexos) that;
         return (this.getIdanexo() == null ? other.getIdanexo() == null : this.getIdanexo().equals(other.getIdanexo()))
-            && (this.getIdcontrato() == null ? other.getIdcontrato() == null : this.getIdcontrato().equals(other.getIdcontrato()))
-            && (this.getArchivo() == null ? other.getArchivo() == null : this.getArchivo().equals(other.getArchivo()))
-            && (this.getToken() == null ? other.getToken() == null : this.getToken().equals(other.getToken()))
-            && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()));
+                && (this.getIdcontrato() == null ? other.getIdcontrato() == null : this.getIdcontrato().equals(other.getIdcontrato()))
+                && (this.getArchivo() == null ? other.getArchivo() == null : this.getArchivo().equals(other.getArchivo()))
+                && (this.getToken() == null ? other.getToken() == null : this.getToken().equals(other.getToken()))
+                && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Cuentacurso extends CuentacursoKey {
+
     private BigDecimal idcurso;
 
     private BigDecimal saldo;
@@ -66,11 +67,11 @@ public class Cuentacurso extends CuentacursoKey {
         }
         Cuentacurso other = (Cuentacurso) that;
         return (this.getIdcuentacurso() == null ? other.getIdcuentacurso() == null : this.getIdcuentacurso().equals(other.getIdcuentacurso()))
-            && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
-            && (this.getSaldo() == null ? other.getSaldo() == null : this.getSaldo().equals(other.getSaldo()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
-            && (this.getEncargado() == null ? other.getEncargado() == null : this.getEncargado().equals(other.getEncargado()));
+                && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
+                && (this.getSaldo() == null ? other.getSaldo() == null : this.getSaldo().equals(other.getSaldo()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
+                && (this.getEncargado() == null ? other.getEncargado() == null : this.getEncargado().equals(other.getEncargado()));
     }
 
     @Override

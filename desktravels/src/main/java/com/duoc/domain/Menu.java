@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Menu extends MenuKey {
+
     private BigDecimal idperfil;
 
     private String nombremenu;
@@ -36,8 +37,8 @@ public class Menu extends MenuKey {
         }
         Menu other = (Menu) that;
         return (this.getIdmenu() == null ? other.getIdmenu() == null : this.getIdmenu().equals(other.getIdmenu()))
-            && (this.getIdperfil() == null ? other.getIdperfil() == null : this.getIdperfil().equals(other.getIdperfil()))
-            && (this.getNombremenu() == null ? other.getNombremenu() == null : this.getNombremenu().equals(other.getNombremenu()));
+                && (this.getIdperfil() == null ? other.getIdperfil() == null : this.getIdperfil().equals(other.getIdperfil()))
+                && (this.getNombremenu() == null ? other.getNombremenu() == null : this.getNombremenu().equals(other.getNombremenu()));
     }
 
     @Override

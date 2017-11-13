@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ServicioMapper {
+
     long countByExample(ServicioCriteria example);
 
     int deleteByExample(ServicioCriteria example);

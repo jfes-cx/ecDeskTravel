@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class CuentausuarioKey {
+
     private BigDecimal idcuentausuario;
 
     public BigDecimal getIdcuentausuario() {

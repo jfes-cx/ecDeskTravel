@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class EstadocuentaCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,6 +67,7 @@ public class EstadocuentaCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -370,6 +372,7 @@ public class EstadocuentaCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

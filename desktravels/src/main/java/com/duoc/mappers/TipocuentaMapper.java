@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TipocuentaMapper {
+
     long countByExample(TipocuentaCriteria example);
 
     int deleteByExample(TipocuentaCriteria example);

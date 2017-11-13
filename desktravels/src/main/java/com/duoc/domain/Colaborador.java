@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Colaborador extends ColaboradorKey {
+
     private String nombre;
 
     private String direccion;
@@ -76,12 +77,12 @@ public class Colaborador extends ColaboradorKey {
         }
         Colaborador other = (Colaborador) that;
         return (this.getIdcolaborador() == null ? other.getIdcolaborador() == null : this.getIdcolaborador().equals(other.getIdcolaborador()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getIdcuentausuario() == null ? other.getIdcuentausuario() == null : this.getIdcuentausuario().equals(other.getIdcuentausuario()))
-            && (this.getIdtipocolaborador() == null ? other.getIdtipocolaborador() == null : this.getIdtipocolaborador().equals(other.getIdtipocolaborador()))
-            && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getIdcuentausuario() == null ? other.getIdcuentausuario() == null : this.getIdcuentausuario().equals(other.getIdcuentausuario()))
+                && (this.getIdtipocolaborador() == null ? other.getIdtipocolaborador() == null : this.getIdtipocolaborador().equals(other.getIdtipocolaborador()))
+                && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()));
     }
 
     @Override

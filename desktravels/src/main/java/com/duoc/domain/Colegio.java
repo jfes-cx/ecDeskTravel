@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Colegio extends ColegioKey {
+
     private String nombre;
 
     private String direccion;
@@ -56,10 +57,10 @@ public class Colegio extends ColegioKey {
         }
         Colegio other = (Colegio) that;
         return (this.getIdcolegio() == null ? other.getIdcolegio() == null : this.getIdcolegio().equals(other.getIdcolegio()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getIdcomuna() == null ? other.getIdcomuna() == null : this.getIdcomuna().equals(other.getIdcomuna()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getIdcomuna() == null ? other.getIdcomuna() == null : this.getIdcomuna().equals(other.getIdcomuna()));
     }
 
     @Override
@@ -72,5 +73,10 @@ public class Colegio extends ColegioKey {
         result = prime * result + ((getTelefono() == null) ? 0 : getTelefono().hashCode());
         result = prime * result + ((getIdcomuna() == null) ? 0 : getIdcomuna().hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }

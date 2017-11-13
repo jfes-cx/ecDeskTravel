@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class OrigenKey {
+
     private BigDecimal idorigen;
 
     public BigDecimal getIdorigen() {

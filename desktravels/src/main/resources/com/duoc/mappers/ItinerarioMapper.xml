@@ -1,228 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.ItinerarioMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Itinerario">
-    <id column="IDDESTINO" jdbcType="DECIMAL" property="iddestino" />
-    <id column="IDACTIVIDADVIAJE" jdbcType="DECIMAL" property="idactividadviaje" />
-    <id column="IDORIGEN" jdbcType="DECIMAL" property="idorigen" />
-    <result column="FECHAINICIO" jdbcType="TIMESTAMP" property="fechainicio" />
-    <result column="FECHATERMINO" jdbcType="TIMESTAMP" property="fechatermino" />
-    <result column="IDCONTRATO" jdbcType="DECIMAL" property="idcontrato" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Itinerario">
+        <id column="IDDESTINO" jdbcType="DECIMAL" property="iddestino" />
+        <id column="IDACTIVIDADVIAJE" jdbcType="DECIMAL" property="idactividadviaje" />
+        <id column="IDORIGEN" jdbcType="DECIMAL" property="idorigen" />
+        <result column="FECHAINICIO" jdbcType="TIMESTAMP" property="fechainicio" />
+        <result column="FECHATERMINO" jdbcType="TIMESTAMP" property="fechatermino" />
+        <result column="IDCONTRATO" jdbcType="DECIMAL" property="idcontrato" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDDESTINO, IDACTIVIDADVIAJE, IDORIGEN, FECHAINICIO, FECHATERMINO, IDCONTRATO
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.ItinerarioCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDDESTINO, IDACTIVIDADVIAJE, IDORIGEN, FECHAINICIO, FECHATERMINO, IDCONTRATO
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.ItinerarioCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from ITINERARIO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ItinerarioKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from ITINERARIO
-    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
-      and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
-      and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ItinerarioKey">
-    delete from ITINERARIO
-    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
-      and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
-      and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.ItinerarioCriteria">
-    delete from ITINERARIO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Itinerario">
-    insert into ITINERARIO (IDDESTINO, IDACTIVIDADVIAJE, IDORIGEN, 
-      FECHAINICIO, FECHATERMINO, IDCONTRATO
-      )
-    values (#{iddestino,jdbcType=DECIMAL}, #{idactividadviaje,jdbcType=DECIMAL}, #{idorigen,jdbcType=DECIMAL}, 
-      #{fechainicio,jdbcType=TIMESTAMP}, #{fechatermino,jdbcType=TIMESTAMP}, #{idcontrato,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Itinerario">
-    insert into ITINERARIO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="iddestino != null">
-        IDDESTINO,
-      </if>
-      <if test="idactividadviaje != null">
-        IDACTIVIDADVIAJE,
-      </if>
-      <if test="idorigen != null">
-        IDORIGEN,
-      </if>
-      <if test="fechainicio != null">
-        FECHAINICIO,
-      </if>
-      <if test="fechatermino != null">
-        FECHATERMINO,
-      </if>
-      <if test="idcontrato != null">
-        IDCONTRATO,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="iddestino != null">
-        #{iddestino,jdbcType=DECIMAL},
-      </if>
-      <if test="idactividadviaje != null">
-        #{idactividadviaje,jdbcType=DECIMAL},
-      </if>
-      <if test="idorigen != null">
-        #{idorigen,jdbcType=DECIMAL},
-      </if>
-      <if test="fechainicio != null">
-        #{fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="fechatermino != null">
-        #{fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="idcontrato != null">
-        #{idcontrato,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.ItinerarioCriteria" resultType="java.lang.Long">
-    select count(*) from ITINERARIO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update ITINERARIO
-    <set>
-      <if test="record.iddestino != null">
-        IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idactividadviaje != null">
+        <include refid="Base_Column_List" />
+        from ITINERARIO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ItinerarioKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from ITINERARIO
+        where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+        and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
+        and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ItinerarioKey">
+        delete from ITINERARIO
+        where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+        and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
+        and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.ItinerarioCriteria">
+        delete from ITINERARIO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Itinerario">
+        insert into ITINERARIO (IDDESTINO, IDACTIVIDADVIAJE, IDORIGEN, 
+        FECHAINICIO, FECHATERMINO, IDCONTRATO
+        )
+        values (#{iddestino,jdbcType=DECIMAL}, #{idactividadviaje,jdbcType=DECIMAL}, #{idorigen,jdbcType=DECIMAL}, 
+        #{fechainicio,jdbcType=TIMESTAMP}, #{fechatermino,jdbcType=TIMESTAMP}, #{idcontrato,jdbcType=DECIMAL}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Itinerario">
+        insert into ITINERARIO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="iddestino != null">
+                IDDESTINO,
+            </if>
+            <if test="idactividadviaje != null">
+                IDACTIVIDADVIAJE,
+            </if>
+            <if test="idorigen != null">
+                IDORIGEN,
+            </if>
+            <if test="fechainicio != null">
+                FECHAINICIO,
+            </if>
+            <if test="fechatermino != null">
+                FECHATERMINO,
+            </if>
+            <if test="idcontrato != null">
+                IDCONTRATO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="iddestino != null">
+                #{iddestino,jdbcType=DECIMAL},
+            </if>
+            <if test="idactividadviaje != null">
+                #{idactividadviaje,jdbcType=DECIMAL},
+            </if>
+            <if test="idorigen != null">
+                #{idorigen,jdbcType=DECIMAL},
+            </if>
+            <if test="fechainicio != null">
+                #{fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fechatermino != null">
+                #{fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="idcontrato != null">
+                #{idcontrato,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.ItinerarioCriteria" resultType="java.lang.Long">
+        select count(*) from ITINERARIO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update ITINERARIO
+        <set>
+            <if test="record.iddestino != null">
+                IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idactividadviaje != null">
+                IDACTIVIDADVIAJE = #{record.idactividadviaje,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idorigen != null">
+                IDORIGEN = #{record.idorigen,jdbcType=DECIMAL},
+            </if>
+            <if test="record.fechainicio != null">
+                FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.fechatermino != null">
+                FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.idcontrato != null">
+                IDCONTRATO = #{record.idcontrato,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update ITINERARIO
+        set IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
         IDACTIVIDADVIAJE = #{record.idactividadviaje,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idorigen != null">
         IDORIGEN = #{record.idorigen,jdbcType=DECIMAL},
-      </if>
-      <if test="record.fechainicio != null">
         FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.fechatermino != null">
         FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.idcontrato != null">
-        IDCONTRATO = #{record.idcontrato,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update ITINERARIO
-    set IDDESTINO = #{record.iddestino,jdbcType=DECIMAL},
-      IDACTIVIDADVIAJE = #{record.idactividadviaje,jdbcType=DECIMAL},
-      IDORIGEN = #{record.idorigen,jdbcType=DECIMAL},
-      FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
-      FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
-      IDCONTRATO = #{record.idcontrato,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Itinerario">
-    update ITINERARIO
-    <set>
-      <if test="fechainicio != null">
-        FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="fechatermino != null">
+        IDCONTRATO = #{record.idcontrato,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Itinerario">
+        update ITINERARIO
+        <set>
+            <if test="fechainicio != null">
+                FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fechatermino != null">
+                FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="idcontrato != null">
+                IDCONTRATO = #{idcontrato,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+        and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
+        and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Itinerario">
+        update ITINERARIO
+        set FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
         FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="idcontrato != null">
-        IDCONTRATO = #{idcontrato,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
-      and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
-      and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Itinerario">
-    update ITINERARIO
-    set FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
-      FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
-      IDCONTRATO = #{idcontrato,jdbcType=DECIMAL}
-    where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
-      and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
-      and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
-  </update>
+        IDCONTRATO = #{idcontrato,jdbcType=DECIMAL}
+        where IDDESTINO = #{iddestino,jdbcType=DECIMAL}
+        and IDACTIVIDADVIAJE = #{idactividadviaje,jdbcType=DECIMAL}
+        and IDORIGEN = #{idorigen,jdbcType=DECIMAL}
+    </update>
 </mapper>

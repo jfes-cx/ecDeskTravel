@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CuentaalumnoCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class CuentaalumnoCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -474,6 +476,7 @@ public class CuentaalumnoCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

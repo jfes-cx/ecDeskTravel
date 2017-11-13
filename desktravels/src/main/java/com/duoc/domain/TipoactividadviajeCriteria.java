@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TipoactividadviajeCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class TipoactividadviajeCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -324,6 +326,7 @@ public class TipoactividadviajeCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TipoactividadviajeMapper {
+
     long countByExample(TipoactividadviajeCriteria example);
 
     int deleteByExample(TipoactividadviajeCriteria example);

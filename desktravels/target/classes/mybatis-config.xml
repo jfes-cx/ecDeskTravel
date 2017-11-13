@@ -1,28 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="application.properties"/>
+    <properties resource="application.properties"/>
 	
-	<typeAliases>
-		<package name="com.duoc.domain"/>
-	</typeAliases>
+    <typeAliases>
+        <package name="com.duoc.domain"/>
+    </typeAliases>
 	
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC"/>
-			<dataSource type="POOLED">
-				<property name="driver" value="${jdbc.driverClassName}"/>
-				<property name="url" value="${jdbc.url}"/>
-				<property name="username" value="${jdbc.username}"/>
-				<property name="password" value="${jdbc.password}"/>
-			</dataSource>
-		</environment>
-	</environments>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
 	
-	<mappers>
+    <mappers>
 
-		<mapper class="com.duoc.mappers.AlumnoMapper"/>
-		<mapper class="com.duoc.mappers.CuentausuarioMapper"/>
+        <mapper class ="com.duoc.mappers.ActividadMapper"/>
+        <mapper class ="com.duoc.mappers.ContratoMapper"/>
+        <mapper class ="com.duoc.mappers.DestinoMapper"/>
+        <mapper class ="com.duoc.mappers.AnexosMapper"/>
+        <mapper class ="com.duoc.mappers.TipoactividadMapper"/>
+        <mapper class ="com.duoc.mappers.TiposeguroMapper"/>
+        <mapper class ="com.duoc.mappers.ColaboradorMapper"/>
+        <mapper class ="com.duoc.mappers.PaisMapper"/>
+        <mapper class ="com.duoc.mappers.TipopagoMapper"/>
+        <mapper class ="com.duoc.mappers.TiposervicioMapper"/>
+        <mapper class ="com.duoc.mappers.ApoderadoMapper"/>
+        <mapper class ="com.duoc.mappers.AseguradoraMapper"/>
+        <mapper class ="com.duoc.mappers.CuentausuarioMapper"/>
+        <mapper class ="com.duoc.mappers.CursoMapper"/>
+        <mapper class ="com.duoc.mappers.ServicioMapper"/>
+        <mapper class ="com.duoc.mappers.TipocolaboradorMapper"/>
+        <mapper class ="com.duoc.mappers.TipoactividadviajeMapper"/>
+        <mapper class ="com.duoc.mappers.TipocontratoMapper"/>
+        <mapper class ="com.duoc.mappers.TipocuentaMapper"/>
+        <mapper class ="com.duoc.mappers.ColegioMapper"/>
+        <mapper class ="com.duoc.mappers.MenuMapper"/>
+        <mapper class ="com.duoc.mappers.OrigenMapper"/>
+        <mapper class ="com.duoc.mappers.PolizaseguroMapper"/>
+        <mapper class ="com.duoc.mappers.RegionMapper"/>
+        <mapper class ="com.duoc.mappers.ActividadaportesMapper"/>
+        <mapper class ="com.duoc.mappers.AlumnoMapper"/>
+        <mapper class ="com.duoc.mappers.ComunaMapper"/>
+        <mapper class ="com.duoc.mappers.ItinerarioMapper"/>
+        <mapper class ="com.duoc.mappers.ActividadviajeMapper"/>
+        <mapper class ="com.duoc.mappers.CuentaalumnoMapper"/>
+        <mapper class ="com.duoc.mappers.CuentacursoMapper"/>
+        <mapper class ="com.duoc.mappers.PagoMapper"/>
+        <mapper class ="com.duoc.mappers.PerfilMapper"/>
 		
     </mappers>
 </configuration>

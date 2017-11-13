@@ -1,6 +1,7 @@
 package com.duoc.domain;
 
 public class Tipoactividadviaje extends TipoactividadviajeKey {
+
     private String nombre;
 
     private String descripcion;
@@ -34,8 +35,8 @@ public class Tipoactividadviaje extends TipoactividadviajeKey {
         }
         Tipoactividadviaje other = (Tipoactividadviaje) that;
         return (this.getIdtipoactividadviaje() == null ? other.getIdtipoactividadviaje() == null : this.getIdtipoactividadviaje().equals(other.getIdtipoactividadviaje()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
     }
 
     @Override

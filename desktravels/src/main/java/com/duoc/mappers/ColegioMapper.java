@@ -4,9 +4,12 @@ import com.duoc.domain.Colegio;
 import com.duoc.domain.ColegioCriteria;
 import com.duoc.domain.ColegioKey;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ColegioMapper {
+
     long countByExample(ColegioCriteria example);
 
     int deleteByExample(ColegioCriteria example);
@@ -28,4 +31,10 @@ public interface ColegioMapper {
     int updateByPrimaryKeySelective(Colegio record);
 
     int updateByPrimaryKey(Colegio record);
+
+    void GET_COLEGIOS_BY_COMUNA();
+
+    void GET_COLEGIOS();
+
+    void INSERT_COLEGIO(Map<String, Object> params);
 }

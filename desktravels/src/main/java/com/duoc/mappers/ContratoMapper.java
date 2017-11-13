@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ContratoMapper {
+
     long countByExample(ContratoCriteria example);
 
     int deleteByExample(ContratoCriteria example);

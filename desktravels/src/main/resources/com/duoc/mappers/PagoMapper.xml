@@ -1,243 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.PagoMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Pago">
-    <id column="IDPAGO" jdbcType="DECIMAL" property="idpago" />
-    <result column="IDTIPOPAGO" jdbcType="DECIMAL" property="idtipopago" />
-    <result column="IDCUENTACURSO" jdbcType="DECIMAL" property="idcuentacurso" />
-    <result column="IDCUENTAALUMNO" jdbcType="DECIMAL" property="idcuentaalumno" />
-    <result column="FECHAPAGO" jdbcType="TIMESTAMP" property="fechapago" />
-    <result column="DETALLE" jdbcType="VARCHAR" property="detalle" />
-    <result column="MONTOCANCELADO" jdbcType="DECIMAL" property="montocancelado" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Pago">
+        <id column="IDPAGO" jdbcType="DECIMAL" property="idpago" />
+        <result column="IDTIPOPAGO" jdbcType="DECIMAL" property="idtipopago" />
+        <result column="IDCUENTACURSO" jdbcType="DECIMAL" property="idcuentacurso" />
+        <result column="IDCUENTAALUMNO" jdbcType="DECIMAL" property="idcuentaalumno" />
+        <result column="FECHAPAGO" jdbcType="TIMESTAMP" property="fechapago" />
+        <result column="DETALLE" jdbcType="VARCHAR" property="detalle" />
+        <result column="MONTOCANCELADO" jdbcType="DECIMAL" property="montocancelado" />
+    </resultMap>
+    
+    <resultMap id="PagoMap" type="com.duoc.domain.Pago">
+        <id column="IDPAGO" jdbcType="DECIMAL" property="idpago" />
+        <result column="IDTIPOPAGO" jdbcType="DECIMAL" property="idtipopago" />
+        <result column="IDCUENTACURSO" jdbcType="DECIMAL" property="idcuentacurso" />
+        <result column="IDCUENTAALUMNO" jdbcType="DECIMAL" property="idcuentaalumno" />
+        <result column="FECHAPAGO" jdbcType="TIMESTAMP" property="fechapago" />
+        <result column="DETALLE" jdbcType="VARCHAR" property="detalle" />
+        <result column="MONTOCANCELADO" jdbcType="DECIMAL" property="montocancelado" />
+    </resultMap>
+    
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDPAGO, IDTIPOPAGO, IDCUENTACURSO, IDCUENTAALUMNO, FECHAPAGO, DETALLE, MONTOCANCELADO
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.PagoCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDPAGO, IDTIPOPAGO, IDCUENTACURSO, IDCUENTAALUMNO, FECHAPAGO, DETALLE, MONTOCANCELADO
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.PagoCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from PAGO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.PagoKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from PAGO
-    where IDPAGO = #{idpago,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.PagoKey">
-    delete from PAGO
-    where IDPAGO = #{idpago,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.PagoCriteria">
-    delete from PAGO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Pago">
-    insert into PAGO (IDPAGO, IDTIPOPAGO, IDCUENTACURSO, 
-      IDCUENTAALUMNO, FECHAPAGO, DETALLE, 
-      MONTOCANCELADO)
-    values (#{idpago,jdbcType=DECIMAL}, #{idtipopago,jdbcType=DECIMAL}, #{idcuentacurso,jdbcType=DECIMAL}, 
-      #{idcuentaalumno,jdbcType=DECIMAL}, #{fechapago,jdbcType=TIMESTAMP}, #{detalle,jdbcType=VARCHAR}, 
-      #{montocancelado,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Pago">
-    insert into PAGO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="idpago != null">
-        IDPAGO,
-      </if>
-      <if test="idtipopago != null">
-        IDTIPOPAGO,
-      </if>
-      <if test="idcuentacurso != null">
-        IDCUENTACURSO,
-      </if>
-      <if test="idcuentaalumno != null">
-        IDCUENTAALUMNO,
-      </if>
-      <if test="fechapago != null">
-        FECHAPAGO,
-      </if>
-      <if test="detalle != null">
-        DETALLE,
-      </if>
-      <if test="montocancelado != null">
-        MONTOCANCELADO,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="idpago != null">
-        #{idpago,jdbcType=DECIMAL},
-      </if>
-      <if test="idtipopago != null">
-        #{idtipopago,jdbcType=DECIMAL},
-      </if>
-      <if test="idcuentacurso != null">
-        #{idcuentacurso,jdbcType=DECIMAL},
-      </if>
-      <if test="idcuentaalumno != null">
-        #{idcuentaalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="fechapago != null">
-        #{fechapago,jdbcType=TIMESTAMP},
-      </if>
-      <if test="detalle != null">
-        #{detalle,jdbcType=VARCHAR},
-      </if>
-      <if test="montocancelado != null">
-        #{montocancelado,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.PagoCriteria" resultType="java.lang.Long">
-    select count(*) from PAGO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update PAGO
-    <set>
-      <if test="record.idpago != null">
-        IDPAGO = #{record.idpago,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idtipopago != null">
+        <include refid="Base_Column_List" />
+        from PAGO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.PagoKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from PAGO
+        where IDPAGO = #{idpago,jdbcType=DECIMAL}
+    </select>
+    
+<select id="GET_PAGOS_BY_CURSO" statementType="CALLABLE" parameterType="java.util.Map">
+   {CALL GET_PAGOS_BY_CURSO(
+   #{pagos_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=PagoMap},
+   #{idCurso,jdbcType=DECIMAL,mode=IN}
+     )
+    }  
+</select>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.PagoKey">
+        delete from PAGO
+        where IDPAGO = #{idpago,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.PagoCriteria">
+        delete from PAGO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Pago">
+        insert into PAGO (IDPAGO, IDTIPOPAGO, IDCUENTACURSO, 
+        IDCUENTAALUMNO, FECHAPAGO, DETALLE, 
+        MONTOCANCELADO)
+        values (#{idpago,jdbcType=DECIMAL}, #{idtipopago,jdbcType=DECIMAL}, #{idcuentacurso,jdbcType=DECIMAL}, 
+        #{idcuentaalumno,jdbcType=DECIMAL}, #{fechapago,jdbcType=TIMESTAMP}, #{detalle,jdbcType=VARCHAR}, 
+        #{montocancelado,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Pago">
+        insert into PAGO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idpago != null">
+                IDPAGO,
+            </if>
+            <if test="idtipopago != null">
+                IDTIPOPAGO,
+            </if>
+            <if test="idcuentacurso != null">
+                IDCUENTACURSO,
+            </if>
+            <if test="idcuentaalumno != null">
+                IDCUENTAALUMNO,
+            </if>
+            <if test="fechapago != null">
+                FECHAPAGO,
+            </if>
+            <if test="detalle != null">
+                DETALLE,
+            </if>
+            <if test="montocancelado != null">
+                MONTOCANCELADO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idpago != null">
+                #{idpago,jdbcType=DECIMAL},
+            </if>
+            <if test="idtipopago != null">
+                #{idtipopago,jdbcType=DECIMAL},
+            </if>
+            <if test="idcuentacurso != null">
+                #{idcuentacurso,jdbcType=DECIMAL},
+            </if>
+            <if test="idcuentaalumno != null">
+                #{idcuentaalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="fechapago != null">
+                #{fechapago,jdbcType=TIMESTAMP},
+            </if>
+            <if test="detalle != null">
+                #{detalle,jdbcType=VARCHAR},
+            </if>
+            <if test="montocancelado != null">
+                #{montocancelado,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.PagoCriteria" resultType="java.lang.Long">
+        select count(*) from PAGO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update PAGO
+        <set>
+            <if test="record.idpago != null">
+                IDPAGO = #{record.idpago,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idtipopago != null">
+                IDTIPOPAGO = #{record.idtipopago,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idcuentacurso != null">
+                IDCUENTACURSO = #{record.idcuentacurso,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idcuentaalumno != null">
+                IDCUENTAALUMNO = #{record.idcuentaalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="record.fechapago != null">
+                FECHAPAGO = #{record.fechapago,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.detalle != null">
+                DETALLE = #{record.detalle,jdbcType=VARCHAR},
+            </if>
+            <if test="record.montocancelado != null">
+                MONTOCANCELADO = #{record.montocancelado,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update PAGO
+        set IDPAGO = #{record.idpago,jdbcType=DECIMAL},
         IDTIPOPAGO = #{record.idtipopago,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idcuentacurso != null">
         IDCUENTACURSO = #{record.idcuentacurso,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idcuentaalumno != null">
         IDCUENTAALUMNO = #{record.idcuentaalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="record.fechapago != null">
         FECHAPAGO = #{record.fechapago,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.detalle != null">
         DETALLE = #{record.detalle,jdbcType=VARCHAR},
-      </if>
-      <if test="record.montocancelado != null">
-        MONTOCANCELADO = #{record.montocancelado,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update PAGO
-    set IDPAGO = #{record.idpago,jdbcType=DECIMAL},
-      IDTIPOPAGO = #{record.idtipopago,jdbcType=DECIMAL},
-      IDCUENTACURSO = #{record.idcuentacurso,jdbcType=DECIMAL},
-      IDCUENTAALUMNO = #{record.idcuentaalumno,jdbcType=DECIMAL},
-      FECHAPAGO = #{record.fechapago,jdbcType=TIMESTAMP},
-      DETALLE = #{record.detalle,jdbcType=VARCHAR},
-      MONTOCANCELADO = #{record.montocancelado,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Pago">
-    update PAGO
-    <set>
-      <if test="idtipopago != null">
-        IDTIPOPAGO = #{idtipopago,jdbcType=DECIMAL},
-      </if>
-      <if test="idcuentacurso != null">
+        MONTOCANCELADO = #{record.montocancelado,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Pago">
+        update PAGO
+        <set>
+            <if test="idtipopago != null">
+                IDTIPOPAGO = #{idtipopago,jdbcType=DECIMAL},
+            </if>
+            <if test="idcuentacurso != null">
+                IDCUENTACURSO = #{idcuentacurso,jdbcType=DECIMAL},
+            </if>
+            <if test="idcuentaalumno != null">
+                IDCUENTAALUMNO = #{idcuentaalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="fechapago != null">
+                FECHAPAGO = #{fechapago,jdbcType=TIMESTAMP},
+            </if>
+            <if test="detalle != null">
+                DETALLE = #{detalle,jdbcType=VARCHAR},
+            </if>
+            <if test="montocancelado != null">
+                MONTOCANCELADO = #{montocancelado,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where IDPAGO = #{idpago,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Pago">
+        update PAGO
+        set IDTIPOPAGO = #{idtipopago,jdbcType=DECIMAL},
         IDCUENTACURSO = #{idcuentacurso,jdbcType=DECIMAL},
-      </if>
-      <if test="idcuentaalumno != null">
         IDCUENTAALUMNO = #{idcuentaalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="fechapago != null">
         FECHAPAGO = #{fechapago,jdbcType=TIMESTAMP},
-      </if>
-      <if test="detalle != null">
         DETALLE = #{detalle,jdbcType=VARCHAR},
-      </if>
-      <if test="montocancelado != null">
-        MONTOCANCELADO = #{montocancelado,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where IDPAGO = #{idpago,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Pago">
-    update PAGO
-    set IDTIPOPAGO = #{idtipopago,jdbcType=DECIMAL},
-      IDCUENTACURSO = #{idcuentacurso,jdbcType=DECIMAL},
-      IDCUENTAALUMNO = #{idcuentaalumno,jdbcType=DECIMAL},
-      FECHAPAGO = #{fechapago,jdbcType=TIMESTAMP},
-      DETALLE = #{detalle,jdbcType=VARCHAR},
-      MONTOCANCELADO = #{montocancelado,jdbcType=DECIMAL}
-    where IDPAGO = #{idpago,jdbcType=DECIMAL}
-  </update>
+        MONTOCANCELADO = #{montocancelado,jdbcType=DECIMAL}
+        where IDPAGO = #{idpago,jdbcType=DECIMAL}
+    </update>
 </mapper>

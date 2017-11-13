@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PagoMapper {
+
     long countByExample(PagoCriteria example);
 
     int deleteByExample(PagoCriteria example);
@@ -28,4 +29,6 @@ public interface PagoMapper {
     int updateByPrimaryKeySelective(Pago record);
 
     int updateByPrimaryKey(Pago record);
+    
+    void GET_PAGOS_BY_CURSO();
 }

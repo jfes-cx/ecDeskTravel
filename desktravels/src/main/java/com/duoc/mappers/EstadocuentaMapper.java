@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface EstadocuentaMapper {
+
     long countByExample(EstadocuentaCriteria example);
 
     int deleteByExample(EstadocuentaCriteria example);

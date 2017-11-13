@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class AnexosKey {
+
     private BigDecimal idanexo;
 
     public BigDecimal getIdanexo() {

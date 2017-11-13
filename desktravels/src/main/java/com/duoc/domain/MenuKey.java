@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class MenuKey {
+
     private BigDecimal idmenu;
 
     public BigDecimal getIdmenu() {

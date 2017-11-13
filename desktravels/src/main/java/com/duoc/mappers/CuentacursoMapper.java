@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface CuentacursoMapper {
+
     long countByExample(CuentacursoCriteria example);
 
     int deleteByExample(CuentacursoCriteria example);

@@ -1,259 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoc.mappers.PolizaseguroMapper">
-  <resultMap id="BaseResultMap" type="com.duoc.domain.Polizaseguro">
-    <id column="IDPOLIZASEGUROS" jdbcType="DECIMAL" property="idpolizaseguros" />
-    <result column="IDALUMNO" jdbcType="DECIMAL" property="idalumno" />
-    <result column="IDTIPOSEGURO" jdbcType="DECIMAL" property="idtiposeguro" />
-    <result column="IDASEGURADORA" jdbcType="DECIMAL" property="idaseguradora" />
-    <result column="DESCRIPCION" jdbcType="VARCHAR" property="descripcion" />
-    <result column="FECHAINICIO" jdbcType="TIMESTAMP" property="fechainicio" />
-    <result column="FECHATERMINO" jdbcType="TIMESTAMP" property="fechatermino" />
-    <result column="MONTOASEGURADO" jdbcType="DECIMAL" property="montoasegurado" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.duoc.domain.Polizaseguro">
+        <id column="IDPOLIZASEGUROS" jdbcType="DECIMAL" property="idpolizaseguros" />
+        <result column="IDALUMNO" jdbcType="DECIMAL" property="idalumno" />
+        <result column="IDTIPOSEGURO" jdbcType="DECIMAL" property="idtiposeguro" />
+        <result column="IDASEGURADORA" jdbcType="DECIMAL" property="idaseguradora" />
+        <result column="DESCRIPCION" jdbcType="VARCHAR" property="descripcion" />
+        <result column="FECHAINICIO" jdbcType="TIMESTAMP" property="fechainicio" />
+        <result column="FECHATERMINO" jdbcType="TIMESTAMP" property="fechatermino" />
+        <result column="MONTOASEGURADO" jdbcType="DECIMAL" property="montoasegurado" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        IDPOLIZASEGUROS, IDALUMNO, IDTIPOSEGURO, IDASEGURADORA, DESCRIPCION, FECHAINICIO, 
+        FECHATERMINO, MONTOASEGURADO
+    </sql>
+    <select id="selectByExample" parameterType="com.duoc.domain.PolizaseguroCriteria" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    IDPOLIZASEGUROS, IDALUMNO, IDTIPOSEGURO, IDASEGURADORA, DESCRIPCION, FECHAINICIO, 
-    FECHATERMINO, MONTOASEGURADO
-  </sql>
-  <select id="selectByExample" parameterType="com.duoc.domain.PolizaseguroCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from POLIZASEGURO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.PolizaseguroKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from POLIZASEGURO
-    where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.PolizaseguroKey">
-    delete from POLIZASEGURO
-    where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.duoc.domain.PolizaseguroCriteria">
-    delete from POLIZASEGURO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.duoc.domain.Polizaseguro">
-    insert into POLIZASEGURO (IDPOLIZASEGUROS, IDALUMNO, IDTIPOSEGURO, 
-      IDASEGURADORA, DESCRIPCION, FECHAINICIO, 
-      FECHATERMINO, MONTOASEGURADO)
-    values (#{idpolizaseguros,jdbcType=DECIMAL}, #{idalumno,jdbcType=DECIMAL}, #{idtiposeguro,jdbcType=DECIMAL}, 
-      #{idaseguradora,jdbcType=DECIMAL}, #{descripcion,jdbcType=VARCHAR}, #{fechainicio,jdbcType=TIMESTAMP}, 
-      #{fechatermino,jdbcType=TIMESTAMP}, #{montoasegurado,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.duoc.domain.Polizaseguro">
-    insert into POLIZASEGURO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="idpolizaseguros != null">
-        IDPOLIZASEGUROS,
-      </if>
-      <if test="idalumno != null">
-        IDALUMNO,
-      </if>
-      <if test="idtiposeguro != null">
-        IDTIPOSEGURO,
-      </if>
-      <if test="idaseguradora != null">
-        IDASEGURADORA,
-      </if>
-      <if test="descripcion != null">
-        DESCRIPCION,
-      </if>
-      <if test="fechainicio != null">
-        FECHAINICIO,
-      </if>
-      <if test="fechatermino != null">
-        FECHATERMINO,
-      </if>
-      <if test="montoasegurado != null">
-        MONTOASEGURADO,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="idpolizaseguros != null">
-        #{idpolizaseguros,jdbcType=DECIMAL},
-      </if>
-      <if test="idalumno != null">
-        #{idalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="idtiposeguro != null">
-        #{idtiposeguro,jdbcType=DECIMAL},
-      </if>
-      <if test="idaseguradora != null">
-        #{idaseguradora,jdbcType=DECIMAL},
-      </if>
-      <if test="descripcion != null">
-        #{descripcion,jdbcType=VARCHAR},
-      </if>
-      <if test="fechainicio != null">
-        #{fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="fechatermino != null">
-        #{fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="montoasegurado != null">
-        #{montoasegurado,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.duoc.domain.PolizaseguroCriteria" resultType="java.lang.Long">
-    select count(*) from POLIZASEGURO
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update POLIZASEGURO
-    <set>
-      <if test="record.idpolizaseguros != null">
-        IDPOLIZASEGUROS = #{record.idpolizaseguros,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idalumno != null">
+        <include refid="Base_Column_List" />
+        from POLIZASEGURO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.PolizaseguroKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from POLIZASEGURO
+        where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.PolizaseguroKey">
+        delete from POLIZASEGURO
+        where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.duoc.domain.PolizaseguroCriteria">
+        delete from POLIZASEGURO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.duoc.domain.Polizaseguro">
+        insert into POLIZASEGURO (IDPOLIZASEGUROS, IDALUMNO, IDTIPOSEGURO, 
+        IDASEGURADORA, DESCRIPCION, FECHAINICIO, 
+        FECHATERMINO, MONTOASEGURADO)
+        values (#{idpolizaseguros,jdbcType=DECIMAL}, #{idalumno,jdbcType=DECIMAL}, #{idtiposeguro,jdbcType=DECIMAL}, 
+        #{idaseguradora,jdbcType=DECIMAL}, #{descripcion,jdbcType=VARCHAR}, #{fechainicio,jdbcType=TIMESTAMP}, 
+        #{fechatermino,jdbcType=TIMESTAMP}, #{montoasegurado,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.duoc.domain.Polizaseguro">
+        insert into POLIZASEGURO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idpolizaseguros != null">
+                IDPOLIZASEGUROS,
+            </if>
+            <if test="idalumno != null">
+                IDALUMNO,
+            </if>
+            <if test="idtiposeguro != null">
+                IDTIPOSEGURO,
+            </if>
+            <if test="idaseguradora != null">
+                IDASEGURADORA,
+            </if>
+            <if test="descripcion != null">
+                DESCRIPCION,
+            </if>
+            <if test="fechainicio != null">
+                FECHAINICIO,
+            </if>
+            <if test="fechatermino != null">
+                FECHATERMINO,
+            </if>
+            <if test="montoasegurado != null">
+                MONTOASEGURADO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idpolizaseguros != null">
+                #{idpolizaseguros,jdbcType=DECIMAL},
+            </if>
+            <if test="idalumno != null">
+                #{idalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="idtiposeguro != null">
+                #{idtiposeguro,jdbcType=DECIMAL},
+            </if>
+            <if test="idaseguradora != null">
+                #{idaseguradora,jdbcType=DECIMAL},
+            </if>
+            <if test="descripcion != null">
+                #{descripcion,jdbcType=VARCHAR},
+            </if>
+            <if test="fechainicio != null">
+                #{fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fechatermino != null">
+                #{fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="montoasegurado != null">
+                #{montoasegurado,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.duoc.domain.PolizaseguroCriteria" resultType="java.lang.Long">
+        select count(*) from POLIZASEGURO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update POLIZASEGURO
+        <set>
+            <if test="record.idpolizaseguros != null">
+                IDPOLIZASEGUROS = #{record.idpolizaseguros,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idalumno != null">
+                IDALUMNO = #{record.idalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idtiposeguro != null">
+                IDTIPOSEGURO = #{record.idtiposeguro,jdbcType=DECIMAL},
+            </if>
+            <if test="record.idaseguradora != null">
+                IDASEGURADORA = #{record.idaseguradora,jdbcType=DECIMAL},
+            </if>
+            <if test="record.descripcion != null">
+                DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fechainicio != null">
+                FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.fechatermino != null">
+                FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.montoasegurado != null">
+                MONTOASEGURADO = #{record.montoasegurado,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update POLIZASEGURO
+        set IDPOLIZASEGUROS = #{record.idpolizaseguros,jdbcType=DECIMAL},
         IDALUMNO = #{record.idalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idtiposeguro != null">
         IDTIPOSEGURO = #{record.idtiposeguro,jdbcType=DECIMAL},
-      </if>
-      <if test="record.idaseguradora != null">
         IDASEGURADORA = #{record.idaseguradora,jdbcType=DECIMAL},
-      </if>
-      <if test="record.descripcion != null">
         DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fechainicio != null">
         FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.fechatermino != null">
         FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.montoasegurado != null">
-        MONTOASEGURADO = #{record.montoasegurado,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update POLIZASEGURO
-    set IDPOLIZASEGUROS = #{record.idpolizaseguros,jdbcType=DECIMAL},
-      IDALUMNO = #{record.idalumno,jdbcType=DECIMAL},
-      IDTIPOSEGURO = #{record.idtiposeguro,jdbcType=DECIMAL},
-      IDASEGURADORA = #{record.idaseguradora,jdbcType=DECIMAL},
-      DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
-      FECHAINICIO = #{record.fechainicio,jdbcType=TIMESTAMP},
-      FECHATERMINO = #{record.fechatermino,jdbcType=TIMESTAMP},
-      MONTOASEGURADO = #{record.montoasegurado,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Polizaseguro">
-    update POLIZASEGURO
-    <set>
-      <if test="idalumno != null">
-        IDALUMNO = #{idalumno,jdbcType=DECIMAL},
-      </if>
-      <if test="idtiposeguro != null">
+        MONTOASEGURADO = #{record.montoasegurado,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Polizaseguro">
+        update POLIZASEGURO
+        <set>
+            <if test="idalumno != null">
+                IDALUMNO = #{idalumno,jdbcType=DECIMAL},
+            </if>
+            <if test="idtiposeguro != null">
+                IDTIPOSEGURO = #{idtiposeguro,jdbcType=DECIMAL},
+            </if>
+            <if test="idaseguradora != null">
+                IDASEGURADORA = #{idaseguradora,jdbcType=DECIMAL},
+            </if>
+            <if test="descripcion != null">
+                DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
+            </if>
+            <if test="fechainicio != null">
+                FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fechatermino != null">
+                FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
+            </if>
+            <if test="montoasegurado != null">
+                MONTOASEGURADO = #{montoasegurado,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Polizaseguro">
+        update POLIZASEGURO
+        set IDALUMNO = #{idalumno,jdbcType=DECIMAL},
         IDTIPOSEGURO = #{idtiposeguro,jdbcType=DECIMAL},
-      </if>
-      <if test="idaseguradora != null">
         IDASEGURADORA = #{idaseguradora,jdbcType=DECIMAL},
-      </if>
-      <if test="descripcion != null">
         DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
-      </if>
-      <if test="fechainicio != null">
         FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
-      </if>
-      <if test="fechatermino != null">
         FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
-      </if>
-      <if test="montoasegurado != null">
-        MONTOASEGURADO = #{montoasegurado,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Polizaseguro">
-    update POLIZASEGURO
-    set IDALUMNO = #{idalumno,jdbcType=DECIMAL},
-      IDTIPOSEGURO = #{idtiposeguro,jdbcType=DECIMAL},
-      IDASEGURADORA = #{idaseguradora,jdbcType=DECIMAL},
-      DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
-      FECHAINICIO = #{fechainicio,jdbcType=TIMESTAMP},
-      FECHATERMINO = #{fechatermino,jdbcType=TIMESTAMP},
-      MONTOASEGURADO = #{montoasegurado,jdbcType=DECIMAL}
-    where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
-  </update>
+        MONTOASEGURADO = #{montoasegurado,jdbcType=DECIMAL}
+        where IDPOLIZASEGUROS = #{idpolizaseguros,jdbcType=DECIMAL}
+    </update>
 </mapper>

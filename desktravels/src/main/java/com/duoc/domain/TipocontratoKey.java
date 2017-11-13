@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class TipocontratoKey {
+
     private BigDecimal idtipocontrato;
 
     public BigDecimal getIdtipocontrato() {

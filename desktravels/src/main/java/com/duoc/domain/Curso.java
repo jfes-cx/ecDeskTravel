@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Curso extends CursoKey {
+
     private BigDecimal idcolegio;
 
     private String nombre;
@@ -56,10 +57,10 @@ public class Curso extends CursoKey {
         }
         Curso other = (Curso) that;
         return (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
-            && (this.getIdcolegio() == null ? other.getIdcolegio() == null : this.getIdcolegio().equals(other.getIdcolegio()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getProfesorjefe() == null ? other.getProfesorjefe() == null : this.getProfesorjefe().equals(other.getProfesorjefe()))
-            && (this.getCantidadalumnos() == null ? other.getCantidadalumnos() == null : this.getCantidadalumnos().equals(other.getCantidadalumnos()));
+                && (this.getIdcolegio() == null ? other.getIdcolegio() == null : this.getIdcolegio().equals(other.getIdcolegio()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getProfesorjefe() == null ? other.getProfesorjefe() == null : this.getProfesorjefe().equals(other.getProfesorjefe()))
+                && (this.getCantidadalumnos() == null ? other.getCantidadalumnos() == null : this.getCantidadalumnos().equals(other.getCantidadalumnos()));
     }
 
     @Override
@@ -72,5 +73,10 @@ public class Curso extends CursoKey {
         result = prime * result + ((getProfesorjefe() == null) ? 0 : getProfesorjefe().hashCode());
         result = prime * result + ((getCantidadalumnos() == null) ? 0 : getCantidadalumnos().hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }

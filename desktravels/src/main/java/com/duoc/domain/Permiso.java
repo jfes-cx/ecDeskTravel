@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Permiso extends PermisoKey {
+
     private BigDecimal idperfil;
 
     private String nombre;
@@ -46,9 +47,9 @@ public class Permiso extends PermisoKey {
         }
         Permiso other = (Permiso) that;
         return (this.getIdpermiso() == null ? other.getIdpermiso() == null : this.getIdpermiso().equals(other.getIdpermiso()))
-            && (this.getIdperfil() == null ? other.getIdperfil() == null : this.getIdperfil().equals(other.getIdperfil()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
+                && (this.getIdperfil() == null ? other.getIdperfil() == null : this.getIdperfil().equals(other.getIdperfil()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()));
     }
 
     @Override

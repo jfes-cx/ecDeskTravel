@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Destino extends DestinoKey {
+
     private String nombredestino;
 
     private BigDecimal idpais;
@@ -36,8 +37,8 @@ public class Destino extends DestinoKey {
         }
         Destino other = (Destino) that;
         return (this.getIddestino() == null ? other.getIddestino() == null : this.getIddestino().equals(other.getIddestino()))
-            && (this.getNombredestino() == null ? other.getNombredestino() == null : this.getNombredestino().equals(other.getNombredestino()))
-            && (this.getIdpais() == null ? other.getIdpais() == null : this.getIdpais().equals(other.getIdpais()));
+                && (this.getNombredestino() == null ? other.getNombredestino() == null : this.getNombredestino().equals(other.getNombredestino()))
+                && (this.getIdpais() == null ? other.getIdpais() == null : this.getIdpais().equals(other.getIdpais()));
     }
 
     @Override

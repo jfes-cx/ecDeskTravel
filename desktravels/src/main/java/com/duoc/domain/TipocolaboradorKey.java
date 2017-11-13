@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class TipocolaboradorKey {
+
     private BigDecimal idtipocolaborador;
 
     public BigDecimal getIdtipocolaborador() {

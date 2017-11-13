@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class AnexosCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,6 +67,7 @@ public class AnexosCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -445,6 +447,7 @@ public class AnexosCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

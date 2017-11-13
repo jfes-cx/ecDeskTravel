@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class TipopagoKey {
+
     private BigDecimal idtipopago;
 
     public BigDecimal getIdtipopago() {

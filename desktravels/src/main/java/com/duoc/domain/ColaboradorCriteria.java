@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ColaboradorCriteria {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class ColaboradorCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -579,6 +581,7 @@ public class ColaboradorCriteria {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

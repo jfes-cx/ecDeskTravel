@@ -1,6 +1,7 @@
 package com.duoc.domain;
 
 public class Pais extends PaisKey {
+
     private String nombre;
 
     public String getNombre() {
@@ -24,7 +25,7 @@ public class Pais extends PaisKey {
         }
         Pais other = (Pais) that;
         return (this.getIdpais() == null ? other.getIdpais() == null : this.getIdpais().equals(other.getIdpais()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()));
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Cuentaalumno extends CuentaalumnoKey {
+
     private BigDecimal idtipocuenta;
 
     private BigDecimal idalumno;
@@ -66,11 +67,11 @@ public class Cuentaalumno extends CuentaalumnoKey {
         }
         Cuentaalumno other = (Cuentaalumno) that;
         return (this.getIdcuentaalumnos() == null ? other.getIdcuentaalumnos() == null : this.getIdcuentaalumnos().equals(other.getIdcuentaalumnos()))
-            && (this.getIdtipocuenta() == null ? other.getIdtipocuenta() == null : this.getIdtipocuenta().equals(other.getIdtipocuenta()))
-            && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
-            && (this.getCupototal() == null ? other.getCupototal() == null : this.getCupototal().equals(other.getCupototal()))
-            && (this.getCupoutilizado() == null ? other.getCupoutilizado() == null : this.getCupoutilizado().equals(other.getCupoutilizado()))
-            && (this.getAporte() == null ? other.getAporte() == null : this.getAporte().equals(other.getAporte()));
+                && (this.getIdtipocuenta() == null ? other.getIdtipocuenta() == null : this.getIdtipocuenta().equals(other.getIdtipocuenta()))
+                && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
+                && (this.getCupototal() == null ? other.getCupototal() == null : this.getCupototal().equals(other.getCupototal()))
+                && (this.getCupoutilizado() == null ? other.getCupoutilizado() == null : this.getCupoutilizado().equals(other.getCupoutilizado()))
+                && (this.getAporte() == null ? other.getAporte() == null : this.getAporte().equals(other.getAporte()));
     }
 
     @Override

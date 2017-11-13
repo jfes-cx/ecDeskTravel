@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Alumno extends AlumnoKey {
+
     private BigDecimal idapoderado;
 
     private BigDecimal idcurso;
@@ -96,14 +97,14 @@ public class Alumno extends AlumnoKey {
         }
         Alumno other = (Alumno) that;
         return (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
-            && (this.getIdapoderado() == null ? other.getIdapoderado() == null : this.getIdapoderado().equals(other.getIdapoderado()))
-            && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getCorreoelectronico() == null ? other.getCorreoelectronico() == null : this.getCorreoelectronico().equals(other.getCorreoelectronico()))
-            && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()))
-            && (this.getApellidos() == null ? other.getApellidos() == null : this.getApellidos().equals(other.getApellidos()));
+                && (this.getIdapoderado() == null ? other.getIdapoderado() == null : this.getIdapoderado().equals(other.getIdapoderado()))
+                && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDireccion() == null ? other.getDireccion() == null : this.getDireccion().equals(other.getDireccion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getCorreoelectronico() == null ? other.getCorreoelectronico() == null : this.getCorreoelectronico().equals(other.getCorreoelectronico()))
+                && (this.getRut() == null ? other.getRut() == null : this.getRut().equals(other.getRut()))
+                && (this.getApellidos() == null ? other.getApellidos() == null : this.getApellidos().equals(other.getApellidos()));
     }
 
     @Override
@@ -121,10 +122,9 @@ public class Alumno extends AlumnoKey {
         result = prime * result + ((getApellidos() == null) ? 0 : getApellidos().hashCode());
         return result;
     }
-    
+
     @Override
-	public
-    String toString(){
-    	return "Alumno: RUT: "+getRut()+"Nombre: "+getNombre();
+    public String toString() {
+        return "Alumno: RUT: " + getRut() + "Nombre: " + getNombre();
     }
 }

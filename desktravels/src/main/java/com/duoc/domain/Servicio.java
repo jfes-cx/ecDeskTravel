@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class Servicio extends ServicioKey {
+
     private BigDecimal idtiposervicio;
 
     private String nombre;
@@ -66,11 +67,11 @@ public class Servicio extends ServicioKey {
         }
         Servicio other = (Servicio) that;
         return (this.getIdservicio() == null ? other.getIdservicio() == null : this.getIdservicio().equals(other.getIdservicio()))
-            && (this.getIdtiposervicio() == null ? other.getIdtiposervicio() == null : this.getIdtiposervicio().equals(other.getIdtiposervicio()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
-            && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
-            && (this.getEncargado() == null ? other.getEncargado() == null : this.getEncargado().equals(other.getEncargado()));
+                && (this.getIdtiposervicio() == null ? other.getIdtiposervicio() == null : this.getIdtiposervicio().equals(other.getIdtiposervicio()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
+                && (this.getTelefono() == null ? other.getTelefono() == null : this.getTelefono().equals(other.getTelefono()))
+                && (this.getEncargado() == null ? other.getEncargado() == null : this.getEncargado().equals(other.getEncargado()));
     }
 
     @Override

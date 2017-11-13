@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 public interface AlumnoMapper {
+
     long countByExample(AlumnoCriteria example);
 
     int deleteByExample(AlumnoCriteria example);
@@ -20,10 +21,12 @@ public interface AlumnoMapper {
     int insertSelective(Alumno record);
 
     List<Alumno> selectByExample(AlumnoCriteria example);
-    
+
     List<Alumno> findAllAlumnos();
-    
-    void OBTENER_ALUMNO_BYCUR();
+
+    void GET_ALUMNOS_BY_CUR();
+
+    void INSERT_ALUMNO(Map<String, Object> params);
 
     Alumno selectByPrimaryKey(AlumnoKey key);
 

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Contrato extends ContratoKey {
+
     private BigDecimal idalumno;
 
     private BigDecimal idcolaborador;
@@ -97,14 +98,14 @@ public class Contrato extends ContratoKey {
         }
         Contrato other = (Contrato) that;
         return (this.getIdcontrato() == null ? other.getIdcontrato() == null : this.getIdcontrato().equals(other.getIdcontrato()))
-            && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
-            && (this.getIdcolaborador() == null ? other.getIdcolaborador() == null : this.getIdcolaborador().equals(other.getIdcolaborador()))
-            && (this.getIdtipocontrato() == null ? other.getIdtipocontrato() == null : this.getIdtipocontrato().equals(other.getIdtipocontrato()))
-            && (this.getIdpolizaseguros() == null ? other.getIdpolizaseguros() == null : this.getIdpolizaseguros().equals(other.getIdpolizaseguros()))
-            && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
-            && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
-            && (this.getIdservicio() == null ? other.getIdservicio() == null : this.getIdservicio().equals(other.getIdservicio()))
-            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()));
+                && (this.getIdalumno() == null ? other.getIdalumno() == null : this.getIdalumno().equals(other.getIdalumno()))
+                && (this.getIdcolaborador() == null ? other.getIdcolaborador() == null : this.getIdcolaborador().equals(other.getIdcolaborador()))
+                && (this.getIdtipocontrato() == null ? other.getIdtipocontrato() == null : this.getIdtipocontrato().equals(other.getIdtipocontrato()))
+                && (this.getIdpolizaseguros() == null ? other.getIdpolizaseguros() == null : this.getIdpolizaseguros().equals(other.getIdpolizaseguros()))
+                && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
+                && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
+                && (this.getIdservicio() == null ? other.getIdservicio() == null : this.getIdservicio().equals(other.getIdservicio()))
+                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()));
     }
 
     @Override

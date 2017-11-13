@@ -3,6 +3,7 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class ApoderadoKey {
+
     private BigDecimal idapoderado;
 
     public BigDecimal getIdapoderado() {
