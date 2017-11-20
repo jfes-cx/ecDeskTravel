@@ -10,7 +10,6 @@ import com.duoc.domain.Colegio;
 import com.duoc.domain.Comuna;
 import com.duoc.domain.Curso;
 import com.duoc.domain.Region;
-
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;

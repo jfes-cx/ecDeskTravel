@@ -48,4 +48,9 @@ public class Perfil extends PerfilKey {
         result = prime * result + ((getEstado() == null) ? 0 : getEstado().hashCode());
         return result;
     }
+    
+    @Override
+    public String toString() {
+        return  getDescripcion();
+    }
 }

@@ -13,6 +13,19 @@ public class Cuentausuario extends CuentausuarioKey {
     private String correoelectronico;
 
     private String contrasena;
+    
+    private String nombrePerfil;
+    
+    private String estado;
+
+    public String getNombrePerfil() {
+        return nombrePerfil;
+    }
+
+    
+    public void setNombrePerfil(String nombrePerfil) {
+        this.nombrePerfil = nombrePerfil;
+    }
 
     public BigDecimal getIdperfil() {
         return idperfil;
@@ -85,5 +98,13 @@ public class Cuentausuario extends CuentausuarioKey {
         result = prime * result + ((getCorreoelectronico() == null) ? 0 : getCorreoelectronico().hashCode());
         result = prime * result + ((getContrasena() == null) ? 0 : getContrasena().hashCode());
         return result;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

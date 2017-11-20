@@ -28,6 +28,17 @@
         #{idColegio,jdbcType=DECIMAL,mode=IN}
         )}  
     </select>
+    
+    <select 
+        id="GET_MONTOS" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL GET_MONTOS(
+        #{monto,mode=OUT,jdbcType=DECIMAL,javaType=java.lang.Integer},
+        #{meta,mode=OUT,jdbcType=DECIMAL,javaType=java.lang.Integer},
+        #{idCurso,mode=IN,jdbcType=NVARCHAR}
+        )}  
+    </select>
 
   
     <sql id="Example_Where_Clause">

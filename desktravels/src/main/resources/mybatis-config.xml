@@ -20,7 +20,7 @@
     </environments>
 	
     <mappers>
-
+        <mapper class ="com.duoc.mappers.CuentaconexionMapper"/>
         <mapper class ="com.duoc.mappers.ActividadMapper"/>
         <mapper class ="com.duoc.mappers.ContratoMapper"/>
         <mapper class ="com.duoc.mappers.DestinoMapper"/>

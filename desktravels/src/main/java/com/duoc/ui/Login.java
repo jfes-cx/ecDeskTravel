@@ -6,10 +6,7 @@
 package com.duoc.ui;
 
 import com.duoc.controller.LoginController;
-import com.duoc.ui.DeskTravelMain;
-
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 /**

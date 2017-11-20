@@ -16,15 +16,7 @@ public class AlumnoService {
 
     private Logger logger = Logger.getLogger(getClass());
 
-    public List<Alumno> findAllAlumnos() {
-        SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
-        try {
-            AlumnoMapper alumnoMapper = sqlSession.getMapper(AlumnoMapper.class);
-            return alumnoMapper.findAllAlumnos();
-        } finally {
-            sqlSession.close();
-        }
-    }
+  
 
     public List<Alumno> getAlumnoByCurso() {
         SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();

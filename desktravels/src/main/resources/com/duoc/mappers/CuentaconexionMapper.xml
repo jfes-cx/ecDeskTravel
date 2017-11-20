@@ -1,0 +1,57 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.CuentaconexionMapper">
+    
+    <resultMap id="BaseResultMap" type="com.duoc.domain.CuentaConexionDTO">
+     <id column="IDCUENTAUSUARIO" jdbcType="DECIMAL" property="cuenta.idcuentausuario" />
+        <result column="IDPERFIL" jdbcType="DECIMAL" property="cuenta.idperfil"/>
+        <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="cuenta.correoelectronico"/>
+        <result column="CONTRASENA" jdbcType="VARCHAR" property="cuenta.contrasena"/>
+        <result column="ESTADO" jdbcType="VARCHAR" property="cuenta.estado"/>
+        <result column="NOMBRE" jdbcType="VARCHAR" property="col.nombre"/>
+        <result column="DIRECCION" jdbcType="VARCHAR" property="col.direccion"/>
+        <result column="TELEFONO" jdbcType="VARCHAR" property="col.telefono"/>
+        <result column="IDTIPOCOLABORADOR" jdbcType="DECIMAL" property="col.idtipocolaborador"/>
+        <result column="RUT" jdbcType="VARCHAR" property="col.rut"/>
+        <result column="APELLIDOPATERNO" jdbcType="VARCHAR" property="col.apellidpaterno"/>
+        <result column="APELLIDOMATERNO" jdbcType="VARCHAR" property="col.apellidomaterno"/>
+
+    </resultMap> 
+    
+    
+    <resultMap id="CuentaMap" type="com.duoc.domain.CuentaConexionDTO">
+     <id column="IDCUENTAUSUARIO" jdbcType="DECIMAL" property="cuenta.idcuentausuario" />
+        <result column="IDPERFIL" jdbcType="DECIMAL" property="cuenta.idperfil"/>
+        <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="cuenta.correoelectronico"/>
+        <result column="CONTRASENA" jdbcType="VARCHAR" property="cuenta.contrasena"/>
+        <result column="ESTADO" jdbcType="VARCHAR" property="cuenta.estado"/>
+        <result column="NOMBRE" jdbcType="VARCHAR" property="col.nombre"/>
+        <result column="DIRECCION" jdbcType="VARCHAR" property="col.direccion"/>
+        <result column="TELEFONO" jdbcType="VARCHAR" property="col.telefono"/>
+        <result column="IDTIPOCOLABORADOR" jdbcType="DECIMAL" property="col.idtipocolaborador"/>
+        <result column="RUT" jdbcType="VARCHAR" property="col.rut"/>
+        <result column="APELLIDOPATERNO" jdbcType="VARCHAR" property="col.apellidpaterno"/>
+        <result column="APELLIDOMATERNO" jdbcType="VARCHAR" property="col.apellidomaterno"/>
+        <result column="DESCRIPCION" jdbcType="VARCHAR" property="cuenta.nombrePerfil"/>
+    </resultMap>  
+    <select 
+        id="X" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL AUTENTICAR_USUARIO(
+        #{pssw,mode=OUT,jdbcType=NVARCHAR,javaType=java.lang.String},
+        #{nomperfil,mode=OUT,jdbcType=NVARCHAR,javaType=java.lang.String},
+        #{idperfil,mode=OUT,jdbcType=NVARCHAR,javaType=java.lang.String},
+        #{correo,jdbcType=NVARCHAR,mode=IN}
+        )}  
+    </select>
+    
+    <select 
+        id="GET_CUENTAS_CONEXION" 
+        statementType="CALLABLE"
+        parameterType="java.util.Map">
+        {CALL GET_CUENTAS_CONEXION(
+            #{cuentas_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=CuentaMap}
+        )}  
+    </select>
+    
+</mapper>

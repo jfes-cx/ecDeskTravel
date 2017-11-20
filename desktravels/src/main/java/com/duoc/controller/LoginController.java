@@ -14,6 +14,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import com.duoc.util.MyBatisSqlSessionFactory;
+import main.java.com.duoc.util.EncryptUtil;
 
 /**
  *
@@ -29,11 +30,6 @@ public class LoginController {
         this.cursoModel = new Curso();
     }
 
-    public String sha256Hex(String input) {
-        String sha256 = null;
-        sha256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(input);
-        return sha256;
-    }
 
     public ArrayList<String> autenticar(String user, String password) {
         SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
@@ -48,7 +44,7 @@ public class LoginController {
                 String nombrePerfil = null;
                 ArrayList<String> result = new ArrayList<>();
                 if (cuentaResult != null) {
-                    String sha1val = sha256Hex(password);
+                    String sha1val = EncryptUtil.sha256Hex(password);
                     if (sha1val.equals(parms.get("pssw").toString())) {
                         result.add(0, "1");
                         result.add(1, "Usuario autenticado correctamente");

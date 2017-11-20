@@ -19,6 +19,16 @@ public class Alumno extends AlumnoKey {
     private String rut;
 
     private String apellidos;
+    
+    private String nombreapoderado;
+
+    public String getNombreapoderado() {
+        return nombreapoderado;
+    }
+
+    public void setNombreapoderado(String nombreapoderado) {
+        this.nombreapoderado = nombreapoderado;
+    }
 
     public BigDecimal getIdapoderado() {
         return idapoderado;

@@ -7,6 +7,7 @@
         <result column="APELLIDO" jdbcType="VARCHAR" property="apellido" />
         <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="correoelectronico" />
         <result column="CONTRASENA" jdbcType="VARCHAR" property="contrasena" />
+        <result column="ESTADO" jdbcType="VARCHAR" property="estado" />
     </resultMap>
     <resultMap id="autenticarMap" type="com.duoc.domain.Cuentausuario">
         <id column="IDCUENTAUSUARIO" jdbcType="DECIMAL" property="idcuentausuario" />
@@ -15,85 +16,19 @@
         <result column="APELLIDO" jdbcType="VARCHAR" property="apellido" />
         <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="correoelectronico" />
         <result column="CONTRASENA" jdbcType="VARCHAR" property="contrasena" />
+        <result column="ESTADO" jdbcType="VARCHAR" property="estado" />
     </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" prefixOverrides="and" suffix=")">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
-            </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" prefixOverrides="and" suffix=")">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
-            </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-        IDCUENTAUSUARIO, IDPERFIL, NOMBREUSUARIO, APELLIDO, CORREOELECTRONICO, CONTRASENA
-    </sql>
-  
-
-    <select id="selectByExample" parameterType="com.duoc.domain.CuentausuarioCriteria" resultMap="BaseResultMap">
-        select
-        <if test="distinct">
-            distinct
-        </if>
-        <include refid="Base_Column_List" />
-        from CUENTAUSUARIO
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause" />
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-  
+    
+    <resultMap id="cuentausuarioMap" type="com.duoc.domain.Cuentausuario">
+        <id column="IDCUENTAUSUARIO" jdbcType="DECIMAL" property="idcuentausuario" />
+        <result column="IDPERFIL" jdbcType="DECIMAL" property="idperfil" />
+        <result column="NOMBREUSUARIO" jdbcType="NVARCHAR" property="nombreusuario" />
+        <result column="APELLIDO" jdbcType="VARCHAR" property="apellido" />
+        <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="correoelectronico" />
+        <result column="CONTRASENA" jdbcType="VARCHAR" property="contrasena" />
+        <result column="NOMBREPERFIL" jdbcType="VARCHAR" property="nombrePerfil" />
+    </resultMap>
+    
     <select 
         id="autenticarUsuario" 
         statementType="CALLABLE" 
@@ -105,145 +40,29 @@
         #{correo,jdbcType=NVARCHAR,mode=IN}
         )}  
     </select>
-    <select id="selectByPrimaryKey" parameterType="com.duoc.domain.CuentausuarioKey" resultMap="BaseResultMap">
-        select 
-        <include refid="Base_Column_List" />
-        from CUENTAUSUARIO
-        where IDCUENTAUSUARIO = #{idcuentausuario,jdbcType=DECIMAL}
+    
+    <select 
+        id="INSERT_CUENTA" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL INSERT_CUENTAUSUARIO(
+        #{idCuenta,mode=OUT,jdbcType=DECIMAL,javaType=java.lang.Integer},
+        #{idPerfil,jdbcType=NVARCHAR , mode=IN},
+        #{contrasena,jdbcType=NVARCHAR, mode=IN},
+        #{correo,jdbcType=NVARCHAR,mode=IN},
+        #{idEstado,jdbcType=NVARCHAR,mode=IN}
+        )}  
+    
+        
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.CuentausuarioKey">
-        delete from CUENTAUSUARIO
-        where IDCUENTAUSUARIO = #{idcuentausuario,jdbcType=DECIMAL}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.duoc.domain.CuentausuarioCriteria">
-        delete from CUENTAUSUARIO
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause" />
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.duoc.domain.Cuentausuario">
-        insert into CUENTAUSUARIO (IDCUENTAUSUARIO, IDPERFIL, NOMBREUSUARIO, 
-        APELLIDO, CORREOELECTRONICO, CONTRASENA
-        )
-        values (#{idcuentausuario,jdbcType=DECIMAL}, #{idperfil,jdbcType=DECIMAL}, #{nombreusuario,jdbcType=NVARCHAR}, 
-        #{apellido,jdbcType=VARCHAR}, #{correoelectronico,jdbcType=VARCHAR}, #{contrasena,jdbcType=VARCHAR}
-        )
-    </insert>
-    <insert id="insertSelective" parameterType="com.duoc.domain.Cuentausuario">
-        insert into CUENTAUSUARIO
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="idcuentausuario != null">
-                IDCUENTAUSUARIO,
-            </if>
-            <if test="idperfil != null">
-                IDPERFIL,
-            </if>
-            <if test="nombreusuario != null">
-                NOMBREUSUARIO,
-            </if>
-            <if test="apellido != null">
-                APELLIDO,
-            </if>
-            <if test="correoelectronico != null">
-                CORREOELECTRONICO,
-            </if>
-            <if test="contrasena != null">
-                CONTRASENA,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="idcuentausuario != null">
-                #{idcuentausuario,jdbcType=DECIMAL},
-            </if>
-            <if test="idperfil != null">
-                #{idperfil,jdbcType=DECIMAL},
-            </if>
-            <if test="nombreusuario != null">
-                #{nombreusuario,jdbcType=NVARCHAR},
-            </if>
-            <if test="apellido != null">
-                #{apellido,jdbcType=VARCHAR},
-            </if>
-            <if test="correoelectronico != null">
-                #{correoelectronico,jdbcType=VARCHAR},
-            </if>
-            <if test="contrasena != null">
-                #{contrasena,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.duoc.domain.CuentausuarioCriteria" resultType="java.lang.Long">
-        select count(*) from CUENTAUSUARIO
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause" />
-        </if>
+    
+    <select 
+        id="GET_CUENTAS" 
+        statementType="CALLABLE"
+        parameterType="java.util.Map">
+        {CALL GET_CUENTAS_USUARIOS(
+            #{cuentas_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=cuentausuarioMap}
+        )}  
     </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update CUENTAUSUARIO
-        <set>
-            <if test="record.idcuentausuario != null">
-                IDCUENTAUSUARIO = #{record.idcuentausuario,jdbcType=DECIMAL},
-            </if>
-            <if test="record.idperfil != null">
-                IDPERFIL = #{record.idperfil,jdbcType=DECIMAL},
-            </if>
-            <if test="record.nombreusuario != null">
-                NOMBREUSUARIO = #{record.nombreusuario,jdbcType=NVARCHAR},
-            </if>
-            <if test="record.apellido != null">
-                APELLIDO = #{record.apellido,jdbcType=VARCHAR},
-            </if>
-            <if test="record.correoelectronico != null">
-                CORREOELECTRONICO = #{record.correoelectronico,jdbcType=VARCHAR},
-            </if>
-            <if test="record.contrasena != null">
-                CONTRASENA = #{record.contrasena,jdbcType=VARCHAR},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause" />
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update CUENTAUSUARIO
-        set IDCUENTAUSUARIO = #{record.idcuentausuario,jdbcType=DECIMAL},
-        IDPERFIL = #{record.idperfil,jdbcType=DECIMAL},
-        NOMBREUSUARIO = #{record.nombreusuario,jdbcType=NVARCHAR},
-        APELLIDO = #{record.apellido,jdbcType=VARCHAR},
-        CORREOELECTRONICO = #{record.correoelectronico,jdbcType=VARCHAR},
-        CONTRASENA = #{record.contrasena,jdbcType=VARCHAR}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause" />
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Cuentausuario">
-        update CUENTAUSUARIO
-        <set>
-            <if test="idperfil != null">
-                IDPERFIL = #{idperfil,jdbcType=DECIMAL},
-            </if>
-            <if test="nombreusuario != null">
-                NOMBREUSUARIO = #{nombreusuario,jdbcType=NVARCHAR},
-            </if>
-            <if test="apellido != null">
-                APELLIDO = #{apellido,jdbcType=VARCHAR},
-            </if>
-            <if test="correoelectronico != null">
-                CORREOELECTRONICO = #{correoelectronico,jdbcType=VARCHAR},
-            </if>
-            <if test="contrasena != null">
-                CONTRASENA = #{contrasena,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where IDCUENTAUSUARIO = #{idcuentausuario,jdbcType=DECIMAL}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Cuentausuario">
-        update CUENTAUSUARIO
-        set IDPERFIL = #{idperfil,jdbcType=DECIMAL},
-        NOMBREUSUARIO = #{nombreusuario,jdbcType=NVARCHAR},
-        APELLIDO = #{apellido,jdbcType=VARCHAR},
-        CORREOELECTRONICO = #{correoelectronico,jdbcType=VARCHAR},
-        CONTRASENA = #{contrasena,jdbcType=VARCHAR}
-        where IDCUENTAUSUARIO = #{idcuentausuario,jdbcType=DECIMAL}
-    </update>
+    
 </mapper>

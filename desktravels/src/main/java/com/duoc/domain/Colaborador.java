@@ -5,6 +5,26 @@ import java.math.BigDecimal;
 public class Colaborador extends ColaboradorKey {
 
     private String nombre;
+    
+    private String apellidpaterno;
+    
+    private String apellidomaterno;
+
+    public String getApellidpaterno() {
+        return apellidpaterno;
+    }
+
+    public void setApellidpaterno(String apellidpaterno) {
+        this.apellidpaterno = apellidpaterno;
+    }
+
+    public String getApellidomaterno() {
+        return apellidomaterno;
+    }
+
+    public void setApellidomaterno(String apellidomaterno) {
+        this.apellidomaterno = apellidomaterno;
+    }
 
     private String direccion;
 

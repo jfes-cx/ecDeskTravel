@@ -6,8 +6,7 @@
 package com.duoc.ui;
 
 import java.util.ArrayList;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
+import main.java.com.duoc.ui.AdministrarCuentas;
 import main.java.com.duoc.ui.EstadoCuentaCurso;
 
 /**
@@ -58,11 +57,11 @@ public class DeskTravelMain extends javax.swing.JFrame {
         miDestinos = new javax.swing.JMenuItem();
         miTipos = new javax.swing.JMenuItem();
         mContratos = new javax.swing.JMenu();
-        mSeguros = new javax.swing.JMenu();
+        mCuentas = new javax.swing.JMenu();
+        miMantenerCuenta = new javax.swing.JMenuItem();
         mReportes = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         lblEstadoCuenta.setText("Bienvenido Administrador - Juan Francisco ");
 
@@ -71,8 +70,8 @@ public class DeskTravelMain extends javax.swing.JFrame {
         barraEstadoLayout.setHorizontalGroup(
             barraEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraEstadoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 436, Short.MAX_VALUE)
+                .addComponent(lblEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         barraEstadoLayout.setVerticalGroup(
             barraEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,11 +82,11 @@ public class DeskTravelMain extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -96,14 +95,14 @@ public class DeskTravelMain extends javax.swing.JFrame {
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(escritorio)
+                .addContainerGap())
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentralLayout.createSequentialGroup()
                 .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         btnDesconectar.setText("Desconectar");
@@ -154,8 +153,17 @@ public class DeskTravelMain extends javax.swing.JFrame {
         mContratos.setText("Contratos");
         barraMenuSuperior.add(mContratos);
 
-        mSeguros.setText("Seguros");
-        barraMenuSuperior.add(mSeguros);
+        mCuentas.setText("Cuentas");
+
+        miMantenerCuenta.setText("Mantener Cuentas");
+        miMantenerCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miMantenerCuentaActionPerformed(evt);
+            }
+        });
+        mCuentas.add(miMantenerCuenta);
+
+        barraMenuSuperior.add(mCuentas);
 
         mReportes.setText("Reportes");
         barraMenuSuperior.add(mReportes);
@@ -216,6 +224,12 @@ public class DeskTravelMain extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnDesconectarActionPerformed
 
+    private void miMantenerCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMantenerCuentaActionPerformed
+        AdministrarCuentas admcuen = new AdministrarCuentas(escritorio);
+        escritorio.add(admcuen);
+        admcuen.setVisible(true);
+    }//GEN-LAST:event_miMantenerCuentaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraEstado;
     private javax.swing.JMenuBar barraMenuSuperior;
@@ -223,11 +237,12 @@ public class DeskTravelMain extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel lblEstadoCuenta;
     private javax.swing.JMenu mContratos;
+    private javax.swing.JMenu mCuentas;
     private javax.swing.JMenu mMantenedores;
     private javax.swing.JMenu mReportes;
-    private javax.swing.JMenu mSeguros;
     private javax.swing.JMenuItem miDestinos;
     private javax.swing.JMenuItem miEstadoCuenta;
+    private javax.swing.JMenuItem miMantenerCuenta;
     private javax.swing.JMenuItem miRegistrarCurso;
     private javax.swing.JMenuItem miTipos;
     private javax.swing.JPanel panelCentral;

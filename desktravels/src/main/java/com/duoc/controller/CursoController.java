@@ -22,6 +22,7 @@ import com.duoc.domain.Curso;
 import com.duoc.domain.Pago;
 import com.duoc.domain.Region;
 import com.duoc.util.MyBatisSqlSessionFactory;
+import javax.swing.JTextField;
 
 public class CursoController {
 
@@ -215,7 +216,7 @@ public class CursoController {
         }
     }
 
-    public void cargarListaPagos(BigDecimal idcurso, JList<Pago> listPagos) {
+    public void cargarListaPagos(BigDecimal idcurso, JList<Pago> listPagos,JTextField txtMeta, JTextField txtTotalAcumulado) {
        SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
         try {
             DefaultListModel<Pago> lstModel = new DefaultListModel<>();
@@ -227,10 +228,18 @@ public class CursoController {
                 lstModel.addElement(pago);
             }
             listPagos.setModel(lstModel);
-
+            
+            Map<String, Object> parmsCur = new HashMap<String, Object>();
+            parmsCur.put("idCurso",idcurso);
+            sqlSession.selectOne("com.duoc.mappers.CursoMapper.GET_MONTOS", parmsCur);
+            Integer meta = (Integer) parmsCur.get("meta");
+            Integer monto = (Integer) parmsCur.get("monto");
+            if (meta != null && monto != null) {
+                txtMeta.setText(meta.toString());
+                txtTotalAcumulado.setText(monto.toString());
+            }
         } finally {
             sqlSession.close();
         }
     }
-
 }
