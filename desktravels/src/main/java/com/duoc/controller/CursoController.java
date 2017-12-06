@@ -186,6 +186,7 @@ public class CursoController {
         try {
             DefaultComboBoxModel<Colegio> cmbModel = new DefaultComboBoxModel<>();
             Map<String, Object> parms = new HashMap<String, Object>();
+            parms.put("idComuna", idcomuna);
             sqlSession.selectList("com.duoc.mappers.ColegioMapper.GET_COLEGIOS", parms);
             List<Colegio> colegioList = (List<Colegio>) parms.get("colegios_cursor");
             for (Colegio colegio : colegioList) {

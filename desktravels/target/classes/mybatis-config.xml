@@ -20,9 +20,9 @@
     </environments>
 	
     <mappers>
+        <mapper class ="com.duoc.mappers.ContratoMapper"/>
         <mapper class ="com.duoc.mappers.CuentaconexionMapper"/>
         <mapper class ="com.duoc.mappers.ActividadMapper"/>
-        <mapper class ="com.duoc.mappers.ContratoMapper"/>
         <mapper class ="com.duoc.mappers.DestinoMapper"/>
         <mapper class ="com.duoc.mappers.AnexosMapper"/>
         <mapper class ="com.duoc.mappers.TipoactividadMapper"/>
@@ -54,6 +54,14 @@
         <mapper class ="com.duoc.mappers.CuentacursoMapper"/>
         <mapper class ="com.duoc.mappers.PagoMapper"/>
         <mapper class ="com.duoc.mappers.PerfilMapper"/>
+        <mapper class ="com.duoc.mappers.PaqueteMapper"/>
+        <mapper class ="com.duoc.mappers.EstadoresultadoMapper"/>
+        <mapper class ="com.duoc.mappers.MidActividadCtMapper"/>
+        <mapper class ="com.duoc.mappers.MidServicioCtMapper"/>
+        <mapper class ="com.duoc.mappers.MidPolizaCtMapper"/>
+        
+
+        
 		
     </mappers>
 </configuration>

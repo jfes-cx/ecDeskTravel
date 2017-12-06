@@ -1,4 +1,4 @@
-package main.java.com.duoc.util;
+package com.duoc.util;
 
 import com.duoc.domain.Alumno;
 import java.math.BigDecimal;

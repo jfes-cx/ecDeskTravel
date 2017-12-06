@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.ComprobantepagoMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Comprobantepago">
+    <id column="ID_COMPROBANTE_PAGO" jdbcType="DECIMAL" property="idComprobantePago" />
+    <result column="RUTA_ARCHIVO" jdbcType="VARCHAR" property="rutaArchivo" />
+    <result column="ID_PAGO" jdbcType="DECIMAL" property="idPago" />
+    <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID_COMPROBANTE_PAGO, RUTA_ARCHIVO, ID_PAGO, FECHA
+  </sql>
+  <select id="selectByExample" parameterType="com.duoc.domain.ComprobantepagoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COMPROBANTEPAGO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.duoc.domain.ComprobantepagoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COMPROBANTEPAGO
+    where ID_COMPROBANTE_PAGO = #{idComprobantePago,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duoc.domain.ComprobantepagoKey">
+    delete from COMPROBANTEPAGO
+    where ID_COMPROBANTE_PAGO = #{idComprobantePago,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duoc.domain.ComprobantepagoCriteria">
+    delete from COMPROBANTEPAGO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duoc.domain.Comprobantepago">
+    insert into COMPROBANTEPAGO (ID_COMPROBANTE_PAGO, RUTA_ARCHIVO, ID_PAGO, 
+      FECHA)
+    values (#{idComprobantePago,jdbcType=DECIMAL}, #{rutaArchivo,jdbcType=VARCHAR}, #{idPago,jdbcType=DECIMAL}, 
+      #{fecha,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.duoc.domain.Comprobantepago">
+    insert into COMPROBANTEPAGO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idComprobantePago != null">
+        ID_COMPROBANTE_PAGO,
+      </if>
+      <if test="rutaArchivo != null">
+        RUTA_ARCHIVO,
+      </if>
+      <if test="idPago != null">
+        ID_PAGO,
+      </if>
+      <if test="fecha != null">
+        FECHA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idComprobantePago != null">
+        #{idComprobantePago,jdbcType=DECIMAL},
+      </if>
+      <if test="rutaArchivo != null">
+        #{rutaArchivo,jdbcType=VARCHAR},
+      </if>
+      <if test="idPago != null">
+        #{idPago,jdbcType=DECIMAL},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duoc.domain.ComprobantepagoCriteria" resultType="java.lang.Long">
+    select count(*) from COMPROBANTEPAGO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update COMPROBANTEPAGO
+    <set>
+      <if test="record.idComprobantePago != null">
+        ID_COMPROBANTE_PAGO = #{record.idComprobantePago,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rutaArchivo != null">
+        RUTA_ARCHIVO = #{record.rutaArchivo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idPago != null">
+        ID_PAGO = #{record.idPago,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fecha != null">
+        FECHA = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update COMPROBANTEPAGO
+    set ID_COMPROBANTE_PAGO = #{record.idComprobantePago,jdbcType=DECIMAL},
+      RUTA_ARCHIVO = #{record.rutaArchivo,jdbcType=VARCHAR},
+      ID_PAGO = #{record.idPago,jdbcType=DECIMAL},
+      FECHA = #{record.fecha,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duoc.domain.Comprobantepago">
+    update COMPROBANTEPAGO
+    <set>
+      <if test="rutaArchivo != null">
+        RUTA_ARCHIVO = #{rutaArchivo,jdbcType=VARCHAR},
+      </if>
+      <if test="idPago != null">
+        ID_PAGO = #{idPago,jdbcType=DECIMAL},
+      </if>
+      <if test="fecha != null">
+        FECHA = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID_COMPROBANTE_PAGO = #{idComprobantePago,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duoc.domain.Comprobantepago">
+    update COMPROBANTEPAGO
+    set RUTA_ARCHIVO = #{rutaArchivo,jdbcType=VARCHAR},
+      ID_PAGO = #{idPago,jdbcType=DECIMAL},
+      FECHA = #{fecha,jdbcType=TIMESTAMP}
+    where ID_COMPROBANTE_PAGO = #{idComprobantePago,jdbcType=DECIMAL}
+  </update>
+</mapper>

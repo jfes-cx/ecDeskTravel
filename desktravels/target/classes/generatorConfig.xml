@@ -41,41 +41,13 @@
                              targetProject="desktravels/src/main/java" type="XMLMAPPER" />
 
         <!-- List of tables to inspect -->
-        <table tableName="ACTIVIDAD" />
-        <table  tableName="ACTIVIDADAPORTES" />
-        <table  tableName="ACTIVIDADVIAJE"/>
-        <table tableName="ALUMNO" />
-        <table  tableName="ANEXOS" />
-        <table  tableName="APODERADO"/>
-        <table tableName="ASEGURADORA" />
-        <table  tableName="COLABORADOR" />
-        <table  tableName="COLEGIO"/>
-        <table tableName="COMUNA" />
-        <table  tableName="CONTRATO" />
-        <table  tableName="CUENTAALUMNO"/>
-        <table tableName="CUENTACURSO" />
-        <table  tableName="CUENTAUSUARIO" />
-        <table  tableName="CURSO"/>
-        <table tableName="DESTINO" />
-        <table  tableName="ESTADOCUENTA" />
-        <table  tableName="ITINERARIO"/>
-        <table tableName="MENU" />
-        <table  tableName="ORIGEN" />
-        <table  tableName="PAGO"/>
-        <table tableName="PAIS" />
-        <table  tableName="PERFIL" />
-        <table  tableName="PERMISO"/>
-        <table tableName="POLIZASEGURO" />
-        <table schema="C##PABLO" tableName="REGION" />
-        <table  tableName="SERVICIO"/>
-        <table tableName="TIPOACTIVIDAD" />
-        <table  tableName="TIPOACTIVIDADVIAJE" />
-        <table  tableName="TIPOCOLABORADOR"/>
-        <table tableName="TIPOCONTRATO" />
-        <table  tableName="TIPOCUENTA" />
-        <table  tableName="TIPOPAGO"/>
-        <table  tableName="TIPOSEGURO"/>
-        <table tableName="TIPOSERVICIO" />
+         <table tableName="ACTIVIDAD"/>
+		 <table tableName="ACTIVIDADAPORTES"/>
+		 <table tableName="ACTIVIDADVIAJE"/>
+		 <table tableName="SERVICIO"/>
+		 <table tableName="SERVICIOVIAJE"/>
+	
+
 		
 		
 		

@@ -1,4 +1,4 @@
-package main.java.com.duoc.util;
+package com.duoc.util;
 
 import com.duoc.domain.CuentaConexionDTO;
 import java.util.ArrayList;
@@ -73,7 +73,18 @@ public class CuentaTableModel extends AbstractTableModel {
                 value = cuenta.getCuenta().getNombrePerfil();
                 break;
             case 6:
-                value = cuenta.getCuenta().getEstado();
+                try {
+                    int estado = cuenta.getCuenta().getIdestado().intValueExact();
+                    String estadoText;
+                    if (estado == 1) {
+                        estadoText = "Activa";
+                    }else{
+                        estadoText = "Inactiva";
+                    }
+                    value = estadoText;
+                } catch (Exception e) {
+                    System.out.println(e.getCause() + " "+e.getMessage());
+                }
                 break;
         }
         return value;

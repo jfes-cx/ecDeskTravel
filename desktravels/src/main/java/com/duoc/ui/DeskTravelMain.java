@@ -6,8 +6,8 @@
 package com.duoc.ui;
 
 import java.util.ArrayList;
-import main.java.com.duoc.ui.AdministrarCuentas;
-import main.java.com.duoc.ui.EstadoCuentaCurso;
+import com.duoc.ui.AdministrarCuentas;
+import com.duoc.ui.EstadoCuentaCurso;
 
 /**
  *
@@ -33,7 +33,7 @@ public class DeskTravelMain extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         lblEstadoCuenta.setText("Bienvenido(a) " + usuario + " Perfil : " + nombrePerfil);
-        System.out.println("DImensiones : " + escritorio.getBounds());
+        perfilar(idPerfil);
     }
 
     /**
@@ -51,17 +51,20 @@ public class DeskTravelMain extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         btnDesconectar = new javax.swing.JButton();
         barraMenuSuperior = new javax.swing.JMenuBar();
-        mMantenedores = new javax.swing.JMenu();
+        mCursos = new javax.swing.JMenu();
         miRegistrarCurso = new javax.swing.JMenuItem();
         miEstadoCuenta = new javax.swing.JMenuItem();
-        miDestinos = new javax.swing.JMenuItem();
-        miTipos = new javax.swing.JMenuItem();
         mContratos = new javax.swing.JMenu();
+        miContratos = new javax.swing.JMenuItem();
+        mTipos = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        mReportes = new javax.swing.JMenu();
+        miReporteEstado = new javax.swing.JMenuItem();
         mCuentas = new javax.swing.JMenu();
         miMantenerCuenta = new javax.swing.JMenuItem();
-        mReportes = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblEstadoCuenta.setText("Bienvenido Administrador - Juan Francisco ");
 
@@ -70,8 +73,8 @@ public class DeskTravelMain extends javax.swing.JFrame {
         barraEstadoLayout.setHorizontalGroup(
             barraEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraEstadoLayout.createSequentialGroup()
-                .addGap(0, 436, Short.MAX_VALUE)
-                .addComponent(lblEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 492, Short.MAX_VALUE)
+                .addComponent(lblEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         barraEstadoLayout.setVerticalGroup(
             barraEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +117,7 @@ public class DeskTravelMain extends javax.swing.JFrame {
 
         barraMenuSuperior.setPreferredSize(new java.awt.Dimension(252, 20));
 
-        mMantenedores.setText("Mantenedores");
+        mCursos.setText("Cursos");
 
         miRegistrarCurso.setText("Registrar Curso");
         miRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +125,7 @@ public class DeskTravelMain extends javax.swing.JFrame {
                 miRegistrarCursoActionPerformed(evt);
             }
         });
-        mMantenedores.add(miRegistrarCurso);
+        mCursos.add(miRegistrarCurso);
 
         miEstadoCuenta.setText("Estado de cuenta curso");
         miEstadoCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -130,28 +133,45 @@ public class DeskTravelMain extends javax.swing.JFrame {
                 miEstadoCuentaActionPerformed(evt);
             }
         });
-        mMantenedores.add(miEstadoCuenta);
+        mCursos.add(miEstadoCuenta);
 
-        miDestinos.setText("Destinos");
-        miDestinos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miDestinosActionPerformed(evt);
-            }
-        });
-        mMantenedores.add(miDestinos);
-
-        miTipos.setText("Tipos");
-        miTipos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miTiposActionPerformed(evt);
-            }
-        });
-        mMantenedores.add(miTipos);
-
-        barraMenuSuperior.add(mMantenedores);
+        barraMenuSuperior.add(mCursos);
 
         mContratos.setText("Contratos");
+
+        miContratos.setText("Registrar Contrato");
+        miContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miContratosActionPerformed(evt);
+            }
+        });
+        mContratos.add(miContratos);
+
         barraMenuSuperior.add(mContratos);
+
+        mTipos.setText("Tipos");
+
+        jMenuItem1.setText("Mantener Tipos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mTipos.add(jMenuItem1);
+
+        barraMenuSuperior.add(mTipos);
+
+        mReportes.setText("Reportes");
+
+        miReporteEstado.setText("Reporte de estado de avance");
+        miReporteEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miReporteEstadoActionPerformed(evt);
+            }
+        });
+        mReportes.add(miReporteEstado);
+
+        barraMenuSuperior.add(mReportes);
 
         mCuentas.setText("Cuentas");
 
@@ -164,9 +184,6 @@ public class DeskTravelMain extends javax.swing.JFrame {
         mCuentas.add(miMantenerCuenta);
 
         barraMenuSuperior.add(mCuentas);
-
-        mReportes.setText("Reportes");
-        barraMenuSuperior.add(mReportes);
 
         setJMenuBar(barraMenuSuperior);
 
@@ -206,18 +223,6 @@ public class DeskTravelMain extends javax.swing.JFrame {
         estcur.setVisible(true);
     }//GEN-LAST:event_miEstadoCuentaActionPerformed
 
-    private void miDestinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDestinosActionPerformed
-//        MantenedorDestinos mandest = new MantenedorDestinos(escritorio);
-//        escritorio.add(mandest);
-//        mandest.setVisible(true);
-    }//GEN-LAST:event_miDestinosActionPerformed
-
-    private void miTiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTiposActionPerformed
-//        MantenedorTipos mantipos = new MantenedorTipos(escritorio);
-//        escritorio.add(mantipos);
-//        mantipos.setVisible(true);
-    }//GEN-LAST:event_miTiposActionPerformed
-
     private void btnDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesconectarActionPerformed
         Login log = new Login();
         log.setVisible(true);
@@ -230,22 +235,53 @@ public class DeskTravelMain extends javax.swing.JFrame {
         admcuen.setVisible(true);
     }//GEN-LAST:event_miMantenerCuentaActionPerformed
 
+    private void miContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miContratosActionPerformed
+                Contratos contra = new Contratos(escritorio);
+                escritorio.add(contra);
+                contra.setVisible(true);
+    }//GEN-LAST:event_miContratosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void miReporteEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miReporteEstadoActionPerformed
+                EstadoCuenta estadoCuenta = new EstadoCuenta();
+                escritorio.add(estadoCuenta);
+                estadoCuenta.setVisible(true);
+    }//GEN-LAST:event_miReporteEstadoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraEstado;
     private javax.swing.JMenuBar barraMenuSuperior;
     private javax.swing.JButton btnDesconectar;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblEstadoCuenta;
     private javax.swing.JMenu mContratos;
     private javax.swing.JMenu mCuentas;
-    private javax.swing.JMenu mMantenedores;
+    private javax.swing.JMenu mCursos;
     private javax.swing.JMenu mReportes;
-    private javax.swing.JMenuItem miDestinos;
+    private javax.swing.JMenu mTipos;
+    private javax.swing.JMenuItem miContratos;
     private javax.swing.JMenuItem miEstadoCuenta;
     private javax.swing.JMenuItem miMantenerCuenta;
     private javax.swing.JMenuItem miRegistrarCurso;
-    private javax.swing.JMenuItem miTipos;
+    private javax.swing.JMenuItem miReporteEstado;
     private javax.swing.JPanel panelCentral;
     // End of variables declaration//GEN-END:variables
+
+    private void perfilar(String idPerfilSt) {
+        int idPerfil = Integer.parseInt(idPerfilSt);
+        if (idPerfil == 3) {
+            mReportes.setEnabled(false);
+            mCuentas.setEnabled(false);
+        }else if(idPerfil == 6){
+            mCursos.setEnabled(false);
+            mContratos.setEnabled(false);
+            mTipos.setEnabled(false);
+            mCuentas.setEnabled(false);
+        }
+    }
 
 }

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Actividad extends ActividadKey {
-
     private BigDecimal idcurso;
 
     private BigDecimal idtipoactividad;
@@ -14,8 +13,6 @@ public class Actividad extends ActividadKey {
     private Date fechainicio;
 
     private Date fechatermino;
-
-    private BigDecimal cantidadpersona;
 
     private BigDecimal montorecaudado;
 
@@ -59,14 +56,6 @@ public class Actividad extends ActividadKey {
         this.fechatermino = fechatermino;
     }
 
-    public BigDecimal getCantidadpersona() {
-        return cantidadpersona;
-    }
-
-    public void setCantidadpersona(BigDecimal cantidadpersona) {
-        this.cantidadpersona = cantidadpersona;
-    }
-
     public BigDecimal getMontorecaudado() {
         return montorecaudado;
     }
@@ -88,13 +77,12 @@ public class Actividad extends ActividadKey {
         }
         Actividad other = (Actividad) that;
         return (this.getIdactividad() == null ? other.getIdactividad() == null : this.getIdactividad().equals(other.getIdactividad()))
-                && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
-                && (this.getIdtipoactividad() == null ? other.getIdtipoactividad() == null : this.getIdtipoactividad().equals(other.getIdtipoactividad()))
-                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-                && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
-                && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
-                && (this.getCantidadpersona() == null ? other.getCantidadpersona() == null : this.getCantidadpersona().equals(other.getCantidadpersona()))
-                && (this.getMontorecaudado() == null ? other.getMontorecaudado() == null : this.getMontorecaudado().equals(other.getMontorecaudado()));
+            && (this.getIdcurso() == null ? other.getIdcurso() == null : this.getIdcurso().equals(other.getIdcurso()))
+            && (this.getIdtipoactividad() == null ? other.getIdtipoactividad() == null : this.getIdtipoactividad().equals(other.getIdtipoactividad()))
+            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+            && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
+            && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
+            && (this.getMontorecaudado() == null ? other.getMontorecaudado() == null : this.getMontorecaudado().equals(other.getMontorecaudado()));
     }
 
     @Override
@@ -107,7 +95,6 @@ public class Actividad extends ActividadKey {
         result = prime * result + ((getNombre() == null) ? 0 : getNombre().hashCode());
         result = prime * result + ((getFechainicio() == null) ? 0 : getFechainicio().hashCode());
         result = prime * result + ((getFechatermino() == null) ? 0 : getFechatermino().hashCode());
-        result = prime * result + ((getCantidadpersona() == null) ? 0 : getCantidadpersona().hashCode());
         result = prime * result + ((getMontorecaudado() == null) ? 0 : getMontorecaudado().hashCode());
         return result;
     }

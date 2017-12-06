@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Actividadviaje extends ActividadviajeKey {
-
     private String nombre;
 
     private String descripcion;
@@ -14,6 +13,8 @@ public class Actividadviaje extends ActividadviajeKey {
     private Date fechatermino;
 
     private BigDecimal idtipoactividadviaje;
+
+    private BigDecimal precio;
 
     public String getNombre() {
         return nombre;
@@ -55,6 +56,14 @@ public class Actividadviaje extends ActividadviajeKey {
         this.idtipoactividadviaje = idtipoactividadviaje;
     }
 
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -68,11 +77,12 @@ public class Actividadviaje extends ActividadviajeKey {
         }
         Actividadviaje other = (Actividadviaje) that;
         return (this.getIdactividadviaje() == null ? other.getIdactividadviaje() == null : this.getIdactividadviaje().equals(other.getIdactividadviaje()))
-                && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
-                && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
-                && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
-                && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
-                && (this.getIdtipoactividadviaje() == null ? other.getIdtipoactividadviaje() == null : this.getIdtipoactividadviaje().equals(other.getIdtipoactividadviaje()));
+            && (this.getNombre() == null ? other.getNombre() == null : this.getNombre().equals(other.getNombre()))
+            && (this.getDescripcion() == null ? other.getDescripcion() == null : this.getDescripcion().equals(other.getDescripcion()))
+            && (this.getFechainicio() == null ? other.getFechainicio() == null : this.getFechainicio().equals(other.getFechainicio()))
+            && (this.getFechatermino() == null ? other.getFechatermino() == null : this.getFechatermino().equals(other.getFechatermino()))
+            && (this.getIdtipoactividadviaje() == null ? other.getIdtipoactividadviaje() == null : this.getIdtipoactividadviaje().equals(other.getIdtipoactividadviaje()))
+            && (this.getPrecio() == null ? other.getPrecio() == null : this.getPrecio().equals(other.getPrecio()));
     }
 
     @Override
@@ -85,6 +95,12 @@ public class Actividadviaje extends ActividadviajeKey {
         result = prime * result + ((getFechainicio() == null) ? 0 : getFechainicio().hashCode());
         result = prime * result + ((getFechatermino() == null) ? 0 : getFechatermino().hashCode());
         result = prime * result + ((getIdtipoactividadviaje() == null) ? 0 : getIdtipoactividadviaje().hashCode());
+        result = prime * result + ((getPrecio() == null) ? 0 : getPrecio().hashCode());
         return result;
+    }
+    
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }

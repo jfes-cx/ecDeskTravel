@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioCriteria {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,7 +65,6 @@ public class ServicioCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -164,66 +162,6 @@ public class ServicioCriteria {
 
         public Criteria andIdservicioNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("IDSERVICIO not between", value1, value2, "idservicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioIsNull() {
-            addCriterion("IDTIPOSERVICIO is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioIsNotNull() {
-            addCriterion("IDTIPOSERVICIO is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioEqualTo(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO =", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioNotEqualTo(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO <>", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioGreaterThan(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO >", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO >=", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioLessThan(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO <", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("IDTIPOSERVICIO <=", value, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioIn(List<BigDecimal> values) {
-            addCriterion("IDTIPOSERVICIO in", values, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioNotIn(List<BigDecimal> values) {
-            addCriterion("IDTIPOSERVICIO not in", values, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("IDTIPOSERVICIO between", value1, value2, "idtiposervicio");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdtiposervicioNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("IDTIPOSERVICIO not between", value1, value2, "idtiposervicio");
             return (Criteria) this;
         }
 
@@ -367,133 +305,123 @@ public class ServicioCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoIsNull() {
-            addCriterion("TELEFONO is null");
+        public Criteria andIdservicioviajeIsNull() {
+            addCriterion("IDSERVICIOVIAJE is null");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoIsNotNull() {
-            addCriterion("TELEFONO is not null");
+        public Criteria andIdservicioviajeIsNotNull() {
+            addCriterion("IDSERVICIOVIAJE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoEqualTo(BigDecimal value) {
-            addCriterion("TELEFONO =", value, "telefono");
+        public Criteria andIdservicioviajeEqualTo(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE =", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoNotEqualTo(BigDecimal value) {
-            addCriterion("TELEFONO <>", value, "telefono");
+        public Criteria andIdservicioviajeNotEqualTo(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE <>", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoGreaterThan(BigDecimal value) {
-            addCriterion("TELEFONO >", value, "telefono");
+        public Criteria andIdservicioviajeGreaterThan(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE >", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("TELEFONO >=", value, "telefono");
+        public Criteria andIdservicioviajeGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE >=", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoLessThan(BigDecimal value) {
-            addCriterion("TELEFONO <", value, "telefono");
+        public Criteria andIdservicioviajeLessThan(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE <", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("TELEFONO <=", value, "telefono");
+        public Criteria andIdservicioviajeLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("IDSERVICIOVIAJE <=", value, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoIn(List<BigDecimal> values) {
-            addCriterion("TELEFONO in", values, "telefono");
+        public Criteria andIdservicioviajeIn(List<BigDecimal> values) {
+            addCriterion("IDSERVICIOVIAJE in", values, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoNotIn(List<BigDecimal> values) {
-            addCriterion("TELEFONO not in", values, "telefono");
+        public Criteria andIdservicioviajeNotIn(List<BigDecimal> values) {
+            addCriterion("IDSERVICIOVIAJE not in", values, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TELEFONO between", value1, value2, "telefono");
+        public Criteria andIdservicioviajeBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("IDSERVICIOVIAJE between", value1, value2, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andTelefonoNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("TELEFONO not between", value1, value2, "telefono");
+        public Criteria andIdservicioviajeNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("IDSERVICIOVIAJE not between", value1, value2, "idservicioviaje");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoIsNull() {
-            addCriterion("ENCARGADO is null");
+        public Criteria andPrecioIsNull() {
+            addCriterion("PRECIO is null");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoIsNotNull() {
-            addCriterion("ENCARGADO is not null");
+        public Criteria andPrecioIsNotNull() {
+            addCriterion("PRECIO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoEqualTo(String value) {
-            addCriterion("ENCARGADO =", value, "encargado");
+        public Criteria andPrecioEqualTo(BigDecimal value) {
+            addCriterion("PRECIO =", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoNotEqualTo(String value) {
-            addCriterion("ENCARGADO <>", value, "encargado");
+        public Criteria andPrecioNotEqualTo(BigDecimal value) {
+            addCriterion("PRECIO <>", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoGreaterThan(String value) {
-            addCriterion("ENCARGADO >", value, "encargado");
+        public Criteria andPrecioGreaterThan(BigDecimal value) {
+            addCriterion("PRECIO >", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoGreaterThanOrEqualTo(String value) {
-            addCriterion("ENCARGADO >=", value, "encargado");
+        public Criteria andPrecioGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("PRECIO >=", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoLessThan(String value) {
-            addCriterion("ENCARGADO <", value, "encargado");
+        public Criteria andPrecioLessThan(BigDecimal value) {
+            addCriterion("PRECIO <", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoLessThanOrEqualTo(String value) {
-            addCriterion("ENCARGADO <=", value, "encargado");
+        public Criteria andPrecioLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("PRECIO <=", value, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoLike(String value) {
-            addCriterion("ENCARGADO like", value, "encargado");
+        public Criteria andPrecioIn(List<BigDecimal> values) {
+            addCriterion("PRECIO in", values, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoNotLike(String value) {
-            addCriterion("ENCARGADO not like", value, "encargado");
+        public Criteria andPrecioNotIn(List<BigDecimal> values) {
+            addCriterion("PRECIO not in", values, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoIn(List<String> values) {
-            addCriterion("ENCARGADO in", values, "encargado");
+        public Criteria andPrecioBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PRECIO between", value1, value2, "precio");
             return (Criteria) this;
         }
 
-        public Criteria andEncargadoNotIn(List<String> values) {
-            addCriterion("ENCARGADO not in", values, "encargado");
-            return (Criteria) this;
-        }
-
-        public Criteria andEncargadoBetween(String value1, String value2) {
-            addCriterion("ENCARGADO between", value1, value2, "encargado");
-            return (Criteria) this;
-        }
-
-        public Criteria andEncargadoNotBetween(String value1, String value2) {
-            addCriterion("ENCARGADO not between", value1, value2, "encargado");
+        public Criteria andPrecioNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PRECIO not between", value1, value2, "precio");
             return (Criteria) this;
         }
 
@@ -506,11 +434,6 @@ public class ServicioCriteria {
             addCriterion("upper(DESCRIPCION) like", value.toUpperCase(), "descripcion");
             return (Criteria) this;
         }
-
-        public Criteria andEncargadoLikeInsensitive(String value) {
-            addCriterion("upper(ENCARGADO) like", value.toUpperCase(), "encargado");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -521,7 +444,6 @@ public class ServicioCriteria {
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;

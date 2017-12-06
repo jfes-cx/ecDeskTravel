@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.duoc.ui;
+package com.duoc.ui;
 
 import com.duoc.domain.CuentaConexionDTO;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import main.java.com.duoc.controller.CuentaController;
-import main.java.com.duoc.util.CuentaTableModel;
+import com.duoc.controller.CuentaController;
+import com.duoc.util.CuentaTableModel;
 
 /**
  *
@@ -20,6 +20,7 @@ public class AdministrarCuentas extends javax.swing.JInternalFrame {
 
     CuentaController cuentcon;
     JDesktopPane escritorio;
+    
 
     /**
      * Creates new form EstadoCuenta
@@ -32,6 +33,7 @@ public class AdministrarCuentas extends javax.swing.JInternalFrame {
         this.escritorio = escritorio;
         initComponents();
         iniciarComponentes();
+        setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
     }
 
     /**
@@ -90,7 +92,12 @@ public class AdministrarCuentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setText("Desactivar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlResultsLayout = new javax.swing.GroupLayout(pnlResults);
         pnlResults.setLayout(pnlResultsLayout);
@@ -176,6 +183,19 @@ public class AdministrarCuentas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int selectedRow = tblCuentas.getSelectedRow();
+        if(selectedRow > -1){
+            CuentaTableModel model = (CuentaTableModel) tblCuentas.getModel();
+            CuentaConexionDTO selectedCuenta = model.getCuentaIndex(selectedRow) ;
+            cuentcon.desactivarCuenta(selectedCuenta.getCuenta().getIdcuentausuario().intValueExact(),tblCuentas);
+            JOptionPane.showMessageDialog(this,"Cuenta desactivada con éxito!");
+            cuentcon.cargarTablaCuentas(tblCuentas);
+        }else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar una cuenta a editar!");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
@@ -197,5 +217,6 @@ public class AdministrarCuentas extends javax.swing.JInternalFrame {
     public JTable getCuentasTable(){
         return tblCuentas;
     }
+
 
 }

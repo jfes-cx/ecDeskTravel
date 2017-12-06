@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.duoc.ui;
+package com.duoc.ui;
 
 import com.duoc.domain.CuentaConexionDTO;
 import com.duoc.domain.Perfil;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
-import main.java.com.duoc.controller.CuentaController;
+import com.duoc.controller.CuentaController;
+import com.duoc.util.FormValidator;
+
 
 /**
  *
@@ -47,9 +50,13 @@ public class CuentaForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblDetalleCuenta = new javax.swing.JLabel();
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        pnlForm = new javax.swing.JPanel();
+        lblRepContrasena = new javax.swing.JLabel();
+        lblContasenha = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JPasswordField();
+        txtRepContrasena = new javax.swing.JPasswordField();
+        btnGuardar = new javax.swing.JButton();
+        pblActualizar = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblApellidoPat = new javax.swing.JLabel();
@@ -66,23 +73,25 @@ public class CuentaForm extends javax.swing.JDialog {
         cmbPerfil = new javax.swing.JComboBox<>();
         cmbEstado = new javax.swing.JComboBox<>();
         lblEstado = new javax.swing.JLabel();
-        lblRepContrasena = new javax.swing.JLabel();
-        lblContasenha = new javax.swing.JLabel();
-        txtContrasena = new javax.swing.JPasswordField();
-        txtRepContrasena = new javax.swing.JPasswordField();
-        btnGuardar = new javax.swing.JButton();
+        lblDetalleCuenta = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        lblDetalleCuenta.setText("Detalle de Cuenta");
+        lblRepContrasena.setText("Repetir Contraseña:");
 
-        lblID.setText("ID:");
+        lblContasenha.setText("Contraseña:");
 
-        txtID.setEditable(false);
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        txtContrasena.setText("jPasswordField1");
+
+        txtRepContrasena.setText("jPasswordField1");
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -112,7 +121,7 @@ public class CuentaForm extends javax.swing.JDialog {
             }
         });
 
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activa", "Inactiva" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Activa", "Inactiva" }));
         cmbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEstadoActionPerformed(evt);
@@ -121,120 +130,143 @@ public class CuentaForm extends javax.swing.JDialog {
 
         lblEstado.setText("Estado:");
 
-        lblRepContrasena.setText("Repetir Contraseña:");
-
-        lblContasenha.setText("Contraseña:");
-
-        txtContrasena.setText("jPasswordField1");
-
-        txtRepContrasena.setText("jPasswordField1");
-
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDetalleCuenta)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblApellidoMat)
-                                        .addComponent(lblTelefono)
-                                        .addComponent(lblNombre))
-                                    .addGap(17, 17, 17))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblPerfil)
-                                    .addGap(29, 29, 29)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblContasenha)
-                                    .addComponent(lblRepContrasena))
-                                .addGap(3, 3, 3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtRepContrasena)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtApellidoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbPerfil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblApellidoPat)
-                                    .addComponent(lblRUT)
-                                    .addComponent(lblEmail)
-                                    .addComponent(lblEstado))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtApellidoPat, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRUT, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnGuardar))))
-                .addGap(38, 38, 38))
+        javax.swing.GroupLayout pblActualizarLayout = new javax.swing.GroupLayout(pblActualizar);
+        pblActualizar.setLayout(pblActualizarLayout);
+        pblActualizarLayout.setHorizontalGroup(
+            pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pblActualizarLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblActualizarLayout.createSequentialGroup()
+                        .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblApellidoMat)
+                            .addComponent(lblTelefono)
+                            .addComponent(lblNombre))
+                        .addGap(17, 17, 17))
+                    .addGroup(pblActualizarLayout.createSequentialGroup()
+                        .addComponent(lblPerfil)
+                        .addGap(29, 29, 29)))
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pblActualizarLayout.createSequentialGroup()
+                        .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellidoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbPerfil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblApellidoPat)
+                    .addComponent(lblRUT)
+                    .addComponent(lblEmail)
+                    .addComponent(lblEstado))
+                .addGap(18, 18, 18)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtApellidoPat, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRUT, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblDetalleCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pblActualizarLayout.setVerticalGroup(
+            pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblActualizarLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(lblApellidoPat)
                     .addComponent(txtApellidoPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblApellidoMat)
                     .addComponent(txtApellidoMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRUT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTelefono)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pblActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPerfil)
                     .addComponent(cmbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEstado)
                     .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlFormLayout = new javax.swing.GroupLayout(pnlForm);
+        pnlForm.setLayout(pnlFormLayout);
+        pnlFormLayout.setHorizontalGroup(
+            pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContasenha)
+                    .addComponent(lblRepContrasena))
+                .addGap(3, 3, 3)
+                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtRepContrasena)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(197, 197, 197)
+                .addComponent(btnGuardar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pblActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlFormLayout.setVerticalGroup(
+            pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormLayout.createSequentialGroup()
+                .addComponent(pblActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContasenha)
                     .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRepContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRepContrasena)
                     .addComponent(btnGuardar))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        lblDetalleCuenta.setText("Detalle de Cuenta");
+
+        txtID.setEditable(false);
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        lblID.setText("ID:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblDetalleCuenta)
+                .addGap(18, 18, 18)
+                .addComponent(lblID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDetalleCuenta)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -243,6 +275,66 @@ public class CuentaForm extends javax.swing.JDialog {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String id = txtID.getText();
+        String rut = txtRUT.getText();
+        String nombre = txtNombre.getText();
+        String apellidoPat = txtApellidoPat.getText();
+        String apellidoMat = txtApellidoMat.getText();
+        String email = txtEmail.getText();
+        String telefono = txtTelefono.getText();
+        String contra = new String(txtContrasena.getPassword());
+        String contraConfirm = new String(txtRepContrasena.getPassword());
+        Perfil perfil = (Perfil)cmbPerfil.getSelectedItem();
+        String estado = cmbEstado.getSelectedItem().toString();
+        BigDecimal estadoSt ;
+        if(estado == "Activa"){
+            estadoSt = BigDecimal.valueOf(1);
+        }else{
+            estadoSt = BigDecimal.valueOf(2);
+        }
+                
+        if(mode == 1){
+            if(FormValidator.validarComponentes(pnlForm.getComponents())){
+                JOptionPane.showMessageDialog(null,"Existen campos vacios, intente nuevamente.");
+            }else {
+                Boolean insertResult = cuentaCont.insertarCuenta(rut,nombre,apellidoPat,apellidoMat,email,telefono,contra,perfil,estado,internalFrame.getCuentasTable(),this);
+                if (insertResult) {
+                    int input = JOptionPane.showOptionDialog(null, "Cuenta insertada correctamente.", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                    if(input == JOptionPane.OK_OPTION)
+                    {
+                        this.setVisible(false);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this,"Error al insertar, intente nuevamente.");
+                }
+            }
+        }else if(mode == 2){
+            if(FormValidator.validarComponentes(pnlForm.getComponents())){
+                JOptionPane.showMessageDialog(null,"Existen campos vacios, intente nuevamente.");
+            }else {
+                cuentaAct.getCol().setRut(rut);
+                cuentaAct.getCol().setNombre(nombre);
+                cuentaAct.getCol().setApellidpaterno(apellidoPat);
+                cuentaAct.getCol().setApellidomaterno(apellidoMat);
+                cuentaAct.getCol().setTelefono(BigDecimal.valueOf(Integer.valueOf(telefono)));
+                cuentaAct.getCuenta().setIdperfil(perfil.getIdperfil());
+                cuentaAct.getCuenta().setIdestado(estadoSt);
+                cuentaAct.getCuenta().setCorreoelectronico(email);
+                Boolean updateResult = cuentaCont.actualizarCuenta(cuentaAct,internalFrame.getCuentasTable(),this);
+                if (updateResult) {
+                    int input = JOptionPane.showOptionDialog(null, "Cuenta actualizada correctamente.", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                    if(input == JOptionPane.OK_OPTION)
+                    {
+                        this.setVisible(false);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this,"Error al actualizar, intente nuevamente.");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -255,37 +347,6 @@ public class CuentaForm extends javax.swing.JDialog {
     private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbEstadoActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String id = txtID.getText();
-        String rut = txtRUT.getText();
-        String nombre = txtNombre.getText();
-        String apellidoPat = txtApellidoPat.getText();
-        String apellidoMat = txtApellidoMat.getText();
-        String email = txtEmail.getText();
-        String telefono = txtTelefono.getText();
-        String contra = txtContrasena.getText();
-        String contraConfirm = txtRepContrasena.getText();
-        Perfil perfil = (Perfil)cmbPerfil.getSelectedItem();
-        String estado = cmbEstado.getSelectedItem().toString();
-        if(mode == 1){
-            Boolean insertResult = cuentaCont.insertarCuenta(rut,nombre,apellidoPat,apellidoMat,email,telefono,contra,perfil,estado,internalFrame.getCuentasTable(),this);
-            if (insertResult) {
-                int input = JOptionPane.showOptionDialog(null, "Cuenta insertada correctamente", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-                if(input == JOptionPane.OK_OPTION)
-                {
-                    this.setVisible(false);
-                }
-            }else{
-                 JOptionPane.showMessageDialog(this,"Error al insertar, intente nuevamente");
-            }
-            
-        }else{
-           
-            cuentaCont.actualizarCuenta(id,rut,nombre,apellidoPat,apellidoMat,email,telefono,contra,perfil,estado,internalFrame.getCuentasTable(),this);
-           
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -303,6 +364,8 @@ public class CuentaForm extends javax.swing.JDialog {
     private javax.swing.JLabel lblRUT;
     private javax.swing.JLabel lblRepContrasena;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JPanel pblActualizar;
+    private javax.swing.JPanel pnlForm;
     private javax.swing.JTextField txtApellidoMat;
     private javax.swing.JTextField txtApellidoPat;
     private javax.swing.JPasswordField txtContrasena;
@@ -317,6 +380,7 @@ public class CuentaForm extends javax.swing.JDialog {
     private void iniciarComponentes() {
         cuentaCont = new CuentaController();
         cuentaCont.cargarComboPerfiles(cmbPerfil);
+        txtNombre.requestFocus();
         if(cuentaAct != null){
             txtID.setText(cuentaAct.getCuenta().getIdcuentausuario().toString());
             txtRUT.setText(cuentaAct.getCol().getRut());
@@ -325,6 +389,17 @@ public class CuentaForm extends javax.swing.JDialog {
             txtApellidoMat.setText(cuentaAct.getCol().getApellidomaterno());
             txtEmail.setText(cuentaAct.getCuenta().getCorreoelectronico());
             txtTelefono.setText(cuentaAct.getCol().getTelefono().toString());
+            int selectedPerfInx = 1;
+            int perfilSize = cmbPerfil.getItemCount();
+            for (int i = 1; i < perfilSize; i++) {
+              Perfil item = cmbPerfil.getItemAt(i);
+                if (item.getDescripcion().equalsIgnoreCase(cuentaAct.getCuenta().getNombrePerfil())) {
+                    selectedPerfInx = i;
+                }
+            }
+          
+            cmbPerfil.setSelectedIndex(selectedPerfInx);
+            cmbEstado.setSelectedIndex(cuentaAct.getCuenta().getIdestado().intValueExact());
         }
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.duoc.ui;
+package com.duoc.ui;
 
 import com.duoc.controller.CursoController;
 import com.duoc.domain.Colegio;
@@ -37,6 +37,7 @@ public class EstadoCuentaCurso extends javax.swing.JInternalFrame {
         this.escritorio = escritorio;
         initComponents();
         iniciarComponentes();
+        setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
     }
 
     /**
@@ -143,11 +144,14 @@ public class EstadoCuentaCurso extends javax.swing.JInternalFrame {
 
         lblMeta.setText("Meta");
 
+        txtTotalAcumulado.setEditable(false);
         txtTotalAcumulado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalAcumuladoActionPerformed(evt);
             }
         });
+
+        txtMeta.setEditable(false);
 
         btnTerminar.setText("Terminar");
         btnTerminar.addActionListener(new java.awt.event.ActionListener() {

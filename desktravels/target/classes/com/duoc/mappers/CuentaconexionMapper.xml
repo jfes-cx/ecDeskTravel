@@ -17,13 +17,13 @@
 
     </resultMap> 
     
-    
     <resultMap id="CuentaMap" type="com.duoc.domain.CuentaConexionDTO">
      <id column="IDCUENTAUSUARIO" jdbcType="DECIMAL" property="cuenta.idcuentausuario" />
         <result column="IDPERFIL" jdbcType="DECIMAL" property="cuenta.idperfil"/>
         <result column="CORREOELECTRONICO" jdbcType="VARCHAR" property="cuenta.correoelectronico"/>
         <result column="CONTRASENA" jdbcType="VARCHAR" property="cuenta.contrasena"/>
         <result column="ESTADO" jdbcType="VARCHAR" property="cuenta.estado"/>
+        <result column="IDESTADOCUENTA" jdbcType="DECIMAL" property="cuenta.idestado"/>
         <result column="NOMBRE" jdbcType="VARCHAR" property="col.nombre"/>
         <result column="DIRECCION" jdbcType="VARCHAR" property="col.direccion"/>
         <result column="TELEFONO" jdbcType="VARCHAR" property="col.telefono"/>

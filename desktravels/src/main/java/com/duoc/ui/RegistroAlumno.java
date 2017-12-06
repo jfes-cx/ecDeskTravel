@@ -8,8 +8,10 @@ package com.duoc.ui;
 import com.duoc.controller.AlumnoController;
 import com.duoc.domain.Colegio;
 import com.duoc.domain.Curso;
+import com.duoc.util.FormValidator;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +22,8 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
 
     private AlumnoController alumnocon = new AlumnoController();
     private Curso curso;
-
+    private JDesktopPane escritorio;
+    private RegistrarCurso regCurso;
     /**
      * Creates new form RegistrarCurso
      */
@@ -31,10 +34,14 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
     /**
      * Creates new form RegistrarCurso
      */
-    public RegistroAlumno(Curso curso) {
+    public RegistroAlumno(Curso curso,JDesktopPane esc,RegistrarCurso registroCurso) {
+        this.escritorio = esc;
+        this.regCurso = registroCurso;
         initComponents();
         iniciarComponentes(curso);
+        setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +63,13 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
         txtCorreo = new javax.swing.JTextField();
         lblTelAlumno = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblAlumnos = new javax.swing.JTable();
         btnRegistrar = new javax.swing.JButton();
         lblRut = new javax.swing.JLabel();
         txtRut = new javax.swing.JTextField();
+        btnVolver = new javax.swing.JButton();
+        pnltablaAlumnos = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblAlumnos = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -79,24 +88,13 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
 
         lblNomAlumno.setText("Nombre:");
 
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+
         lblDirAlumno.setText("Dirección:");
 
         lblCorrAlumno.setText("Correo:");
 
         lblTelAlumno.setText("Telefono:");
-
-        tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(tblAlumnos);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,33 +112,31 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
             .addGroup(pnlRegistroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegistroAl)
                     .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomAlumno)
-                            .addGroup(pnlRegistroLayout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblRegistroAl))
-                        .addComponent(btnRegistrar))
-                    .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(pnlRegistroLayout.createSequentialGroup()
-                            .addComponent(lblTelAlumno)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtTel))
+                        .addComponent(btnRegistrar)
                         .addGroup(pnlRegistroLayout.createSequentialGroup()
                             .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCorrAlumno)
                                 .addComponent(lblDirAlumno)
-                                .addComponent(lblCorrAlumno))
-                            .addGap(18, 18, 18)
-                            .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(lblRut)
+                                .addComponent(lblTelAlumno))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE))
+                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblRut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNomAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlRegistroLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistroLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         pnlRegistroLayout.setVerticalGroup(
             pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,50 +144,95 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(lblRegistroAl)
                 .addGap(18, 18, 18)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNomAlumno)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblRut)
-                            .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDirAlumno)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCorrAlumno)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelAlumno)
-                            .addComponent(txtTel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrar)
-                        .addContainerGap())
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)))
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomAlumno)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRut)
+                    .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDirAlumno)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCorrAlumno)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTelAlumno)
+                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistrar)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblAlumnos);
+
+        javax.swing.GroupLayout pnltablaAlumnosLayout = new javax.swing.GroupLayout(pnltablaAlumnos);
+        pnltablaAlumnos.setLayout(pnltablaAlumnosLayout);
+        pnltablaAlumnosLayout.setHorizontalGroup(
+            pnltablaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnltablaAlumnosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnltablaAlumnosLayout.setVerticalGroup(
+            pnltablaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnltablaAlumnosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(751, Short.MAX_VALUE)
-                .addComponent(btnTerminar)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnltablaAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVolver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTerminar)))
                 .addContainerGap())
-            .addComponent(pnlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTerminar)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnltablaAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver)
+                    .addComponent(btnTerminar))
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -210,10 +251,20 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
         Boolean result = alumnocon.actualizarTablaAlumnos(nombre, direccion, telefono, correo, rut, curso.getIdcurso(), tblAlumnos);
         if (result) {
             JOptionPane.showMessageDialog(this, "Alumno agregado correctamente");
+             FormValidator.emptyComponent(txtNombre);
+             FormValidator.emptyComponent(txtDireccion);
+             FormValidator.emptyComponent(txtTel);
+             FormValidator.emptyComponent(txtCorreo);
+             FormValidator.emptyComponent(txtRut);
         } else {
             JOptionPane.showMessageDialog(this, "Alumno no pudo ser agregado");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.setVisible(false);
+        regCurso.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void displayResult(List resultList) {
         Vector<String> tableHeaders = new Vector<String>();
@@ -238,6 +289,7 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnTerminar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCorrAlumno;
     private javax.swing.JLabel lblDirAlumno;
@@ -246,6 +298,7 @@ public class RegistroAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblRut;
     private javax.swing.JLabel lblTelAlumno;
     private javax.swing.JPanel pnlRegistro;
+    private javax.swing.JPanel pnltablaAlumnos;
     private javax.swing.JTable tblAlumnos;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;

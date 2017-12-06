@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Actividadaportes extends ActividadaportesKey {
-
     private Date fecha;
 
     private BigDecimal monto;
@@ -38,9 +37,9 @@ public class Actividadaportes extends ActividadaportesKey {
         }
         Actividadaportes other = (Actividadaportes) that;
         return (this.getIdactividadaportes() == null ? other.getIdactividadaportes() == null : this.getIdactividadaportes().equals(other.getIdactividadaportes()))
-                && (this.getIdcuentaalumnos() == null ? other.getIdcuentaalumnos() == null : this.getIdcuentaalumnos().equals(other.getIdcuentaalumnos()))
-                && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()))
-                && (this.getMonto() == null ? other.getMonto() == null : this.getMonto().equals(other.getMonto()));
+            && (this.getIdcuentaalumnos() == null ? other.getIdcuentaalumnos() == null : this.getIdcuentaalumnos().equals(other.getIdcuentaalumnos()))
+            && (this.getFecha() == null ? other.getFecha() == null : this.getFecha().equals(other.getFecha()))
+            && (this.getMonto() == null ? other.getMonto() == null : this.getMonto().equals(other.getMonto()));
     }
 
     @Override

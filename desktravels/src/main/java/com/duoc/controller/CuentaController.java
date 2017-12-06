@@ -1,4 +1,4 @@
-package main.java.com.duoc.controller;
+package com.duoc.controller;
 
 import com.duoc.domain.Colaborador;
 import java.util.HashMap;
@@ -13,18 +13,19 @@ import javax.swing.JTable;
 import com.duoc.domain.CuentaConexionDTO;
 import com.duoc.domain.Cuentausuario;
 import com.duoc.domain.Perfil;
+import com.duoc.util.EncryptUtil;
 import java.math.BigDecimal;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import main.java.com.duoc.ui.CuentaForm;
-import main.java.com.duoc.util.CuentaTableModel;
-import main.java.com.duoc.util.EncryptUtil;
+import com.duoc.ui.CuentaForm;
+import com.duoc.util.CuentaTableModel;
+
 import org.apache.ibatis.exceptions.PersistenceException;
 
 public class CuentaController {
 
 
-    public void cargarTablaCuentas(JTable tblAlumnos) {
+    public void cargarTablaCuentas(JTable tblCuentas) {
         SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
         try {
           
@@ -32,7 +33,7 @@ public class CuentaController {
             sqlSession.selectList("com.duoc.mappers.CuentaconexionMapper.GET_CUENTAS_CONEXION", parms);
             List<CuentaConexionDTO> cuentaList = (List<CuentaConexionDTO>) parms.get("cuentas_cursor");
             CuentaTableModel model = new CuentaTableModel(cuentaList);
-            tblAlumnos.setModel(model);
+            tblCuentas.setModel(model);
           
         } finally {
             sqlSession.close();
@@ -73,7 +74,11 @@ public class CuentaController {
             }else{
                 estadoSt = BigDecimal.valueOf(2);
             }
-            String contrasena = EncryptUtil.sha256Hex(contra);
+            String contrasena = null;
+            if (contra!=null) {
+                contrasena = EncryptUtil.sha256Hex(contra);
+            }
+            
             parms.put("idPerfil",perfil.getIdperfil());
             parms.put("contrasena",contrasena);
             parms.put("correo",email);
@@ -85,7 +90,7 @@ public class CuentaController {
             if (idCuentaNew != null) {
                 Map<String, Object> parmsCol = new HashMap<String, Object>();
 
-                parmsCol.put("nombre",rut);
+                parmsCol.put("nombre",nombre);
                 parmsCol.put("telefono",telefono);
                 parmsCol.put("idCuentausuario",idCuentaNew);
                 parmsCol.put("idTipocolaborador",21);
@@ -129,8 +134,56 @@ public class CuentaController {
         }
     }
 
-    public void actualizarCuenta(String id, String rut, String nombre, String apellidoPat, String apellidoMat, String email, String telefono, String contra, Perfil perfil, String estado, JTable cuentasTable, CuentaForm aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean actualizarCuenta(CuentaConexionDTO cuentaAct, JTable cuentasTable, CuentaForm aThis) {
+        SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
+        try{
+            
+            Map<String, Object> parms = new HashMap<String, Object>();
+            String contrasena = null;
+            if (cuentaAct.getCuenta().getContrasena() != null) {
+                contrasena = EncryptUtil.sha256Hex(cuentaAct.getCuenta().getContrasena());
+            }
+         
+            parms.put("idColaborador",cuentaAct.getCuenta().getIdperfil());
+            parms.put("nombre",cuentaAct.getCol().getNombre());
+            parms.put("telefono",cuentaAct.getCol().getTelefono());
+            parms.put("idCuentausuario",cuentaAct.getCuenta().getIdcuentausuario());
+            parms.put("rut",cuentaAct.getCol().getRut());
+            parms.put("apellidoPat",cuentaAct.getCol().getApellidpaterno());
+            parms.put("apellidoMat",cuentaAct.getCol().getApellidomaterno());
+            parms.put("idPerfil",cuentaAct.getCuenta().getIdperfil());
+            parms.put("contrasena",contrasena);
+            parms.put("correoElectronico",cuentaAct.getCuenta().getCorreoelectronico());
+            parms.put("idEstado",cuentaAct.getCuenta().getIdestado());
+
+            sqlSession.selectOne("com.duoc.mappers.CuentausuarioMapper.UPDATE_CUENTAUSUARIO", parms);
+
+            cargarTablaCuentas(cuentasTable);    
+            return true;
+        }catch (PersistenceException pe){
+                sqlSession.rollback();
+                System.out.println("Error Cause: "+pe.getCause()+" Message: "+pe.getMessage());
+                return false;
+        }
+    }
+    
+    public boolean desactivarCuenta(Integer cuentaAct, JTable cuentasTable) {
+        SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
+        try{
+            
+            Map<String, Object> parms = new HashMap<String, Object>();
+            parms.put("idCuentausuario",cuentaAct);
+            parms.put("idEstado",2);
+
+            sqlSession.selectOne("com.duoc.mappers.CuentausuarioMapper.UPDATE_CUENTAUSUARIO", parms);
+
+            cargarTablaCuentas(cuentasTable);
+            return true;
+        }catch (PersistenceException pe){
+                sqlSession.rollback();
+                System.out.println("Error Cause: "+pe.getCause()+" Message: "+pe.getMessage());
+                return false;
+        }
     }
 
 }

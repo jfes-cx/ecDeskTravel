@@ -3,7 +3,6 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class ActividadaportesKey {
-
     private BigDecimal idactividadaportes;
 
     private BigDecimal idcuentaalumnos;
@@ -37,7 +36,7 @@ public class ActividadaportesKey {
         }
         ActividadaportesKey other = (ActividadaportesKey) that;
         return (this.getIdactividadaportes() == null ? other.getIdactividadaportes() == null : this.getIdactividadaportes().equals(other.getIdactividadaportes()))
-                && (this.getIdcuentaalumnos() == null ? other.getIdcuentaalumnos() == null : this.getIdcuentaalumnos().equals(other.getIdcuentaalumnos()));
+            && (this.getIdcuentaalumnos() == null ? other.getIdcuentaalumnos() == null : this.getIdcuentaalumnos().equals(other.getIdcuentaalumnos()));
     }
 
     @Override

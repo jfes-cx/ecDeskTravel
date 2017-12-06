@@ -3,7 +3,6 @@ package com.duoc.domain;
 import java.math.BigDecimal;
 
 public class ActividadviajeKey {
-
     private BigDecimal idactividadviaje;
 
     public BigDecimal getIdactividadviaje() {

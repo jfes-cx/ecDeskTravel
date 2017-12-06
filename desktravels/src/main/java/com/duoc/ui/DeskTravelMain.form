@@ -9,9 +9,9 @@
         </Property>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="mMantenedores">
+        <Menu class="javax.swing.JMenu" name="mCursos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mantenedores"/>
+            <Property name="text" type="java.lang.String" value="Cursos"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="miRegistrarCurso">
@@ -30,28 +30,52 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miEstadoCuentaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miDestinos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Destinos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDestinosActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miTipos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miTiposActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mContratos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Contratos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="miContratos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Contrato"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miContratosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="mTipos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipos"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mantener Tipos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="mReportes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reportes"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="miReporteEstado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de estado de avance"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miReporteEstadoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mCuentas">
           <Properties>
@@ -68,16 +92,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mReportes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Reportes"/>
-          </Properties>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="barraMenuSuperior"/>
@@ -128,8 +148,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="436" max="32767" attributes="0"/>
-                  <Component id="lblEstadoCuenta" min="-2" pref="414" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="492" max="32767" attributes="0"/>
+                  <Component id="lblEstadoCuenta" min="-2" pref="358" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

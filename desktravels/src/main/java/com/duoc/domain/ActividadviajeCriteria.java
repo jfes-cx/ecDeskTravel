@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 public class ActividadviajeCriteria {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -67,7 +66,6 @@ public class ActividadviajeCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -488,6 +486,66 @@ public class ActividadviajeCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andPrecioIsNull() {
+            addCriterion("PRECIO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioIsNotNull() {
+            addCriterion("PRECIO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioEqualTo(BigDecimal value) {
+            addCriterion("PRECIO =", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioNotEqualTo(BigDecimal value) {
+            addCriterion("PRECIO <>", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioGreaterThan(BigDecimal value) {
+            addCriterion("PRECIO >", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("PRECIO >=", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioLessThan(BigDecimal value) {
+            addCriterion("PRECIO <", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("PRECIO <=", value, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioIn(List<BigDecimal> values) {
+            addCriterion("PRECIO in", values, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioNotIn(List<BigDecimal> values) {
+            addCriterion("PRECIO not in", values, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PRECIO between", value1, value2, "precio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrecioNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PRECIO not between", value1, value2, "precio");
+            return (Criteria) this;
+        }
+
         public Criteria andNombreLikeInsensitive(String value) {
             addCriterion("upper(NOMBRE) like", value.toUpperCase(), "nombre");
             return (Criteria) this;
@@ -507,7 +565,6 @@ public class ActividadviajeCriteria {
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;

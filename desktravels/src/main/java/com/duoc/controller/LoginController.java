@@ -14,7 +14,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import com.duoc.util.MyBatisSqlSessionFactory;
-import main.java.com.duoc.util.EncryptUtil;
+import com.duoc.util.EncryptUtil;
 
 /**
  *
@@ -45,6 +45,7 @@ public class LoginController {
                 ArrayList<String> result = new ArrayList<>();
                 if (cuentaResult != null) {
                     String sha1val = EncryptUtil.sha256Hex(password);
+                    System.out.println("Sha1: "+sha1val);
                     if (sha1val.equals(parms.get("pssw").toString())) {
                         result.add(0, "1");
                         result.add(1, "Usuario autenticado correctamente");
@@ -53,7 +54,7 @@ public class LoginController {
                         result.add(4, parms.get("nomperfil").toString());
                     } else {
                         result.add(0, "0");
-                        result.add(1, "Contrase�a no coincide, intente nuevamente");
+                        result.add(1, "Contraseña no coincide, intente nuevamente");
                     }
                 } else {
                     result.add(0, "0");

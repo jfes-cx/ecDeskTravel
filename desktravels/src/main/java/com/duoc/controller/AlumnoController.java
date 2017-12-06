@@ -48,13 +48,17 @@ public class AlumnoController {
         try {
             Object[][] data = {{}};
             String[] columnNames = {"Nombre", "RUT", "Correo", "Apoderado"};
-            DefaultTableModel defTableModel = new DefaultTableModel(data, columnNames);
+            DefaultTableModel defTableModel = new DefaultTableModel(null, columnNames);
             Map<String, Object> parms = new HashMap<String, Object>();
             parms.put("idCurso", idcurso);
             sqlSession.selectList("com.duoc.mappers.AlumnoMapper.GET_ALUMNOS_BY_CUR", parms);
             List<Alumno> alumnoList = (List<Alumno>) parms.get("alumnos_cursor");
+            String apell = "";
             for (Alumno al : alumnoList) {
-                Object[] newRowData = {al.getNombre() + " " + al.getApellidos(), al.getRut(), al.getCorreoelectronico(),
+                if (al.getApellidos() != null) {
+                    apell = al.getApellidos();
+                }
+                Object[] newRowData = {al.getNombre() + " " + apell, al.getRut(), al.getCorreoelectronico(),
                     al.getIdapoderado()};
                 defTableModel.addRow(newRowData);
             }

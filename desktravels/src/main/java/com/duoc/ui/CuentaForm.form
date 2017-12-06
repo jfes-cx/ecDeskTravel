@@ -24,140 +24,285 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="43" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblDetalleCuenta" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblID" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtID" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblApellidoMat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblContasenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRepContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtRepContrasena" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtApellidoMat" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Component id="txtNombre" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="txtTelefono" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cmbPerfil" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtContrasena" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblApellidoPat" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRUT" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtApellidoPat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Component id="txtRUT" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cmbEstado" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+          <Component id="pnlForm" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="lblDetalleCuenta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="lblID" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="txtID" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblDetalleCuenta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDetalleCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblApellidoPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtApellidoPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblApellidoMat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtApellidoMat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRUT" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRUT" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbPerfil" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblContasenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtRepContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRepContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Component id="pnlForm" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlForm">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblContasenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRepContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="txtRepContrasena" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txtContrasena" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Component id="pblActualizar" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="pblActualizar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblContasenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtRepContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRepContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblRepContrasena">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblContasenha">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtContrasena">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtRepContrasena">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnGuardar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JPanel" name="pblActualizar">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblApellidoMat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtTelefono" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txtApellidoMat" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="txtNombre" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="cmbPerfil" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblApellidoPat" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRUT" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtApellidoPat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="txtRUT" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbEstado" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblApellidoPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtApellidoPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblApellidoMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtApellidoMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRUT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRUT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPerfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbPerfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblNombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNombre">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblApellidoPat">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido Paterno:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtApellidoPat">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRUT">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="RUT:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRUT">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTelefono">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTelefono">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblApellidoMat">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido Materno:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtApellidoMat">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Email(Usuario):"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtEmail">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPerfil">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Perfil:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbPerfil">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbPerfilActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Perfil&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbEstado">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="&#xa0;"/>
+                    <StringItem index="1" value="Activa"/>
+                    <StringItem index="2" value="Inactiva"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEstadoActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblEstado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estado:"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
     <Component class="javax.swing.JLabel" name="lblDetalleCuenta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Detalle de Cuenta"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtID">
@@ -168,117 +313,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNombre">
+    <Component class="javax.swing.JLabel" name="lblID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
+        <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtNombre">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblApellidoPat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Apellido Paterno:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtApellidoPat">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRUT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="RUT:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtRUT">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTelefono">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtTelefono">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblApellidoMat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Apellido Materno:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtApellidoMat">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblEmail">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Email(Usuario):"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtEmail">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPerfil">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Perfil:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbPerfil">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbPerfilActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Perfil&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbEstado">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Activa"/>
-            <StringItem index="1" value="Inactiva"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEstadoActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblEstado">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Estado:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRepContrasena">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblContasenha">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="txtContrasena">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="txtRepContrasena">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnGuardar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -64,5 +64,23 @@
             #{cuentas_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=cuentausuarioMap}
         )}  
     </select>
-    
+            
+    <select 
+        id="UPDATE_CUENTAUSUARIO" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL UPDATE_CUENTAUSUARIO(
+        #{idColaborador,jdbcType=NVARCHAR , mode=IN},
+        #{nombre,jdbcType=NVARCHAR , mode=IN},
+        #{telefono,jdbcType=NVARCHAR, mode=IN},
+        #{idCuentausuario,jdbcType=NVARCHAR,mode=IN},
+        #{rut,jdbcType=NVARCHAR,mode=IN},
+        #{apellidoPat,jdbcType=NVARCHAR , mode=IN},
+        #{apellidoMat,jdbcType=NVARCHAR , mode=IN},
+        #{idPerfil,jdbcType=NVARCHAR, mode=IN},
+        #{contrasena,jdbcType=NVARCHAR,mode=IN},
+        #{correoElectronico,jdbcType=NVARCHAR,mode=IN},
+        #{idEstado,jdbcType=NVARCHAR,mode=IN}
+        )}  
+    </select>
 </mapper>

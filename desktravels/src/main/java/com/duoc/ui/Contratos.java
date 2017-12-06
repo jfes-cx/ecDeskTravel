@@ -3,14 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.duoc.ui;
+package com.duoc.ui;
 
-import com.duoc.domain.Actividad;
+import com.duoc.controller.CursoController;
 import com.duoc.domain.Colegio;
 import com.duoc.domain.Comuna;
 import com.duoc.domain.Curso;
+import com.duoc.domain.Paquete;
 import com.duoc.domain.Region;
 import com.duoc.domain.Servicio;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDesktopPane;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
+import com.duoc.controller.ContratoController;
+import com.duoc.domain.Actividadviaje;
+import com.duoc.domain.Seguro;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import main.java.com.duoc.util.NumberValidator;
 
 /**
  *
@@ -18,11 +38,17 @@ import com.duoc.domain.Servicio;
  */
 public class Contratos extends javax.swing.JInternalFrame {
 
+    CursoController cursocon;
+    ContratoController concon;
+    JDesktopPane escritorio;
     /**
      * Creates new form Contratos
      */
-    public Contratos() {
+    public Contratos(JDesktopPane aThis) {
+        this.escritorio = aThis;
         initComponents();
+        poblarListas();
+        setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
     }
 
     /**
@@ -47,7 +73,6 @@ public class Contratos extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         JTFDias = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        JTFFecha = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         JTFNumero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -55,26 +80,32 @@ public class Contratos extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JLServicios = new javax.swing.JList();
+        lstServicios = new javax.swing.JList();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         JCBAgregarServicio = new javax.swing.JComboBox<>();
-        JBEliminarServicio = new javax.swing.JButton();
+        btnQuitarServicio = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        lstActividades = new javax.swing.JList();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         JCBActividades = new javax.swing.JComboBox<>();
-        JBEliminarActividades = new javax.swing.JButton();
-        JBIngresoContrato = new javax.swing.JButton();
+        btnQuitarActividad = new javax.swing.JButton();
         JCBSeguro = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        JLSeguros = new javax.swing.JList();
-        jLabel16 = new javax.swing.JLabel();
+        lstSeguros = new javax.swing.JList();
+        lblTotal = new javax.swing.JLabel();
         JLTotal = new javax.swing.JLabel();
-        JBAgregarActividades = new javax.swing.JButton();
-        JBAgregarServicios = new javax.swing.JButton();
+        btnAgregarActividad = new javax.swing.JButton();
+        btnAgregarServicio = new javax.swing.JButton();
+        txtDate = new javax.swing.JFormattedTextField();
+        JBAgregarServicios1 = new javax.swing.JButton();
+        btnInsertContrato = new javax.swing.JButton();
+        txtTotalContrato = new javax.swing.JTextField();
+
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(960, 500));
 
         jLabel1.setText("Ingreso de Contratos");
 
@@ -110,7 +141,7 @@ public class Contratos extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Seguro Asociado al contrato");
 
-        jScrollPane1.setViewportView(JLServicios);
+        jScrollPane1.setViewportView(lstServicios);
 
         jLabel12.setText("Servicios asociados al paquete turistico");
 
@@ -122,26 +153,71 @@ public class Contratos extends javax.swing.JInternalFrame {
             }
         });
 
-        JBEliminarServicio.setText("Eliminar");
+        btnQuitarServicio.setText("Quitar");
+        btnQuitarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarServicioActionPerformed(evt);
+            }
+        });
 
-        jScrollPane2.setViewportView(jList1);
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setToolTipText("");
+
+        jScrollPane2.setViewportView(lstActividades);
 
         jLabel14.setText("Actividades asociadas al paquete turistico");
 
         jLabel15.setText("Agregar nuevas actividades");
 
-        JBEliminarActividades.setText("Eliminar");
+        btnQuitarActividad.setText("Quitar");
+        btnQuitarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarActividadActionPerformed(evt);
+            }
+        });
 
-        JBIngresoContrato.setText("Ingresar Contrato");
+        jScrollPane3.setViewportView(lstSeguros);
 
-        jScrollPane3.setViewportView(JLSeguros);
+        lblTotal.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        lblTotal.setText("Total: ");
 
-        jLabel16.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel16.setText("Total: ");
+        btnAgregarActividad.setText("Agregar");
+        btnAgregarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActividadActionPerformed(evt);
+            }
+        });
 
-        JBAgregarActividades.setText("Agregar");
+        btnAgregarServicio.setText("Agregar");
+        btnAgregarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarServicioActionPerformed(evt);
+            }
+        });
 
-        JBAgregarServicios.setText("Agregar");
+        txtDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        txtDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDateActionPerformed(evt);
+            }
+        });
+
+        JBAgregarServicios1.setText("Agregar");
+
+        btnInsertContrato.setText("Ingresar Contrato");
+        btnInsertContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertContratoActionPerformed(evt);
+            }
+        });
+
+        txtTotalContrato.setText("0");
+        txtTotalContrato.setEnabled(false);
+        txtTotalContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalContratoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,84 +236,84 @@ public class Contratos extends javax.swing.JInternalFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(40, 40, 40)
-                                        .addComponent(jLabel12)))
+                                        .addComponent(jLabel12))
+                                    .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(JCBSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(JCBSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(JBAgregarServicios1))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(27, 27, 27)
                                                 .addComponent(jLabel13))
                                             .addComponent(JCBAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(JBAgregarServicios)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(JBEliminarServicio))
-                                            .addComponent(JBIngresoContrato, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(JLTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(btnAgregarServicio))
+                                        .addGap(49, 49, 49)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(JLTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                            .addGap(34, 34, 34)
-                                                            .addComponent(jLabel14)
-                                                            .addGap(50, 50, 50)
-                                                            .addComponent(jLabel15))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                            .addGap(259, 259, 259)
-                                                            .addComponent(JCBActividades, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addGap(259, 259, 259)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(lblTotal)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(txtTotalContrato)
+                                                            .addComponent(btnInsertContrato)))
+                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel16)
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(JBAgregarActividades)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(JBEliminarActividades)))))
-                                                .addGap(0, 129, Short.MAX_VALUE))))))
+                                                                .addComponent(jLabel14)
+                                                                .addGap(50, 50, 50)
+                                                                .addComponent(jLabel15))
+                                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(225, 225, 225)
+                                                                .addComponent(JCBActividades, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                            .addGap(225, 225, 225)
+                                                            .addComponent(btnAgregarActividad)
+                                                            .addGap(68, 68, 68)
+                                                            .addComponent(btnQuitarActividad))))
+                                                .addGap(129, 129, 129))))))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnQuitarServicio)
+                                    .addGap(15, 15, 15)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(JCBPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(493, 493, 493)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(JCBRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(JTFFecha)))
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JCBRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(JCBComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(JTFNumero))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jLabel9)))
+                                        .addComponent(txtDate)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JCBComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JTFNumero)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -272,23 +348,26 @@ public class Contratos extends javax.swing.JInternalFrame {
                     .addComponent(JTFDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addComponent(JTFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(JTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
                             .addComponent(jLabel11)
                             .addComponent(JCBSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JBAgregarServicios1)
+                            .addComponent(jLabel9))
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(JCBPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,31 +379,35 @@ public class Contratos extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 37, Short.MAX_VALUE)
-                                .addComponent(JLTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 58, Short.MAX_VALUE)
+                                .addComponent(JLTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(JCBActividades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(JBEliminarActividades)
-                                            .addComponent(JBAgregarActividades)))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(JCBAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(JBEliminarServicio)
-                                            .addComponent(JBAgregarServicios))))
+                                            .addComponent(btnAgregarServicio)
+                                            .addComponent(btnQuitarServicio))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(JCBActividades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnQuitarActividad)
+                                    .addComponent(btnAgregarActividad))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JBIngresoContrato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addGap(31, 31, 31))))))
-                    .addComponent(jSeparator1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTotal)
+                                    .addComponent(txtTotalContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnInsertContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -333,11 +416,11 @@ public class Contratos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -357,27 +440,136 @@ public class Contratos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JCBAgregarServicioActionPerformed
 
+    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateActionPerformed
+
+    private void btnQuitarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarServicioActionPerformed
+        Object selectedServ = lstServicios.getSelectedValue();
+        Servicio serv;
+        if (selectedServ != null) {
+            serv  = (Servicio) selectedServ ;
+            DefaultListModel model = (DefaultListModel) lstServicios.getModel(); 
+            int index = lstServicios.getSelectedIndex();
+            model.remove( index );
+            
+            Integer valorServicio = serv.getPrecio().intValueExact();
+            Integer valorAcumulado = Integer.parseInt(txtTotalContrato.getText()) - valorServicio;
+            txtTotalContrato.setText(valorAcumulado.toString());
+            
+        }else{
+             JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio a eliminar!");
+        }
+    }//GEN-LAST:event_btnQuitarServicioActionPerformed
+
+    private void btnAgregarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioActionPerformed
+        Object selectedServ = JCBAgregarServicio.getSelectedItem();
+        Servicio serv;
+        if (selectedServ != null) {
+            serv  = (Servicio) selectedServ ;
+            ((DefaultListModel) lstServicios.getModel()).addElement(serv);
+            Integer valorServicio = serv.getPrecio().intValueExact();
+            Integer valorAcumulado = Integer.parseInt(txtTotalContrato.getText()) + valorServicio;
+            txtTotalContrato.setText(valorAcumulado.toString());
+        }else{
+             JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio extra!");
+        }
+        
+        
+    }//GEN-LAST:event_btnAgregarServicioActionPerformed
+
+    private void btnAgregarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActividadActionPerformed
+        Object selectedAct = JCBActividades.getSelectedItem();
+        Actividadviaje act;
+        if (selectedAct != null) {
+            act  = (Actividadviaje) selectedAct ;
+            ((DefaultListModel) lstActividades.getModel()).addElement(act);
+            Integer valorActividad = act.getPrecio().intValueExact();
+            Integer valorAcumulado = Integer.parseInt(txtTotalContrato.getText()) + valorActividad;
+            txtTotalContrato.setText(valorAcumulado.toString());
+        }else{
+             JOptionPane.showMessageDialog(this, "Debes seleccionar un actividad extra!");
+        }
+        
+    }//GEN-LAST:event_btnAgregarActividadActionPerformed
+
+    private void txtTotalContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalContratoActionPerformed
+
+    private void btnQuitarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActividadActionPerformed
+        Object selectedAct = lstActividades.getSelectedValue();
+        Actividadviaje act;
+        if (selectedAct != null) {
+            act  = (Actividadviaje) selectedAct ;
+            DefaultListModel model = (DefaultListModel) lstActividades.getModel(); 
+            int index = lstActividades.getSelectedIndex();
+            model.remove( index );
+            
+            Integer valorActividad = act.getPrecio().intValueExact();
+            Integer valorAcumulado = Integer.parseInt(txtTotalContrato.getText()) - valorActividad;
+            txtTotalContrato.setText(valorAcumulado.toString());
+            
+        }else{
+             JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio a eliminar!");
+        }
+    }//GEN-LAST:event_btnQuitarActividadActionPerformed
+
+    private void btnInsertContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertContratoActionPerformed
+        Curso curso = (Curso) JCBCurso.getSelectedItem();
+        Colegio col = (Colegio) JCBColegio.getSelectedItem();
+        Paquete paquete = (Paquete) JCBPaquetes.getSelectedItem();
+        ArrayList<Actividadviaje> actividadesArray = new ArrayList <>();
+        for(int i = 0; i< lstActividades.getModel().getSize();i++){
+            actividadesArray.add((Actividadviaje)lstActividades.getModel().getElementAt(i));
+        }
+        ArrayList<Servicio> serviciosArray = new ArrayList <>();
+        for(int i = 0; i< lstServicios.getModel().getSize();i++){
+            serviciosArray.add((Servicio)lstServicios.getModel().getElementAt(i));
+        }
+        ArrayList<Seguro> segurosArray = new ArrayList <>();
+//        for(int i = 0; i< lstSeguros.getModel().getSize();i++){
+//            segurosArray.add((Seguro)lstSeguros.getModel().getElementAt(i));
+//        }
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = null;
+        try {
+             fecha = formatter.parse(txtDate.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(Contratos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String cantDiasSt = JTFDias.getText();
+        String cantAlumnosSt = JTFNumero.getText();
+        String totalContrato = txtTotalContrato.getText();
+        
+        Boolean result = concon.insertContrato(curso,paquete,actividadesArray,serviciosArray,segurosArray,fecha,cantDiasSt,cantAlumnosSt,totalContrato,col);
+        if (result) {
+            JOptionPane.showMessageDialog(this, "Contrato salvado exitosamente!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error, intente nuevamente!");
+        }
+        
+    }//GEN-LAST:event_btnInsertContratoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBAgregarActividades;
-    private javax.swing.JButton JBAgregarServicios;
-    private javax.swing.JButton JBEliminarActividades;
-    private javax.swing.JButton JBEliminarServicio;
-    private javax.swing.JButton JBIngresoContrato;
-    private javax.swing.JComboBox<Actividad> JCBActividades;
+    private javax.swing.JButton JBAgregarServicios1;
+    private javax.swing.JComboBox<Actividadviaje> JCBActividades;
     private javax.swing.JComboBox<Servicio> JCBAgregarServicio;
     private javax.swing.JComboBox<Colegio> JCBColegio;
     private javax.swing.JComboBox<Comuna> JCBComuna;
     private javax.swing.JComboBox<Curso> JCBCurso;
-    private javax.swing.JComboBox<String> JCBPaquetes;
+    private javax.swing.JComboBox<Paquete> JCBPaquetes;
     private javax.swing.JComboBox<Region> JCBRegion;
-    private javax.swing.JComboBox<String> JCBSeguro;
-    private javax.swing.JList JLSeguros;
-    private javax.swing.JList JLServicios;
+    private javax.swing.JComboBox<Seguro> JCBSeguro;
     private javax.swing.JLabel JLTotal;
     private javax.swing.JTextField JTFDias;
-    private javax.swing.JTextField JTFFecha;
     private javax.swing.JTextField JTFNumero;
+    private javax.swing.JButton btnAgregarActividad;
+    private javax.swing.JButton btnAgregarServicio;
+    private javax.swing.JButton btnInsertContrato;
+    private javax.swing.JButton btnQuitarActividad;
+    private javax.swing.JButton btnQuitarServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -385,7 +577,6 @@ public class Contratos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -394,11 +585,94 @@ public class Contratos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JList lstActividades;
+    private javax.swing.JList lstSeguros;
+    private javax.swing.JList lstServicios;
+    private javax.swing.JFormattedTextField txtDate;
+    private javax.swing.JTextField txtTotalContrato;
     // End of variables declaration//GEN-END:variables
+
+
+    private void poblarListas() {
+        cursocon = new CursoController();
+        concon = new ContratoController();
+       
+        DefaultComboBoxModel regionModel = new DefaultComboBoxModel();
+        JCBRegion.setModel(regionModel);
+        JCBRegion.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent arg0) {
+                actualizarComunas();
+            }
+        });
+        
+        JCBComuna.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent arg0) {
+                actualizarColegios();
+            }
+        });
+        
+        JCBColegio.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent arg0) {
+                actualizarCursos();
+            }
+        });
+        cursocon.cargarComboRegion(JCBRegion);
+        
+        JCBPaquetes.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent arg0) {
+                actualizarActividades();
+                actualizarServicios();
+                txtTotalContrato.setText(((Paquete)arg0.getItem()).getPrecio().toString());
+            }
+        });
+        
+        txtDate.setValue(new Date());
+        DateFormatter df = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
+        DefaultFormatterFactory factory = new DefaultFormatterFactory(); 
+        factory.setDefaultFormatter(df); 
+        JTFNumero.setDocument (new NumberValidator());
+        JTFDias.setDocument (new NumberValidator());
+        txtTotalContrato.setHorizontalAlignment(JTextField.RIGHT);
+        txtDate.setFormatterFactory(factory);
+        concon.cargarComboPaquetes(JCBPaquetes);
+        concon.cargarComboActividades(JCBActividades);
+        concon.cargarComboServicios(JCBAgregarServicio);
+        
+        
+    }
+
+    private void actualizarComunas() {
+        Region region = (Region) JCBRegion.getSelectedItem();
+        cursocon.actualizarComunas(region.getIdregion(), JCBComuna);
+    }
+    private void actualizarColegios() {
+        Comuna comuna = (Comuna) JCBComuna.getSelectedItem();
+        cursocon.actualizarComboColegios(comuna.getIdcomuna(),JCBColegio);
+    }
+    private void actualizarCursos() {
+        Colegio colegio = (Colegio) JCBColegio.getSelectedItem();
+        cursocon.actualizarCursos(colegio.getIdcolegio(), JCBCurso);
+    }
+    
+    private void actualizarActividades() {
+        Paquete paquete = (Paquete) JCBPaquetes.getSelectedItem();
+        concon.cargarListaActividades(lstActividades,paquete.getIdpaquete());
+    }
+    
+    private void actualizarServicios() {
+        Paquete paquete = (Paquete) JCBPaquetes.getSelectedItem();
+        concon.cargarListaServicios(lstServicios,paquete.getIdpaquete());
+    }
+    
+    
 }

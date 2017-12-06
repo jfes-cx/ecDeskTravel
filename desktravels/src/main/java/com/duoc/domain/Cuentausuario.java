@@ -17,6 +17,16 @@ public class Cuentausuario extends CuentausuarioKey {
     private String nombrePerfil;
     
     private String estado;
+    
+    private BigDecimal idestado;
+
+    public BigDecimal getIdestado() {
+        return idestado;
+    }
+
+    public void setIdestado(BigDecimal idestado) {
+        this.idestado = idestado;
+    }
 
     public String getNombrePerfil() {
         return nombrePerfil;

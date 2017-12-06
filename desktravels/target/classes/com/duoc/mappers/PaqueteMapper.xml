@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.PaqueteMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.Paquete">
+    <id column="IDPAQUETE" jdbcType="DECIMAL" property="idpaquete" />
+    <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+    <result column="PRECIO" jdbcType="DECIMAL" property="precio" />
+    <result column="IDDESTINO" jdbcType="DECIMAL" property="iddestino" />
+    <result column="IDORIGEN" jdbcType="DECIMAL" property="idorigen" />
+  </resultMap>
+  
+  <resultMap id="PaqueteMap" type="com.duoc.domain.Paquete">
+    <id column="IDPAQUETE" jdbcType="DECIMAL" property="idpaquete" />
+    <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="NOMBRE" jdbcType="VARCHAR" property="nombre" />
+    <result column="PRECIO" jdbcType="DECIMAL" property="precio" />
+    <result column="IDDESTINO" jdbcType="DECIMAL" property="iddestino" />
+    <result column="IDORIGEN" jdbcType="DECIMAL" property="idorigen" />
+  </resultMap>
+  
+  
+  <select 
+        id="GET_PAQUETES" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL GET_PAQUETES(
+        #{paquetes_cursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=com.duoc.mappers.PaqueteMapper.PaqueteMap})} 
+  </select>
+    
+</mapper>

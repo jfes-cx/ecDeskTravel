@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duoc.mappers.MidServicioCtMapper">
+  <resultMap id="BaseResultMap" type="com.duoc.domain.MidServicioCt">
+    <id column="IDSERVICIOPAQUETE" jdbcType="DECIMAL" property="idserviciopaquete" />
+    <result column="IDSERVICIO" jdbcType="DECIMAL" property="idservicio" />
+    <result column="IDCONTRATO" jdbcType="DECIMAL" property="idcontrato" />
+    <result column="IDPAQUETE" jdbcType="DECIMAL" property="idpaquete" />
+  </resultMap>
+  
+  <select 
+        id="INSERT_MID_SERVICIO_CT" 
+        statementType="CALLABLE" 
+        parameterType="java.util.Map">
+        {CALL INSERT_MID_SERVICIO_CT(
+        #{idcontrato,mode=IN,jdbcType=NVARCHAR},
+        #{idservicio,mode=IN,jdbcType=NVARCHAR}
+        )}  
+    </select>
+    
+</mapper>

@@ -10,6 +10,7 @@ import com.duoc.domain.Colegio;
 import com.duoc.domain.Comuna;
 import com.duoc.domain.Curso;
 import com.duoc.domain.Region;
+import com.duoc.util.FormValidator;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -46,7 +47,10 @@ public class RegistrarCurso extends javax.swing.JInternalFrame {
         this.escritorio = aThis;
         initComponents();
         poblarListas();
+        setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
     }
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -304,10 +308,16 @@ public class RegistrarCurso extends javax.swing.JInternalFrame {
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
 
         Curso cur = listCursos.getSelectedValue();
-        RegistroAlumno regal = new RegistroAlumno(cur);
-        this.escritorio.add(regal);
-        regal.show();
-        this.hide();
+        if(cur != null){
+            RegistroAlumno regal = new RegistroAlumno(cur,escritorio,this);
+            this.escritorio.add(regal);
+            regal.show();
+            this.hide();
+        }else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar un curso antes de continuar!");
+            listCursos.requestFocus();
+        }
+        
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnAgregarColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColegioActionPerformed
@@ -318,6 +328,11 @@ public class RegistrarCurso extends javax.swing.JInternalFrame {
         Boolean result = cursocon.actualizarListaColegio(nombre, direccion, telefono, comuna, listColegios);
         if (result) {
             JOptionPane.showMessageDialog(this, "Colegio agregado correctamente");
+            FormValidator.emptyComponent(txtNombreColegio);
+            FormValidator.emptyComponent(txtDireccionColegio);
+            FormValidator.emptyComponent(txtTelefonoColegio);
+            FormValidator.emptyComponent(cmbComunaColegio);
+            FormValidator.emptyComponent(cmbRegion);
         } else {
             JOptionPane.showMessageDialog(this, "Colegio no pudo ser agregado");
         }
@@ -328,13 +343,21 @@ public class RegistrarCurso extends javax.swing.JInternalFrame {
         String nombre = txtNombreCurso.getText();
         String profeJefe = txtProfeCurso.getText();
         Colegio col = listColegios.getSelectedValue();
+        if (col != null) {
+            Boolean result = cursocon.actualizarListaCurso(nombre, profeJefe, col, listCursos);
+            if (result) {
+                JOptionPane.showMessageDialog(this, "Curso agregado correctamente");
+                FormValidator.emptyComponent(txtNombreCurso);
+                FormValidator.emptyComponent(txtProfeCurso);
 
-        Boolean result = cursocon.actualizarListaCurso(nombre, profeJefe, col, listCursos);
-        if (result) {
-            JOptionPane.showMessageDialog(this, "Curso agregado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(this, "Curso no pudo ser agregado");
+            } else {
+                JOptionPane.showMessageDialog(this, "Curso no pudo ser agregado");
+            }
+        }else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un colegio para agregar un curso!");
         }
+
+        
     }//GEN-LAST:event_btnAgregarCursoActionPerformed
 
     private void cmbRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRegionActionPerformed

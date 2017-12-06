@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 public class ActividadCriteria {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -67,7 +66,6 @@ public class ActividadCriteria {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -478,66 +476,6 @@ public class ActividadCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andCantidadpersonaIsNull() {
-            addCriterion("CANTIDADPERSONA is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaIsNotNull() {
-            addCriterion("CANTIDADPERSONA is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaEqualTo(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA =", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaNotEqualTo(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA <>", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaGreaterThan(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA >", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA >=", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaLessThan(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA <", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("CANTIDADPERSONA <=", value, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaIn(List<BigDecimal> values) {
-            addCriterion("CANTIDADPERSONA in", values, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaNotIn(List<BigDecimal> values) {
-            addCriterion("CANTIDADPERSONA not in", values, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("CANTIDADPERSONA between", value1, value2, "cantidadpersona");
-            return (Criteria) this;
-        }
-
-        public Criteria andCantidadpersonaNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("CANTIDADPERSONA not between", value1, value2, "cantidadpersona");
-            return (Criteria) this;
-        }
-
         public Criteria andMontorecaudadoIsNull() {
             addCriterion("MONTORECAUDADO is null");
             return (Criteria) this;
@@ -612,7 +550,6 @@ public class ActividadCriteria {
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;
